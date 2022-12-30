@@ -35,10 +35,11 @@ struct SplashScreenView: View {
             }
             .onAppear{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){
+                    self.isActive = false
                 }
             }
         } else {
-            Text("Siu")
+            AuthenticationView()
         }
     }
 }
