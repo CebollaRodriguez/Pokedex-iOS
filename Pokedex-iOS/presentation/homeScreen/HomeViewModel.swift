@@ -8,9 +8,9 @@
 import Foundation
 
 class HomeViewModel: ObservableObject {
-    private let userLogOutUseCase: UserLogOutUseCase
+    private let userLogOutUseCase: HomeUseCase
 
-    init(userLogOutUseCase: UserLogOutUseCase){
+    init(userLogOutUseCase: HomeUseCase){
         self.userLogOutUseCase = userLogOutUseCase
     }
     
@@ -27,6 +27,6 @@ class HomeViewModel: ObservableObject {
 
 extension HomeViewModel {
     static func build() -> HomeViewModel{
-        return HomeViewModel(userLogOutUseCase: UserLogOutUseCase())
+        return HomeViewModel(userLogOutUseCase: HomeUseCase())
     }
 }

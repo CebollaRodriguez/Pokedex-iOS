@@ -9,8 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
     let email: String
-    @StateObject var authViewModel: AuthenticationViewModel
-    @StateObject private var homeViewModel: HomeViewModel = .build()
+    @ObservedObject var authViewModel: AuthenticationViewModel
+    @ObservedObject private var homeViewModel: HomeViewModel = .build()
     
     var body: some View {
         NavigationView {
@@ -33,6 +33,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(email: "gabrielsanchezperaza@gmail.com", authViewModel: .build())
+        HomeView(email: "gabrielsanchezperaza@gmail.com", authViewModel: AuthenticationViewModel())
     }
 }

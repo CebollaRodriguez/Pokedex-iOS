@@ -7,37 +7,33 @@
 
 import Foundation
 
-class AuthenticationViewModel: ObservableObject {
+final class AuthenticationViewModel: ObservableObject {
     @Published var user: User?
     @Published var messageError: String?
-    private let createNewUserUseCase: CreateNewUserUseCase
-    private let getCurrentUserUseCase: GetCurrentUserUseCase
-    private let userLoginUseCase: UserLoginUseCase
+    private let useCase: AuthenticationUseCase
+
+    
     
     init(
-        createNewUserUseCase: CreateNewUserUseCase,
-        getCurrentUserUseCase: GetCurrentUserUseCase,
-        userLoginUseCase: UserLoginUseCase
+        userLoginUseCase: AuthenticationUseCase = AuthenticationUseCase()
     ) {
-        self.createNewUserUseCase = createNewUserUseCase
-        self.getCurrentUserUseCase = getCurrentUserUseCase
-        self.userLoginUseCase = userLoginUseCase
+    
+    
+        self.useCase = userLoginUseCase
         //                DispatchQueue.main.asyncAfter(deadline: .now() + 4.0){
         //self?.messageError = nil
         //}
-
-        getCurrentUser()
     }
     
-    func getCurrentUser() {
-        if let userModel = getCurrentUserUseCase.getCurrentUser(){
-            self.user? = .init(email: userModel.email)
+    func getCurrentUser(completion: @escaping (User?)->Void) {
+        if let userModel = useCase.getCurrentUser(){
+            completion(.init(email: userModel.email))
         }
         
     }
     
     func createNewUser(email: String, password: String) {
-        createNewUserUseCase.createNewUser(email: email, password: password) { [weak self]result in
+        useCase.createNewUser(email: email, password: password) { [weak self]result in
             switch result {
             case .success(let user):
                 self?.user = .init(email: user.email)
@@ -48,7 +44,7 @@ class AuthenticationViewModel: ObservableObject {
     }
     
     func userLogin(email: String, password: String) {
-        userLoginUseCase.userLogin(email: email, password: password) { [weak self]result in
+        useCase.userLogin(email: email, password: password) { [weak self]result in
             switch result {
             case .success(let user):
                 self?.user = .init(email: user.email)
@@ -59,9 +55,9 @@ class AuthenticationViewModel: ObservableObject {
     }
 }
 
-extension AuthenticationViewModel {
-    static func build()-> AuthenticationViewModel {
-        return AuthenticationViewModel(createNewUserUseCase: CreateNewUserUseCase(), getCurrentUserUseCase: GetCurrentUserUseCase(), userLoginUseCase: UserLoginUseCase()
-        )
-    }
-}
+//extension AuthenticationViewModel {
+//    static func build()-> AuthenticationViewModel {
+//        return AuthenticationViewModel(createNewUserUseCase: CreateNewUserUseCase(), getCurrentUserUseCase: GetCurrentUserUseCase(), userLoginUseCase: UserLoginUseCase()
+//        )
+//    }
+//}

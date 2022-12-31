@@ -11,7 +11,8 @@ struct SplashScreenView: View {
     @State private var size = 0.8
     @State private var opacity = 0.5
     @State private var isActive = true
-    @StateObject var authenticationViewModel: AuthenticationViewModel = .build()
+    @ObservedObject var authenticationViewModel = AuthenticationViewModel()
+    @State private var user: User?
     var body: some View {
         
         if isActive {
@@ -35,12 +36,15 @@ struct SplashScreenView: View {
                 }
             }
             .onAppear{
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){
-                    self.isActive = false
+                authenticationViewModel.getCurrentUser { user in
+                    self.user = user
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        self.isActive = false
+                    }
                 }
             }
         } else {
-            if let user = authenticationViewModel.user{
+            if let user = self.user{
                 HomeView(email: user.email, authViewModel: authenticationViewModel)
             } else{
                 AuthenticationView(viewModel: authenticationViewModel)

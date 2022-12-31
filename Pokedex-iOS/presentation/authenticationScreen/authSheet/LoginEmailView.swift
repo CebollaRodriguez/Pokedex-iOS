@@ -59,6 +59,6 @@ struct LoginEmailView: View {
 
 struct LoginEmailView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginEmailView(viewModel: AuthenticationViewModel.build())
+        LoginEmailView(viewModel: AuthenticationViewModel())
     }
 }

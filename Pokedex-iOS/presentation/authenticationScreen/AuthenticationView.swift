@@ -9,7 +9,8 @@ import SwiftUI
 
 struct AuthenticationView: View {
     @State private var authSheetView: AuthenticationSheetView?
-    @StateObject var viewModel: AuthenticationViewModel = .build()
+    @StateObject var viewModel: AuthenticationViewModel
+    
     var body: some View {
         VStack {
             topImage
@@ -70,6 +71,6 @@ struct AuthenticationView: View {
 
 struct AuthenticationView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthenticationView()
+        AuthenticationView( viewModel: AuthenticationViewModel())
     }
 }
