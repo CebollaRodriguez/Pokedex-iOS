@@ -14,6 +14,10 @@ final class AuthRepository {
         self.firebaseAuthDataSource = firebaseAuthDataSource
     }
     
+    func getCurrentUser() -> UserModel? {
+        firebaseAuthDataSource.getCurrentUser()
+    }
+    
     func createNewUser(email: String, password: String, completion: @escaping(Result<UserModel, Error>) -> Void) {
         firebaseAuthDataSource.createNewUser(email: email, password: password, completion: completion)
         

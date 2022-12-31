@@ -9,6 +9,12 @@ import Foundation
 import FirebaseAuth
 
 final class FirebaseAuthDataSource {
+    
+    func getCurrentUser()-> UserModel?{
+        guard let email = Auth.auth().currentUser?.email else{ return nil }
+        return .init(email: email)
+    }
+    
     func createNewUser(email: String, password: String, completion: @escaping(Result<UserModel, Error>) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) {result, error in
             if let error = error{

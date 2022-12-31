@@ -14,6 +14,7 @@
 		5F156C72295F8620006E5F28 /* CreateNewUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C71295F8620006E5F28 /* CreateNewUserUseCase.swift */; };
 		5F156C75295F870F006E5F28 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C74295F870F006E5F28 /* AuthenticationViewModel.swift */; };
 		5F156C78295F8C44006E5F28 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C77295F8C44006E5F28 /* User.swift */; };
+		5F156C7C296099E8006E5F28 /* GetCurrentUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C7B296099E8006E5F28 /* GetCurrentUserUseCase.swift */; };
 		5F608F4A295E6E7A00648F00 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5F608F49295E6E7A00648F00 /* FirebaseAnalytics */; };
 		5F755181295E6FF4004BE007 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F755180295E6FF4004BE007 /* GoogleService-Info.plist */; };
 		5F755184295E7CB1004BE007 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5F755183295E7CB1004BE007 /* FirebaseAnalyticsSwift */; };
@@ -59,6 +60,7 @@
 		5F156C71295F8620006E5F28 /* CreateNewUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewUserUseCase.swift; sourceTree = "<group>"; };
 		5F156C74295F870F006E5F28 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		5F156C77295F8C44006E5F28 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5F156C7B296099E8006E5F28 /* GetCurrentUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentUserUseCase.swift; sourceTree = "<group>"; };
 		5F755180295E6FF4004BE007 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5F755188295E7DE5004BE007 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		5F75518D295E8093004BE007 /* AuthenticationSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationSheetView.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				5F156C71295F8620006E5F28 /* CreateNewUserUseCase.swift */,
+				5F156C7B296099E8006E5F28 /* GetCurrentUserUseCase.swift */,
 			);
 			path = useCases;
 			sourceTree = "<group>";
@@ -146,6 +149,14 @@
 				5F156C77295F8C44006E5F28 /* User.swift */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		5F156C79296098C0006E5F28 /* network */ = {
+			isa = PBXGroup;
+			children = (
+				5F156C67295F82F9006E5F28 /* FirebaseAuthDataSource */,
+			);
+			path = network;
 			sourceTree = "<group>";
 		};
 		5F755182295E7CB1004BE007 /* Frameworks */ = {
@@ -257,9 +268,9 @@
 		5FEBD24129522B9B00050E6A /* data */ = {
 			isa = PBXGroup;
 			children = (
+				5F156C79296098C0006E5F28 /* network */,
 				5F156C6D295F850B006E5F28 /* repository */,
 				5F156C6A295F8377006E5F28 /* model */,
-				5F156C67295F82F9006E5F28 /* FirebaseAuthDataSource */,
 				5FEBD24429522BC400050E6A /* db */,
 			);
 			path = data;
@@ -439,6 +450,7 @@
 				5FE9B9DA2952222E0006C2E2 /* Pokedex_iOSApp.swift in Sources */,
 				5FE9B9DC2952222E0006C2E2 /* Persistence.swift in Sources */,
 				5F156C75295F870F006E5F28 /* AuthenticationViewModel.swift in Sources */,
+				5F156C7C296099E8006E5F28 /* GetCurrentUserUseCase.swift in Sources */,
 				5F04974A295D02A60091E269 /* SplashScreenView.swift in Sources */,
 				5F755194295E94C8004BE007 /* RegisterEmailView.swift in Sources */,
 				5F156C69295F8327006E5F28 /* FirebaseAuthDataSource.swift in Sources */,
