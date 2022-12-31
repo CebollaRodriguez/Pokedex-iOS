@@ -11,7 +11,7 @@ struct SplashScreenView: View {
     @State private var size = 0.8
     @State private var opacity = 0.5
     @State private var isActive = true
-    @StateObject var authenticationViewModel = AuthenticationViewModel()
+    @StateObject var authenticationViewModel: AuthenticationViewModel = .build()
     var body: some View {
         
         if isActive {
@@ -41,7 +41,7 @@ struct SplashScreenView: View {
             }
         } else {
             if let user = authenticationViewModel.user{
-                Text("User logged \(user.email)")
+                HomeView(email: user.email, authViewModel: authenticationViewModel)
             } else{
                 AuthenticationView(viewModel: authenticationViewModel)
             }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AuthenticationView: View {
     @State private var authSheetView: AuthenticationSheetView?
-    @StateObject var viewModel: AuthenticationViewModel
+    @StateObject var viewModel: AuthenticationViewModel = .build()
     var body: some View {
         VStack {
             topImage
@@ -48,7 +48,7 @@ struct AuthenticationView: View {
                 authSheetView = .login
             } label: {
                 Label("Email", systemImage: "envelope.fill")
-                    
+                
             }
             .tint(.black)
         }
@@ -65,11 +65,11 @@ struct AuthenticationView: View {
             .shadow(radius: 4)
             .padding(.top, 30)
     }
-        
+    
 }
 
 struct AuthenticationView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthenticationView(viewModel: AuthenticationViewModel())
+        AuthenticationView()
     }
 }

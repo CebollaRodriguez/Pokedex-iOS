@@ -15,6 +15,10 @@
 		5F156C75295F870F006E5F28 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C74295F870F006E5F28 /* AuthenticationViewModel.swift */; };
 		5F156C78295F8C44006E5F28 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C77295F8C44006E5F28 /* User.swift */; };
 		5F156C7C296099E8006E5F28 /* GetCurrentUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C7B296099E8006E5F28 /* GetCurrentUserUseCase.swift */; };
+		5F156C7F29609CB3006E5F28 /* UserLogOutUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C7E29609CB3006E5F28 /* UserLogOutUseCase.swift */; };
+		5F156C8429609FA7006E5F28 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C8329609FA7006E5F28 /* HomeView.swift */; };
+		5F156C862960A2FE006E5F28 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C852960A2FE006E5F28 /* HomeViewModel.swift */; };
+		5F156C882960B68F006E5F28 /* UserLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C872960B68F006E5F28 /* UserLoginUseCase.swift */; };
 		5F608F4A295E6E7A00648F00 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5F608F49295E6E7A00648F00 /* FirebaseAnalytics */; };
 		5F755181295E6FF4004BE007 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F755180295E6FF4004BE007 /* GoogleService-Info.plist */; };
 		5F755184295E7CB1004BE007 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5F755183295E7CB1004BE007 /* FirebaseAnalyticsSwift */; };
@@ -61,6 +65,10 @@
 		5F156C74295F870F006E5F28 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		5F156C77295F8C44006E5F28 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5F156C7B296099E8006E5F28 /* GetCurrentUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentUserUseCase.swift; sourceTree = "<group>"; };
+		5F156C7E29609CB3006E5F28 /* UserLogOutUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogOutUseCase.swift; sourceTree = "<group>"; };
+		5F156C8329609FA7006E5F28 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		5F156C852960A2FE006E5F28 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		5F156C872960B68F006E5F28 /* UserLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginUseCase.swift; sourceTree = "<group>"; };
 		5F755180295E6FF4004BE007 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5F755188295E7DE5004BE007 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		5F75518D295E8093004BE007 /* AuthenticationSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationSheetView.swift; sourceTree = "<group>"; };
@@ -137,8 +145,7 @@
 		5F156C70295F8603006E5F28 /* useCases */ = {
 			isa = PBXGroup;
 			children = (
-				5F156C71295F8620006E5F28 /* CreateNewUserUseCase.swift */,
-				5F156C7B296099E8006E5F28 /* GetCurrentUserUseCase.swift */,
+				5F156C7D29609C68006E5F28 /* authUseCases */,
 			);
 			path = useCases;
 			sourceTree = "<group>";
@@ -157,6 +164,26 @@
 				5F156C67295F82F9006E5F28 /* FirebaseAuthDataSource */,
 			);
 			path = network;
+			sourceTree = "<group>";
+		};
+		5F156C7D29609C68006E5F28 /* authUseCases */ = {
+			isa = PBXGroup;
+			children = (
+				5F156C71295F8620006E5F28 /* CreateNewUserUseCase.swift */,
+				5F156C7B296099E8006E5F28 /* GetCurrentUserUseCase.swift */,
+				5F156C7E29609CB3006E5F28 /* UserLogOutUseCase.swift */,
+				5F156C872960B68F006E5F28 /* UserLoginUseCase.swift */,
+			);
+			path = authUseCases;
+			sourceTree = "<group>";
+		};
+		5F156C8029609F59006E5F28 /* homeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				5F156C8329609FA7006E5F28 /* HomeView.swift */,
+				5F156C852960A2FE006E5F28 /* HomeViewModel.swift */,
+			);
+			path = homeScreen;
 			sourceTree = "<group>";
 		};
 		5F755182295E7CB1004BE007 /* Frameworks */ = {
@@ -288,6 +315,7 @@
 		5FEBD24329522BB400050E6A /* presentation */ = {
 			isa = PBXGroup;
 			children = (
+				5F156C8029609F59006E5F28 /* homeScreen */,
 				5F755187295E7DC8004BE007 /* authenticationScreen */,
 				5FE9B9E02952222E0006C2E2 /* ContentView.swift */,
 				5F049749295D02A60091E269 /* SplashScreenView.swift */,
@@ -442,9 +470,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F156C7F29609CB3006E5F28 /* UserLogOutUseCase.swift in Sources */,
 				5F75518E295E8093004BE007 /* AuthenticationSheetView.swift in Sources */,
 				5F755196295E957B004BE007 /* DismissView.swift in Sources */,
 				5F755192295E8C4B004BE007 /* LoginEmailView.swift in Sources */,
+				5F156C882960B68F006E5F28 /* UserLoginUseCase.swift in Sources */,
 				5F755189295E7DE5004BE007 /* AuthenticationView.swift in Sources */,
 				5F156C78295F8C44006E5F28 /* User.swift in Sources */,
 				5FE9B9DA2952222E0006C2E2 /* Pokedex_iOSApp.swift in Sources */,
@@ -456,9 +486,11 @@
 				5F156C69295F8327006E5F28 /* FirebaseAuthDataSource.swift in Sources */,
 				5FE9B9E12952222E0006C2E2 /* ContentView.swift in Sources */,
 				5F156C6C295F8382006E5F28 /* UserModel.swift in Sources */,
+				5F156C862960A2FE006E5F28 /* HomeViewModel.swift in Sources */,
 				5F156C72295F8620006E5F28 /* CreateNewUserUseCase.swift in Sources */,
 				5FE9B9DF2952222E0006C2E2 /* Pokedex_iOS.xcdatamodeld in Sources */,
 				5F156C6F295F8527006E5F28 /* AuthRepository.swift in Sources */,
+				5F156C8429609FA7006E5F28 /* HomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
