@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginEmailView: View {
-    @StateObject var viewModel: AuthenticationViewModel
+    @ObservedObject var viewModel: AuthenticationViewModel
     @State var emailText = ""
     @State var passwordText = ""
     var body: some View {
@@ -31,20 +31,27 @@ struct LoginEmailView: View {
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
                     .padding(.vertical, 2)
-                    TextField("Email", text: $emailText)
-                    TextField("Password", text: $passwordText)
-                    
-                    Button ("Login"){
-                        
-                    }
-                    .buttonStyle(.bordered)
-                    .tint(.blue)
-
+                TextField("Email", text: $emailText)
+                TextField("Password", text: $passwordText)
+                
+                Button ("Login"){
+                    viewModel.userLogin(email: emailText, password: passwordText)
+                }
+                .buttonStyle(.bordered)
+                .tint(.blue)
+                if let messageError = viewModel.messageError {
+                    Text(messageError)
+                        .bold()
+                        .foregroundColor(.red)
+                        .font(.body)
+                        .padding(.top, 20)
+                }
+                
             }
             .padding(.horizontal, 60)
             .textFieldStyle(.roundedBorder)
             Spacer()
-
+            
         }
         .controlSize(.large)
     }
@@ -52,6 +59,6 @@ struct LoginEmailView: View {
 
 struct LoginEmailView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginEmailView(viewModel: AuthenticationViewModel())
+        LoginEmailView(viewModel: AuthenticationViewModel.build())
     }
 }
