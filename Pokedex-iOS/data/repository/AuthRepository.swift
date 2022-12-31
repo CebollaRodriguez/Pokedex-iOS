@@ -22,13 +22,4 @@ final class AuthRepository {
         firebaseAuthDataSource.createNewUser(email: email, password: password, completion: completion)
         
     }
-    
-    func userLogin(email: String, password: String, completion: @escaping(Result<UserModel, Error>) -> Void) {
-        firebaseAuthDataSource.userLogin(email: email, password: password, completion: completion)
-        
-    }
-    
-    func userLogOut() throws {
-        try firebaseAuthDataSource.userLogOut()
-    }
 }

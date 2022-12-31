@@ -10,4 +10,5 @@ import Foundation
 struct User {
     let email: String
     
+    static let empty: Self = .init(email: "")
 }

@@ -11,7 +11,7 @@ import FirebaseAuth
 final class FirebaseAuthDataSource {
     
     func getCurrentUser()-> UserModel?{
-        guard let email = Auth.auth().currentUser?.email else { return nil }
+        guard let email = Auth.auth().currentUser?.email else{ return nil }
         return .init(email: email)
     }
     
@@ -28,23 +28,5 @@ final class FirebaseAuthDataSource {
             completion(.success(.init(email: email)))
             
         }
-    }
-    func userLogin(email: String, password: String, completion: @escaping(Result<UserModel, Error>) -> Void) {
-        Auth.auth().signIn(withEmail: email, password: password) {result, error in
-            if let error = error{
-                print("Error login user \(error.localizedDescription)")
-                completion(.failure(error))
-                return
-            }
-            
-            let email = result?.user.email ?? ""
-            print("User login: \(email)")
-            completion(.success(.init(email: email)))
-            
-        }
-    }
-    
-    func userLogOut() throws {
-        try Auth.auth().signOut()
     }
 }

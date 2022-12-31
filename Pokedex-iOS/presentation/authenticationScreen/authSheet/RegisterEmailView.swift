@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RegisterEmailView: View {
-    @ObservedObject var viewModel: AuthenticationViewModel
+    @StateObject var viewModel: AuthenticationViewModel
     @State var emailText = ""
     @State var passwordText = ""
     var body: some View {
@@ -60,6 +60,6 @@ struct RegisterEmailView: View {
 
 struct RegisterEmailView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterEmailView(viewModel: AuthenticationViewModel.build())
+        RegisterEmailView(viewModel: AuthenticationViewModel())
     }
 }
