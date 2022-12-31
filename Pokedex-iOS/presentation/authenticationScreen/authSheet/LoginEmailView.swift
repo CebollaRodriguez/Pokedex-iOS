@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LoginEmailView: View {
+    @StateObject var viewModel: AuthenticationViewModel
     @State var emailText = ""
     @State var passwordText = ""
     var body: some View {
@@ -38,7 +39,6 @@ struct LoginEmailView: View {
                     }
                     .buttonStyle(.bordered)
                     .tint(.blue)
-                    .disabled(true)
 
             }
             .padding(.horizontal, 60)
@@ -52,6 +52,6 @@ struct LoginEmailView: View {
 
 struct LoginEmailView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginEmailView()
+        LoginEmailView(viewModel: AuthenticationViewModel())
     }
 }

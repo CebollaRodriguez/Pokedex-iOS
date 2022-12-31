@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AuthenticationView: View {
     @State private var authSheetView: AuthenticationSheetView?
-    
+    @StateObject var viewModel: AuthenticationViewModel
     var body: some View {
         VStack {
             topImage
@@ -20,9 +20,9 @@ struct AuthenticationView: View {
         .sheet(item: $authSheetView) { sheet in
             switch sheet {
             case .register :
-                RegisterEmailView()
+                RegisterEmailView(viewModel: viewModel)
             case .login:
-                LoginEmailView()
+                LoginEmailView(viewModel: viewModel)
             }
             
         }
@@ -70,6 +70,6 @@ struct AuthenticationView: View {
 
 struct AuthenticationView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthenticationView()
+        AuthenticationView(viewModel: AuthenticationViewModel())
     }
 }
