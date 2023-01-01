@@ -9,9 +9,9 @@ import Foundation
 
 final class HomeUseCase {
     
-    private let authRepository: AuthRepository
+    private let authRepository: AuthenticationService
     
-    init(authRepository: AuthRepository = AuthRepository()) {
+    init(authRepository: AuthenticationService = AuthenticationService()) {
         self.authRepository = authRepository
     }
     

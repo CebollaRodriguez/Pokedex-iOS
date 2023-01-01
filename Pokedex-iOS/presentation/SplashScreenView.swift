@@ -11,7 +11,7 @@ struct SplashScreenView: View {
     @State private var size = 0.8
     @State private var opacity = 0.5
     @State private var isActive = true
-    @ObservedObject var authenticationViewModel = AuthenticationViewModel()
+    @StateObject var authenticationViewModel = AuthenticationViewModel()
     @State private var user: User?
     var body: some View {
         

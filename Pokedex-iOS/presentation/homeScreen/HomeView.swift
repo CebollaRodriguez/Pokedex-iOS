@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeView: View {
     let email: String
     @ObservedObject var authViewModel: AuthenticationViewModel
-    @ObservedObject private var homeViewModel: HomeViewModel = .build()
+    @StateObject private var homeViewModel: HomeViewModel = .build()
     
     var body: some View {
         NavigationView {

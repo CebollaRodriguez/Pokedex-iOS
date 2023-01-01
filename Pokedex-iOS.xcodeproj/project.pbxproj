@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5F04974A295D02A60091E269 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F049749295D02A60091E269 /* SplashScreenView.swift */; };
-		5F156C69295F8327006E5F28 /* FirebaseAuthDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C68295F8327006E5F28 /* FirebaseAuthDataSource.swift */; };
+		5F156C69295F8327006E5F28 /* FirebaseAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C68295F8327006E5F28 /* FirebaseAuthentication.swift */; };
 		5F156C6C295F8382006E5F28 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C6B295F8382006E5F28 /* UserModel.swift */; };
-		5F156C6F295F8527006E5F28 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C6E295F8527006E5F28 /* AuthRepository.swift */; };
+		5F156C6F295F8527006E5F28 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C6E295F8527006E5F28 /* AuthenticationService.swift */; };
 		5F156C75295F870F006E5F28 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C74295F870F006E5F28 /* AuthenticationViewModel.swift */; };
 		5F156C78295F8C44006E5F28 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C77295F8C44006E5F28 /* User.swift */; };
 		5F156C7F29609CB3006E5F28 /* HomeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C7E29609CB3006E5F28 /* HomeUseCase.swift */; };
@@ -26,6 +26,8 @@
 		5F755192295E8C4B004BE007 /* LoginEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F755191295E8C4B004BE007 /* LoginEmailView.swift */; };
 		5F755194295E94C8004BE007 /* RegisterEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F755193295E94C8004BE007 /* RegisterEmailView.swift */; };
 		5F755196295E957B004BE007 /* DismissView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F755195295E957B004BE007 /* DismissView.swift */; };
+		5FAA9394296128E900C58B67 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 5FAA9393296128E900C58B67 /* FacebookLogin */; };
+		5FAA939929612E9500C58B67 /* FacebookAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAA939829612E9500C58B67 /* FacebookAuthentication.swift */; };
 		5FE9B9DA2952222E0006C2E2 /* Pokedex_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE9B9D92952222E0006C2E2 /* Pokedex_iOSApp.swift */; };
 		5FE9B9DC2952222E0006C2E2 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE9B9DB2952222E0006C2E2 /* Persistence.swift */; };
 		5FE9B9DF2952222E0006C2E2 /* Pokedex_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5FE9B9DD2952222E0006C2E2 /* Pokedex_iOS.xcdatamodeld */; };
@@ -56,9 +58,9 @@
 
 /* Begin PBXFileReference section */
 		5F049749295D02A60091E269 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
-		5F156C68295F8327006E5F28 /* FirebaseAuthDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthDataSource.swift; sourceTree = "<group>"; };
+		5F156C68295F8327006E5F28 /* FirebaseAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthentication.swift; sourceTree = "<group>"; };
 		5F156C6B295F8382006E5F28 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		5F156C6E295F8527006E5F28 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		5F156C6E295F8527006E5F28 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		5F156C74295F870F006E5F28 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		5F156C77295F8C44006E5F28 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5F156C7E29609CB3006E5F28 /* HomeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUseCase.swift; sourceTree = "<group>"; };
@@ -71,6 +73,8 @@
 		5F755191295E8C4B004BE007 /* LoginEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEmailView.swift; sourceTree = "<group>"; };
 		5F755193295E94C8004BE007 /* RegisterEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterEmailView.swift; sourceTree = "<group>"; };
 		5F755195295E957B004BE007 /* DismissView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissView.swift; sourceTree = "<group>"; };
+		5FAA939529612B4400C58B67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5FAA939829612E9500C58B67 /* FacebookAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAuthentication.swift; sourceTree = "<group>"; };
 		5FE9B9D62952222E0006C2E2 /* Pokedex-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pokedex-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE9B9D92952222E0006C2E2 /* Pokedex_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokedex_iOSApp.swift; sourceTree = "<group>"; };
 		5FE9B9DB2952222E0006C2E2 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -91,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FAA9394296128E900C58B67 /* FacebookLogin in Frameworks */,
 				5F755184295E7CB1004BE007 /* FirebaseAnalyticsSwift in Frameworks */,
 				5F755186295E7D3D004BE007 /* FirebaseAuth in Frameworks */,
 				5F608F4A295E6E7A00648F00 /* FirebaseAnalytics in Frameworks */,
@@ -114,12 +119,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5F156C67295F82F9006E5F28 /* FirebaseAuthDataSource */ = {
+		5F156C67295F82F9006E5F28 /* firebaseAuthentication */ = {
 			isa = PBXGroup;
 			children = (
-				5F156C68295F8327006E5F28 /* FirebaseAuthDataSource.swift */,
+				5F156C68295F8327006E5F28 /* FirebaseAuthentication.swift */,
 			);
-			path = FirebaseAuthDataSource;
+			path = firebaseAuthentication;
 			sourceTree = "<group>";
 		};
 		5F156C6A295F8377006E5F28 /* model */ = {
@@ -130,12 +135,12 @@
 			path = model;
 			sourceTree = "<group>";
 		};
-		5F156C6D295F850B006E5F28 /* repository */ = {
+		5F156C6D295F850B006E5F28 /* services */ = {
 			isa = PBXGroup;
 			children = (
-				5F156C6E295F8527006E5F28 /* AuthRepository.swift */,
+				5F156C6E295F8527006E5F28 /* AuthenticationService.swift */,
 			);
-			path = repository;
+			path = services;
 			sourceTree = "<group>";
 		};
 		5F156C70295F8603006E5F28 /* useCases */ = {
@@ -157,7 +162,6 @@
 		5F156C79296098C0006E5F28 /* network */ = {
 			isa = PBXGroup;
 			children = (
-				5F156C67295F82F9006E5F28 /* FirebaseAuthDataSource */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -215,6 +219,23 @@
 			path = authSheet;
 			sourceTree = "<group>";
 		};
+		5FAA939629612E6700C58B67 /* authentication */ = {
+			isa = PBXGroup;
+			children = (
+				5FAA939729612E7B00C58B67 /* facebookAuthentication */,
+				5F156C67295F82F9006E5F28 /* firebaseAuthentication */,
+			);
+			path = authentication;
+			sourceTree = "<group>";
+		};
+		5FAA939729612E7B00C58B67 /* facebookAuthentication */ = {
+			isa = PBXGroup;
+			children = (
+				5FAA939829612E9500C58B67 /* FacebookAuthentication.swift */,
+			);
+			path = facebookAuthentication;
+			sourceTree = "<group>";
+		};
 		5FE9B9CD2952222E0006C2E2 = {
 			isa = PBXGroup;
 			children = (
@@ -240,6 +261,7 @@
 		5FE9B9D82952222E0006C2E2 /* Pokedex-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				5FAA939529612B4400C58B67 /* Info.plist */,
 				5FEBD24329522BB400050E6A /* presentation */,
 				5FEBD24229522BA500050E6A /* domain */,
 				5FEBD24129522B9B00050E6A /* data */,
@@ -289,8 +311,9 @@
 		5FEBD24129522B9B00050E6A /* data */ = {
 			isa = PBXGroup;
 			children = (
+				5FAA939629612E6700C58B67 /* authentication */,
 				5F156C79296098C0006E5F28 /* network */,
-				5F156C6D295F850B006E5F28 /* repository */,
+				5F156C6D295F850B006E5F28 /* services */,
 				5F156C6A295F8377006E5F28 /* model */,
 				5FEBD24429522BC400050E6A /* db */,
 			);
@@ -345,6 +368,7 @@
 				5F608F49295E6E7A00648F00 /* FirebaseAnalytics */,
 				5F755183295E7CB1004BE007 /* FirebaseAnalyticsSwift */,
 				5F755185295E7D3D004BE007 /* FirebaseAuth */,
+				5FAA9393296128E900C58B67 /* FacebookLogin */,
 			);
 			productName = "Pokedex-iOS";
 			productReference = 5FE9B9D62952222E0006C2E2 /* Pokedex-iOS.app */;
@@ -420,6 +444,7 @@
 			mainGroup = 5FE9B9CD2952222E0006C2E2;
 			packageReferences = (
 				5F608F48295E6E7A00648F00 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				5FAA9392296128E900C58B67 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = 5FE9B9D72952222E0006C2E2 /* Products */;
 			projectDirPath = "";
@@ -476,12 +501,13 @@
 				5F156C75295F870F006E5F28 /* AuthenticationViewModel.swift in Sources */,
 				5F04974A295D02A60091E269 /* SplashScreenView.swift in Sources */,
 				5F755194295E94C8004BE007 /* RegisterEmailView.swift in Sources */,
-				5F156C69295F8327006E5F28 /* FirebaseAuthDataSource.swift in Sources */,
+				5F156C69295F8327006E5F28 /* FirebaseAuthentication.swift in Sources */,
+				5FAA939929612E9500C58B67 /* FacebookAuthentication.swift in Sources */,
 				5FE9B9E12952222E0006C2E2 /* ContentView.swift in Sources */,
 				5F156C6C295F8382006E5F28 /* UserModel.swift in Sources */,
 				5F156C862960A2FE006E5F28 /* HomeViewModel.swift in Sources */,
 				5FE9B9DF2952222E0006C2E2 /* Pokedex_iOS.xcdatamodeld in Sources */,
-				5F156C6F295F8527006E5F28 /* AuthRepository.swift in Sources */,
+				5F156C6F295F8527006E5F28 /* AuthenticationService.swift in Sources */,
 				5F156C8429609FA7006E5F28 /* HomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -641,6 +667,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Pokedex-iOS/Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -679,6 +706,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Pokedex-iOS/Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -844,6 +872,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		5FAA9392296128E900C58B67 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -861,6 +897,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5F608F48295E6E7A00648F00 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		5FAA9393296128E900C58B67 /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5FAA9392296128E900C58B67 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
 		};
 /* End XCSwiftPackageProductDependency section */
 

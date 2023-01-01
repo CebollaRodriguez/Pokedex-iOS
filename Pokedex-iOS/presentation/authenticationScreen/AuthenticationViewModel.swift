@@ -17,12 +17,7 @@ final class AuthenticationViewModel: ObservableObject {
     init(
         userLoginUseCase: AuthenticationUseCase = AuthenticationUseCase()
     ) {
-    
-    
         self.useCase = userLoginUseCase
-        //                DispatchQueue.main.asyncAfter(deadline: .now() + 4.0){
-        //self?.messageError = nil
-        //}
     }
     
     func getCurrentUser(completion: @escaping (User?)->Void) {
@@ -43,8 +38,19 @@ final class AuthenticationViewModel: ObservableObject {
         }
     }
     
-    func userLogin(email: String, password: String) {
+    func emailLogin(email: String, password: String) {
         useCase.userLogin(email: email, password: password) { [weak self]result in
+            switch result {
+            case .success(let user):
+                self?.user = .init(email: user.email)
+            case .failure(let error):
+                self?.messageError = error.localizedDescription
+            }
+        }
+    }
+    
+    func facebookLogin(){
+        useCase.loginFacebook { [weak self] result in
             switch result {
             case .success(let user):
                 self?.user = .init(email: user.email)

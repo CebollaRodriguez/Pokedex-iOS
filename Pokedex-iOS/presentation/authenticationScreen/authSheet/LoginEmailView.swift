@@ -35,7 +35,7 @@ struct LoginEmailView: View {
                 TextField("Password", text: $passwordText)
                 
                 Button ("Login"){
-                    viewModel.userLogin(email: emailText, password: passwordText)
+                    viewModel.emailLogin(email: emailText, password: passwordText)
                 }
                 .buttonStyle(.bordered)
                 .tint(.blue)

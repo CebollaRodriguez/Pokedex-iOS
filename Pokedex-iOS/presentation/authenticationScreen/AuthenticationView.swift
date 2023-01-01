@@ -52,8 +52,21 @@ struct AuthenticationView: View {
                 
             }
             .tint(.black)
+            Button {
+                viewModel.facebookLogin()
+            } label: {
+                HStack {
+                    Image("facebook_ic")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                    Text("Facebook")
+                }
+                
+            }
+            .tint(.blue)
+            
         }
-        .controlSize(.large)
+        .frame(width: 300)
         .buttonStyle(.bordered)
         .buttonBorderShape(.capsule)
         .padding(.top, 50)

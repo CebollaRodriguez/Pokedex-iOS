@@ -8,19 +8,23 @@
 import Foundation
 
 final class AuthenticationUseCase {
-    private let authRepository: AuthRepository
+    private let authService: AuthenticationService
     
-    init(authRepository: AuthRepository = AuthRepository()) {
-        self.authRepository = authRepository
+    init(authService: AuthenticationService = AuthenticationService()) {
+        self.authService = authService
     }
     
     func getCurrentUser()-> UserModel? {
-        return authRepository.getCurrentUser()
+        return authService.getCurrentUser()
     }
     func userLogin(email: String, password: String, completion: @escaping(Result<UserModel, Error>) -> Void) {
-        authRepository.userLogin(email: email, password: password, completion: completion)
+        authService.userLogin(email: email, password: password, completion: completion)
     }
     func createNewUser(email: String, password: String, completion: @escaping(Result<UserModel, Error>) -> Void){
-        authRepository.createNewUser(email: email, password: password, completion: completion)
+        authService.createNewUser(email: email, password: password, completion: completion)
+    }
+    
+    func loginFacebook(completion: @escaping(Result<UserModel, Error>) -> Void) {
+        authService.loginFacebook(completion: completion)
     }
 }

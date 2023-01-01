@@ -1,5 +1,5 @@
 //
-//  FirebaseAuthDataSource.swift
+//  FirebaseAuthentication.swift
 //  Pokedex-iOS
 //
 //  Created by Gabriel Sanchez Peraza on 30/12/22.
@@ -8,7 +8,8 @@
 import Foundation
 import FirebaseAuth
 
-final class FirebaseAuthDataSource {
+final class FirebaseAuthentication {
+    private let facebookAuth = FacebookAuthentication()
     
     func getCurrentUser()-> UserModel?{
         guard let email = Auth.auth().currentUser?.email else { return nil }
@@ -41,6 +42,27 @@ final class FirebaseAuthDataSource {
             print("User login: \(email)")
             completion(.success(.init(email: email)))
             
+        }
+    }
+    
+    func loginWithFacebook(completion: @escaping(Result<UserModel, Error>)-> Void) {
+        facebookAuth.loginFacebook { result in
+            switch result {
+            case .success(let accesToken):
+                let credential = FacebookAuthProvider.credential(withAccessToken: accesToken)
+                Auth.auth().signIn(with: credential) { dataResult, error in
+                    if let error = error {
+                        print(error.localizedDescription)
+                        completion(.failure(error))
+                        return
+                    }
+                    let userEmail = dataResult?.user.email ?? "No Email"
+                    completion(.success(.init(email: userEmail)))
+                }
+            case .failure(let error):
+                print("Error sigIn with facebook \(error.localizedDescription)")
+                completion(.failure(error))
+            }
         }
     }
     
