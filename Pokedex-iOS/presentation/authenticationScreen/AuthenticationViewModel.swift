@@ -18,9 +18,9 @@ final class AuthenticationViewModel: ObservableObject {
         self.useCase = userLoginUseCase
     }
     
-    func getCurrentUser() {
+    func getCurrentUser(completion: @escaping (User?) -> Void) {
         if let userModel = useCase.getCurrentUser(){
-            self.user = .init(email: userModel.email)
+            completion(.init(email: userModel.email))
         }
         
     }
