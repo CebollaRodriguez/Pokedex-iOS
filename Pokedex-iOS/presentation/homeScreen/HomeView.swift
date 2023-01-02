@@ -14,19 +14,26 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                Text("Welcome \(email)")
-                    .padding(.top, 20)
-                Spacer()
+            TabView {
+                VStack {
+                    Text("Welcome \(email)")
+                        .padding(.top, 20)
+                    Spacer()
+                }
+                .tabItem {
+                    Label("Home", systemImage: "house.fill")
+                }
+                ProfileView(authViewModel: authViewModel)
+                    .tabItem {
+                        Label("Profile", systemImage: "person.fill")
+                        
+                    }
+                
             }
+            
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("Home")
-            .toolbar {
-                Button("Logout") {
-                    self.homeViewModel.userLogOut()
-                    self.authViewModel.user = nil
-                }
-            }
+            
         }
     }
 }

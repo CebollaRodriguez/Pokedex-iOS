@@ -13,16 +13,16 @@ final class AuthenticationViewModel: ObservableObject {
     private let useCase: AuthenticationUseCase
     
     init(
-        userLoginUseCase: AuthenticationUseCase = AuthenticationUseCase()
+        authenticationUseCase: AuthenticationUseCase = AuthenticationUseCase()
     ) {
-        self.useCase = userLoginUseCase
+        self.useCase = authenticationUseCase
     }
     
-    func getCurrentUser(completion: @escaping (User?) -> Void) {
+    func getCurrentUser(completion: @escaping () -> Void) {
         if let userModel = useCase.getCurrentUser(){
-            completion(.init(email: userModel.email))
+            self.user = .init(email: userModel.email)
         }
-        
+        completion()
     }
     
     func createNewUser(email: String, password: String) {
@@ -57,6 +57,7 @@ final class AuthenticationViewModel: ObservableObject {
             }
         }
     }
+    
 }
 
 //extension AuthenticationViewModel {

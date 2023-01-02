@@ -35,4 +35,8 @@ final class AuthenticationService {
     func userLogOut() throws {
         try firebaseAuthentication.userLogOut()
     }
+    
+    func getCurrentProvider() -> [LinkedAccountModel] {
+        return firebaseAuthentication.currentProvider()
+    }
 }

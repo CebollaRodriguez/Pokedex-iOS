@@ -69,4 +69,16 @@ final class FirebaseAuthentication {
     func userLogOut() throws {
         try Auth.auth().signOut()
     }
+    
+    func currentProvider() -> [LinkedAccountModel] {
+        guard let currentUser = Auth.auth().currentUser else {
+            return []
+        }
+        
+        let linkedAccounts = currentUser.providerData.map { userInfo in
+            LinkedAccountModel(rawValue: userInfo.providerID)
+        }.compactMap{ $0 }
+        
+        return linkedAccounts
+    }
 }

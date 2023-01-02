@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5F04974A295D02A60091E269 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F049749295D02A60091E269 /* SplashScreenView.swift */; };
+		5F14AB43296346A00013A925 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F14AB42296346A00013A925 /* ProfileView.swift */; };
+		5F14AB4529634A460013A925 /* LinkedAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F14AB4429634A460013A925 /* LinkedAccountModel.swift */; };
+		5F14AB4729634CAE0013A925 /* ProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F14AB4629634CAE0013A925 /* ProfileUseCase.swift */; };
+		5F14AB4929634F910013A925 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F14AB4829634F910013A925 /* ProfileViewModel.swift */; };
 		5F156C69295F8327006E5F28 /* FirebaseAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C68295F8327006E5F28 /* FirebaseAuthentication.swift */; };
 		5F156C6C295F8382006E5F28 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C6B295F8382006E5F28 /* UserModel.swift */; };
 		5F156C6F295F8527006E5F28 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C6E295F8527006E5F28 /* AuthenticationService.swift */; };
@@ -58,6 +62,10 @@
 
 /* Begin PBXFileReference section */
 		5F049749295D02A60091E269 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		5F14AB42296346A00013A925 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		5F14AB4429634A460013A925 /* LinkedAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedAccountModel.swift; sourceTree = "<group>"; };
+		5F14AB4629634CAE0013A925 /* ProfileUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUseCase.swift; sourceTree = "<group>"; };
+		5F14AB4829634F910013A925 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		5F156C68295F8327006E5F28 /* FirebaseAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthentication.swift; sourceTree = "<group>"; };
 		5F156C6B295F8382006E5F28 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		5F156C6E295F8527006E5F28 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
@@ -119,6 +127,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F14AB41296346840013A925 /* profileScreen */ = {
+			isa = PBXGroup;
+			children = (
+				5F14AB42296346A00013A925 /* ProfileView.swift */,
+				5F14AB4829634F910013A925 /* ProfileViewModel.swift */,
+			);
+			path = profileScreen;
+			sourceTree = "<group>";
+		};
 		5F156C67295F82F9006E5F28 /* firebaseAuthentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				5F156C6B295F8382006E5F28 /* UserModel.swift */,
+				5F14AB4429634A460013A925 /* LinkedAccountModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -146,7 +164,9 @@
 		5F156C70295F8603006E5F28 /* useCases */ = {
 			isa = PBXGroup;
 			children = (
-				5F156C7D29609C68006E5F28 /* authUseCases */,
+				5F156C7E29609CB3006E5F28 /* HomeUseCase.swift */,
+				5F156C872960B68F006E5F28 /* AuthenticationUseCase.swift */,
+				5F14AB4629634CAE0013A925 /* ProfileUseCase.swift */,
 			);
 			path = useCases;
 			sourceTree = "<group>";
@@ -164,15 +184,6 @@
 			children = (
 			);
 			path = network;
-			sourceTree = "<group>";
-		};
-		5F156C7D29609C68006E5F28 /* authUseCases */ = {
-			isa = PBXGroup;
-			children = (
-				5F156C7E29609CB3006E5F28 /* HomeUseCase.swift */,
-				5F156C872960B68F006E5F28 /* AuthenticationUseCase.swift */,
-			);
-			path = authUseCases;
 			sourceTree = "<group>";
 		};
 		5F156C8029609F59006E5F28 /* homeScreen */ = {
@@ -332,6 +343,7 @@
 		5FEBD24329522BB400050E6A /* presentation */ = {
 			isa = PBXGroup;
 			children = (
+				5F14AB41296346840013A925 /* profileScreen */,
 				5F156C8029609F59006E5F28 /* homeScreen */,
 				5F755187295E7DC8004BE007 /* authenticationScreen */,
 				5FE9B9E02952222E0006C2E2 /* ContentView.swift */,
@@ -495,9 +507,11 @@
 				5F755192295E8C4B004BE007 /* LoginEmailView.swift in Sources */,
 				5F156C882960B68F006E5F28 /* AuthenticationUseCase.swift in Sources */,
 				5F755189295E7DE5004BE007 /* AuthenticationView.swift in Sources */,
+				5F14AB4929634F910013A925 /* ProfileViewModel.swift in Sources */,
 				5F156C78295F8C44006E5F28 /* User.swift in Sources */,
 				5FE9B9DA2952222E0006C2E2 /* Pokedex_iOSApp.swift in Sources */,
 				5FE9B9DC2952222E0006C2E2 /* Persistence.swift in Sources */,
+				5F14AB4729634CAE0013A925 /* ProfileUseCase.swift in Sources */,
 				5F156C75295F870F006E5F28 /* AuthenticationViewModel.swift in Sources */,
 				5F04974A295D02A60091E269 /* SplashScreenView.swift in Sources */,
 				5F755194295E94C8004BE007 /* RegisterEmailView.swift in Sources */,
@@ -508,6 +522,8 @@
 				5F156C862960A2FE006E5F28 /* HomeViewModel.swift in Sources */,
 				5FE9B9DF2952222E0006C2E2 /* Pokedex_iOS.xcdatamodeld in Sources */,
 				5F156C6F295F8527006E5F28 /* AuthenticationService.swift in Sources */,
+				5F14AB43296346A00013A925 /* ProfileView.swift in Sources */,
+				5F14AB4529634A460013A925 /* LinkedAccountModel.swift in Sources */,
 				5F156C8429609FA7006E5F28 /* HomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
