@@ -52,7 +52,7 @@ final class FirebaseAuthentication {
                 let credential = FacebookAuthProvider.credential(withAccessToken: accesToken)
                 Auth.auth().signIn(with: credential) { dataResult, error in
                     if let error = error {
-                        print(error.localizedDescription)
+                        print("LOIGIN WITH FACEBOOK, FIREBASEAUTH: \(error.localizedDescription)")
                         completion(.failure(error))
                         return
                     }

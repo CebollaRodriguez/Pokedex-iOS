@@ -11,8 +11,6 @@ final class AuthenticationViewModel: ObservableObject {
     @Published var user: User?
     @Published var messageError: String?
     private let useCase: AuthenticationUseCase
-
-    
     
     init(
         userLoginUseCase: AuthenticationUseCase = AuthenticationUseCase()
@@ -20,9 +18,9 @@ final class AuthenticationViewModel: ObservableObject {
         self.useCase = userLoginUseCase
     }
     
-    func getCurrentUser(completion: @escaping (User?)->Void) {
+    func getCurrentUser() {
         if let userModel = useCase.getCurrentUser(){
-            completion(.init(email: userModel.email))
+            self.user = .init(email: userModel.email)
         }
         
     }

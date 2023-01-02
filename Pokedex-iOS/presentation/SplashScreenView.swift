@@ -36,15 +36,14 @@ struct SplashScreenView: View {
                 }
             }
             .onAppear{
-                authenticationViewModel.getCurrentUser { user in
-                    self.user = user
+                authenticationViewModel.getCurrentUser()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                         self.isActive = false
                     }
-                }
+                
             }
         } else {
-            if let user = self.user{
+            if let user = authenticationViewModel.user{
                 HomeView(email: user.email, authViewModel: authenticationViewModel)
             } else{
                 AuthenticationView(viewModel: authenticationViewModel)
