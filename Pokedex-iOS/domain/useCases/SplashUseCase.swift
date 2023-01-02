@@ -15,7 +15,7 @@ final class SplashUseCase {
     }
     
     func getCurrentSession() -> User? {
-        guard let userModel = authService.getCurrentUser() else { return nil }
+        guard let userModel = authService.currentUser() else { return nil }
         return User(email: userModel.email)
     }
 }

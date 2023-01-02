@@ -15,6 +15,7 @@
 		5F14AB4D29636C010013A925 /* SplashUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F14AB4C29636C010013A925 /* SplashUseCase.swift */; };
 		5F14AB50296371B70013A925 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F14AB4F296371B70013A925 /* SplashViewModel.swift */; };
 		5F14AB5229637E110013A925 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F14AB5129637E110013A925 /* SessionManager.swift */; };
+		5F14AB5429638A780013A925 /* LinkedAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F14AB5329638A780013A925 /* LinkedAccount.swift */; };
 		5F156C69295F8327006E5F28 /* FirebaseAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C68295F8327006E5F28 /* FirebaseAuthentication.swift */; };
 		5F156C6C295F8382006E5F28 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C6B295F8382006E5F28 /* UserModel.swift */; };
 		5F156C6F295F8527006E5F28 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C6E295F8527006E5F28 /* AuthenticationService.swift */; };
@@ -72,6 +73,7 @@
 		5F14AB4C29636C010013A925 /* SplashUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashUseCase.swift; sourceTree = "<group>"; };
 		5F14AB4F296371B70013A925 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		5F14AB5129637E110013A925 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		5F14AB5329638A780013A925 /* LinkedAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedAccount.swift; sourceTree = "<group>"; };
 		5F156C68295F8327006E5F28 /* FirebaseAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthentication.swift; sourceTree = "<group>"; };
 		5F156C6B295F8382006E5F28 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		5F156C6E295F8527006E5F28 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				5F156C77295F8C44006E5F28 /* User.swift */,
+				5F14AB5329638A780013A925 /* LinkedAccount.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				5F156C6F295F8527006E5F28 /* AuthenticationService.swift in Sources */,
 				5F14AB43296346A00013A925 /* ProfileView.swift in Sources */,
 				5F14AB4529634A460013A925 /* LinkedAccountModel.swift in Sources */,
+				5F14AB5429638A780013A925 /* LinkedAccount.swift in Sources */,
 				5F156C8429609FA7006E5F28 /* HomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

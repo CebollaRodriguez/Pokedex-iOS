@@ -14,11 +14,17 @@ final class ProfileUseCase {
         self.authService = authService
     }
     
-    func getCurrentProvider() -> [LinkedAccountModel] {
-        return authService.getCurrentProvider()
+    func getCurrentProvider() -> [LinkedAccount] {
+        return authService.currentProvider().map { model in
+            LinkedAccount(rawValue: model.rawValue)
+        }.compactMap{ $0 }
     }
     
     func userLogOut() throws {
         try authService.userLogOut()
+    }
+    
+    func userLinkFAcebook(completion: @escaping(Bool) -> Void) {
+        authService.linkFacebook(completion: completion)
     }
 }

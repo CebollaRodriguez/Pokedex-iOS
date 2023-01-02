@@ -81,4 +81,26 @@ final class FirebaseAuthentication {
         
         return linkedAccounts
     }
+    
+    func linkFacebook(completion: @escaping(Bool) -> Void) {
+        facebookAuth.loginFacebook { result in
+            switch result {
+            case .success(let token):
+                let credential = FacebookAuthProvider.credential(withAccessToken: token)
+                Auth.auth().currentUser?.link(with: credential, completion: { authData, error in
+                    if let error = error {
+                        print("Error link facebook: \(error.localizedDescription)")
+                        completion(false)
+                        return
+                    }
+                    let email = authData?.user.email ?? "No Email"
+                    completion(true)
+                    
+                })
+            case .failure(let error):
+                print("Error linking a new user \(error.localizedDescription)")
+                completion(false)
+            }
+        }
+    }
 }

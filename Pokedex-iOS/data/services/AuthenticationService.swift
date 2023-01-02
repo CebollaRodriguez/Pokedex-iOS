@@ -14,7 +14,7 @@ final class AuthenticationService {
         self.firebaseAuthentication = firebaseAuthentication
     }
     
-    func getCurrentUser() -> UserModel? {
+    func currentUser() -> UserModel? {
         firebaseAuthentication.getCurrentUser()
     }
     
@@ -36,7 +36,12 @@ final class AuthenticationService {
         try firebaseAuthentication.userLogOut()
     }
     
-    func getCurrentProvider() -> [LinkedAccountModel] {
+    func currentProvider() -> [LinkedAccountModel] {
         return firebaseAuthentication.currentProvider()
     }
+    
+    func linkFacebook(completion: @escaping(Bool) -> Void) {
+        firebaseAuthentication.linkFacebook(completion: completion)
+    }
+    
 }

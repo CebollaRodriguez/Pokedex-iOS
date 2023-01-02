@@ -13,31 +13,47 @@ struct ProfileView: View {
     
     var body: some View {
         
-            VStack {
-                Form {
-                    Section {
-                        Button {
-                            
-                        } label: {
-                            HStack {
-                                Image(systemName: "envelope.fill")
-                                Text("Link to Email")
-                            }
-                            
-                        }
-                        Button {
-                            
-                        } label: {
-                            HStack {
-                                Image("facebook_ic")
-                                    .resizable()
-                                    .frame(width: 20, height: 20)
-                                Text("Link to Facebook")
-                            }
-                            
+        VStack {
+            Form {
+                Section {
+                    Button {
+                        
+                    } label: {
+                        HStack {
+                            Image(systemName: "envelope.fill")
+                            Text("Link Email")
                         }
                     }
+                    .disabled(profileViewModel.isEmailAndPasswordLinked())
+                    Button {
+                        profileViewModel.userLinkFacebook()
+                    } label: {
+                        HStack {
+                            Image("facebook_ic")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                            Text("Link Facebook")
+                        }
+                        
+                    }
+                    .disabled(profileViewModel.isFacebookLinked())
+                } header: {
+                    Text("Link other accounts with this session")
+                        .foregroundColor(.secondary)
+                        .font(.caption)
                 }
+                .task{
+                    profileViewModel.getCurrentProvider()
+                }
+                .alert(profileViewModel.isAccountLinked ? "Linked Account" : "Linking account error", isPresented: $profileViewModel.showAlert) {
+                    Button("Accept") {
+                                
+                    }
+                } message: {
+                    Text(profileViewModel.isAccountLinked ? "✅ Your account was linked succesful!" : "❌ Error linking facebook account")
+                }
+
+            }
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("Profile")
             .toolbar {

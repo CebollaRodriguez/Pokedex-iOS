@@ -15,7 +15,7 @@ final class AuthenticationUseCase {
     }
     
     func getCurrentUser()-> UserModel? {
-        return authService.getCurrentUser()
+        return authService.currentUser()
     }
     func userLogin(email: String, password: String, completion: @escaping(Result<UserModel, Error>) -> Void) {
         authService.userLogin(email: email, password: password, completion: completion)
@@ -27,4 +27,6 @@ final class AuthenticationUseCase {
     func loginFacebook(completion: @escaping(Result<UserModel, Error>) -> Void) {
         authService.loginFacebook(completion: completion)
     }
+    
+    
 }

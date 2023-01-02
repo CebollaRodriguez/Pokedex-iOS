@@ -8,7 +8,9 @@
 import Foundation
 
 class ProfileViewModel: ObservableObject {
-    
+    @Published var linkedAccounts: [LinkedAccount] = []
+    @Published var showAlert: Bool = false
+    @Published var isAccountLinked: Bool = false
     private let useCase: ProfileUseCase
     
     init(profileUseCase: ProfileUseCase) {
@@ -20,6 +22,26 @@ class ProfileViewModel: ObservableObject {
             try useCase.userLogOut()
         } catch {
             print("Error logout")
+        }
+    }
+    
+    func getCurrentProvider() {
+        self.linkedAccounts = useCase.getCurrentProvider()
+    }
+    
+    func isEmailAndPasswordLinked() -> Bool {
+        self.linkedAccounts.contains(where: { $0.rawValue == "password" })
+    }
+    
+    func isFacebookLinked() -> Bool {
+        self.linkedAccounts.contains(where: { $0.rawValue == "facebook.com" })
+    }
+    
+    func userLinkFacebook() {
+        useCase.userLinkFAcebook { [weak self] isSucces in
+            self?.isAccountLinked = isSucces
+            self?.showAlert.toggle()
+            self?.getCurrentProvider()
         }
     }
 }
