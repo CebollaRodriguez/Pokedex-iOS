@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct SplashScreenView: View {
+    @EnvironmentObject var session: SessionManager
     @State private var size = 0.8
     @State private var opacity = 0.5
     @State private var isActive = true
-    @StateObject var authenticationViewModel = AuthenticationViewModel()
-    @State private var user: User? 
+    @StateObject var viewModel: SplashViewModel = .build()
+    @State private var user: User?
     var body: some View {
         
         if isActive {
@@ -36,7 +37,8 @@ struct SplashScreenView: View {
                 }
             }
             .onAppear{
-                authenticationViewModel.getCurrentUser() {
+                viewModel.getCurrentSession { user in
+                    self.user = user
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                         self.isActive = false
                     }
@@ -44,10 +46,16 @@ struct SplashScreenView: View {
                 
             }
         } else {
-            if let user = authenticationViewModel.user{
-                HomeView(email: user.email, authViewModel: authenticationViewModel)
+            if let email = session.email {
+                if email != "" {
+                    HomeView(email: email)
+                    
+                } else {
+                    AuthenticationView()
+                }
+                
             } else{
-                AuthenticationView(viewModel: authenticationViewModel)
+                Text("Error")
             }
         }
     }

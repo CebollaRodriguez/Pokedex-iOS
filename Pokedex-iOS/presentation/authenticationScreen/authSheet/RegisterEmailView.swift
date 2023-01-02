@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RegisterEmailView: View {
+    @EnvironmentObject var sessionManager: SessionManager
     @ObservedObject var viewModel: AuthenticationViewModel
     @State var emailText = ""
     @State var passwordText = ""
@@ -35,7 +36,9 @@ struct RegisterEmailView: View {
                 TextField("Password", text: $passwordText)
                 
                 Button ("Register"){
-                    viewModel.createNewUser(email: emailText, password: passwordText)
+                    viewModel.createNewUser(email: emailText, password: passwordText) {
+                        sessionManager.localLogIn(email: emailText)
+                    }
                 }
                 .buttonStyle(.bordered)
                 .padding()
@@ -60,6 +63,6 @@ struct RegisterEmailView: View {
 
 struct RegisterEmailView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterEmailView(viewModel: AuthenticationViewModel())
+        RegisterEmailView(viewModel: .build())
     }
 }

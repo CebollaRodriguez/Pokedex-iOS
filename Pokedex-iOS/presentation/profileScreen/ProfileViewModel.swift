@@ -18,7 +18,6 @@ class ProfileViewModel: ObservableObject {
     func userLogOut() {
         do {
             try useCase.userLogOut()
-            
         } catch {
             print("Error logout")
         }

@@ -21,10 +21,12 @@ class AppDelegate: NSObject,UIApplicationDelegate {
 struct Pokedex_iOSApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     let persistenceController = PersistenceController.shared
+    
 
     var body: some Scene {
         WindowGroup {
             SplashScreenView()
+                .environmentObject(SessionManager())
             //ContentView()
                 //.environment(\.managedObjectContext, persistenceController.container.viewContext)
         }

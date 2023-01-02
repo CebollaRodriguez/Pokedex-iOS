@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @ObservedObject var authViewModel: AuthenticationViewModel
+    @EnvironmentObject var session: SessionManager
     @StateObject private var profileViewModel: ProfileViewModel = .build()
     
     var body: some View {
         
-        NavigationView {
             VStack {
                 Form {
                     Section {
@@ -39,13 +38,12 @@ struct ProfileView: View {
                         }
                     }
                 }
-            }
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("Profile")
             .toolbar {
                 Button("Logout") {
                     profileViewModel.userLogOut()
-                    authViewModel.user = nil
+                    session.localLogOut()
                 }
             }
         }
@@ -56,6 +54,6 @@ struct ProfileView: View {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(authViewModel: AuthenticationViewModel())
+        ProfileView()
     }
 }

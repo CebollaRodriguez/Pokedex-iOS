@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LoginEmailView: View {
+    @EnvironmentObject var sessionManager: SessionManager
     @ObservedObject var viewModel: AuthenticationViewModel
     @State var emailText = ""
     @State var passwordText = ""
@@ -35,7 +36,9 @@ struct LoginEmailView: View {
                 TextField("Password", text: $passwordText)
                 
                 Button ("Login"){
-                    viewModel.emailLogin(email: emailText, password: passwordText)
+                    viewModel.emailLogin(email: emailText, password: passwordText){
+                        sessionManager.localLogIn(email: emailText)
+                    }
                 }
                 .buttonStyle(.bordered)
                 .tint(.blue)
@@ -59,6 +62,6 @@ struct LoginEmailView: View {
 
 struct LoginEmailView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginEmailView(viewModel: AuthenticationViewModel())
+        LoginEmailView(viewModel: .build())
     }
 }

@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct AuthenticationView: View {
+    @EnvironmentObject var sessionManager: SessionManager
     @State private var authSheetView: AuthenticationSheetView?
-    @StateObject var viewModel: AuthenticationViewModel
+    @StateObject var viewModel: AuthenticationViewModel = .build()
     
     var body: some View {
         VStack {
@@ -53,7 +54,9 @@ struct AuthenticationView: View {
             }
             .tint(.black)
             Button {
-                viewModel.facebookLogin()
+                viewModel.facebookLogin{ email in
+                    sessionManager.localLogIn(email: email)
+                }
             } label: {
                 HStack {
                     Image("facebook_ic")
@@ -84,6 +87,6 @@ struct AuthenticationView: View {
 
 struct AuthenticationView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthenticationView( viewModel: AuthenticationViewModel())
+        AuthenticationView( viewModel: .build())
     }
 }

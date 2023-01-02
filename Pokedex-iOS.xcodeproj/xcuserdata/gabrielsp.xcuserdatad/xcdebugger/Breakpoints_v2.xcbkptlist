@@ -30,9 +30,9 @@
             filePath = "Pokedex-iOS/presentation/authenticationScreen/AuthenticationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "facebookLogin()"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "facebookLogin(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -46,25 +46,9 @@
             filePath = "Pokedex-iOS/presentation/authenticationScreen/AuthenticationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "facebookLogin()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DF7C9C61-7857-4A35-A8F2-74A2572DAB07"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pokedex-iOS/presentation/authenticationScreen/AuthenticationViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "facebookLogin()"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "facebookLogin(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

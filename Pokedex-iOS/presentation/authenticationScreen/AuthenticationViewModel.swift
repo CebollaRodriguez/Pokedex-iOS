@@ -11,10 +11,9 @@ final class AuthenticationViewModel: ObservableObject {
     @Published var user: User?
     @Published var messageError: String?
     private let useCase: AuthenticationUseCase
+    private let sessionManager = SessionManager()
     
-    init(
-        authenticationUseCase: AuthenticationUseCase = AuthenticationUseCase()
-    ) {
+    init(authenticationUseCase: AuthenticationUseCase) {
         self.useCase = authenticationUseCase
     }
     
@@ -25,33 +24,36 @@ final class AuthenticationViewModel: ObservableObject {
         completion()
     }
     
-    func createNewUser(email: String, password: String) {
+    func createNewUser(email: String, password: String, completion: @escaping()-> Void) {
         useCase.createNewUser(email: email, password: password) { [weak self]result in
             switch result {
             case .success(let user):
                 self?.user = .init(email: user.email)
+                completion()
             case .failure(let error):
                 self?.messageError = error.localizedDescription
             }
         }
     }
     
-    func emailLogin(email: String, password: String) {
+    func emailLogin(email: String, password: String, completion:@escaping()-> Void) {
         useCase.userLogin(email: email, password: password) { [weak self]result in
             switch result {
             case .success(let user):
                 self?.user = .init(email: user.email)
+                completion()
             case .failure(let error):
                 self?.messageError = error.localizedDescription
             }
         }
     }
     
-    func facebookLogin(){
+    func facebookLogin(completion: @escaping(String)-> Void){
         useCase.loginFacebook { [weak self] result in
             switch result {
             case .success(let user):
                 self?.user = .init(email: user.email)
+                completion(user.email)
             case .failure(let error):
                 self?.messageError = error.localizedDescription
             }
@@ -60,9 +62,8 @@ final class AuthenticationViewModel: ObservableObject {
     
 }
 
-//extension AuthenticationViewModel {
-//    static func build()-> AuthenticationViewModel {
-//        return AuthenticationViewModel(createNewUserUseCase: CreateNewUserUseCase(), getCurrentUserUseCase: GetCurrentUserUseCase(), userLoginUseCase: UserLoginUseCase()
-//        )
-//    }
-//}
+extension AuthenticationViewModel {
+    static func build()-> AuthenticationViewModel {
+        return AuthenticationViewModel(authenticationUseCase: AuthenticationUseCase())
+    }
+}
