@@ -28,6 +28,10 @@ final class ProfileUseCase {
         authService.linkFacebook(completion: completion)
     }
     
+    func userLinkGoogle(completion: @escaping(Bool) -> Void) {
+        authService.linkGoogle(completion: completion)
+    }
+    
     func userLinkEmailAndPassword(email: String, password: String, completion: @escaping(Bool) -> Void) {
         authService.linkEmailAndPassword(email: email, password: password, completion: completion)
     }

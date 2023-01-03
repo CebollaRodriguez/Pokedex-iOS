@@ -10,5 +10,6 @@ import Foundation
 enum LinkedAccount: String {
     case emailAndPaswword = "password"
     case facebook = "facebook.com"
+    case google = "google.com"
     case unknown
 }

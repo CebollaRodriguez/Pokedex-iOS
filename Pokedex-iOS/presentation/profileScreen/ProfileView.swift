@@ -49,8 +49,8 @@ struct ProfileView: View {
                 }
                 .buttonStyle(.bordered)
                 .tint(.blue)
-            
-
+                
+                
             }
             .textFieldStyle(.roundedBorder)
         }
@@ -66,15 +66,14 @@ struct ProfileView: View {
                     VStack {
                         HStack {
                             Image(systemName: "envelope.fill")
+                                .frame(width: 20, height: 20)
                             Text("Link Email")
                             Spacer()
                         }
                         if self.isClick {
                             linkEmailView
                         }
-                        
-                    }
-                    
+                    }   
                 }
                 .disabled(profileViewModel.isEmailAndPasswordLinked())
                 Button {
@@ -86,15 +85,26 @@ struct ProfileView: View {
                             .frame(width: 20, height: 20)
                         Text("Link Facebook")
                     }
-                    
                 }
                 .disabled(profileViewModel.isFacebookLinked())
+                Button {
+                    profileViewModel.userLinkGoogle()
+                } label: {
+                    HStack {
+                        Image("google_logo")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                        Text("Link Google")
+                    }
+                }
+                .disabled(profileViewModel.isGoogleLinked())
+
             } header: {
                 Text("Link other accounts with this session")
                     .foregroundColor(.secondary)
                     .font(.caption)
             }
-            .task{
+            .onAppear{
                 profileViewModel.getCurrentProvider()
             }
             .alert(profileViewModel.isAccountLinked ? "Linked Account" : "Linking account error", isPresented: $profileViewModel.showAlert) {
@@ -104,7 +114,6 @@ struct ProfileView: View {
             } message: {
                 Text(profileViewModel.isAccountLinked ? "✅ Your account was linked succesful!" : "❌ Error linking your account")
             }
-            
         }
         
     }

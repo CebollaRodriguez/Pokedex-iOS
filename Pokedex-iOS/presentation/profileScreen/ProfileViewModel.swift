@@ -27,6 +27,8 @@ class ProfileViewModel: ObservableObject {
     
     func getCurrentProvider() {
         self.linkedAccounts = useCase.getCurrentProvider()
+        print(useCase.getCurrentProvider().description)
+        print("Si")
     }
     
     func isEmailAndPasswordLinked() -> Bool {
@@ -35,6 +37,19 @@ class ProfileViewModel: ObservableObject {
     
     func isFacebookLinked() -> Bool {
         self.linkedAccounts.contains(where: { $0.rawValue == "facebook.com" })
+    }
+    
+    func isGoogleLinked() -> Bool {
+        self.linkedAccounts.contains(where: { $0.rawValue == "google.com"})
+    }
+    
+    func userLinkGoogle() {
+        useCase.userLinkGoogle { [weak self] isSucces in
+            self?.isAccountLinked = isSucces
+            self?.showAlert.toggle()
+            self?.getCurrentProvider()
+            
+        }
     }
     
     func userLinkFacebook() {

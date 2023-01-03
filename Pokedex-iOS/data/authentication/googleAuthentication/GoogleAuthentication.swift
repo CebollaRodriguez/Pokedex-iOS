@@ -30,4 +30,27 @@ class GoogleAuthentication {
             
         }
     }
+    func getTokens(completion: @escaping([String]?) -> Void) {
+        
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+        
+        let config = GIDConfiguration(clientID: clientID)
+        
+        GIDSignIn.sharedInstance.configuration = config
+        GIDSignIn.sharedInstance.restorePreviousSignIn{ user, error in
+            if let error = error {
+                print("Errror getting current user: \(error.localizedDescription)")
+                return
+            }
+            guard
+                let idToken = user?.idToken?.tokenString,
+                let accesToken = user?.accessToken.tokenString
+            else {
+                return
+            }
+            
+            completion([idToken, accesToken])
+        }
+
+    }
 }

@@ -68,13 +68,10 @@ final class FirebaseAuthentication {
     }
     
     func loginWithGoogle(completion: @escaping(Result<UserModel, Error>) -> Void) {
-        
         googleAuth.googleLogin { result in
             switch result {
             case.success(let user):
                 guard let idToken = user.idToken else { return }
-                let token = idToken.debugDescription
-                let acces = user.accessToken.debugDescription
                 let credential = GoogleAuthProvider.credential(withIDToken: idToken.tokenString, accessToken: user.accessToken.tokenString)
                 Auth.auth().signIn(with: credential) { result, error in
                     if let error = error {
@@ -130,44 +127,86 @@ final class FirebaseAuthentication {
         }
     }
     
-    func getCurrentCredential() -> AuthCredential? {
-        guard let providerId = currentProvider().last else{
-            return nil
+    func linkGoogle(completion: @escaping(Bool) -> Void) {
+        googleAuth.googleLogin { result in
+            switch result {
+            case.success(let user):
+                guard let idToken = user.idToken else { return }
+                let credential = GoogleAuthProvider.credential(withIDToken: idToken.tokenString, accessToken: user.accessToken.tokenString)
+                Auth.auth().currentUser?.link(with: credential) { result, error in
+                    if let error = error {
+                        print("Error link w/ Google: \(error.localizedDescription)")
+                        completion(false)
+                        return
+                    }
+                    completion(true)
+                }
+                
+            case .failure(let error):
+                print("Error linking a new user \(error.localizedDescription)")
+                completion(false)
+            }
         }
+    }
+    
+    func getCurrentCredential(completion: @escaping(AuthCredential?) -> Void) {
+        guard let providerId = currentProvider().last else{
+            return
+        }
+        print(providerId)
         switch providerId {
         case .facebook:
             guard let accessToken = facebookAuth.getAccesToken() else {
-                return nil
+                return
             }
             let credential = FacebookAuthProvider.credential(withAccessToken: accessToken)
-            return credential
+            completion(credential)
+        case .google:
+            googleAuth.getTokens() { accTokens in
+                if let tokens = accTokens {
+                    guard
+                        let idToken = tokens.first,
+                        let accesToken = tokens.last
+                    else {
+                        return
+                    }
+                    let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accesToken)
+                     completion(credential)
+                } else {
+                    return
+                }
+            }
+            return
         case .emailAndPaswword, .unknown:
-            return nil
+            return
         }
     }
     
     func linkEmailAndPassword(email: String, password: String, completion: @escaping(Bool) -> Void) {
-        guard let credential = getCurrentCredential() else {
-            completion(false)
-            return
-        }
-        Auth.auth().currentUser?.reauthenticate(with: credential, completion: { authData, error in
-            if let error = error {
-                print("Error linking email \(error.localizedDescription)")
-                completion(false)
-                return
+        
+        getCurrentCredential { authCred in
+            if let credential = authCred {
+                Auth.auth().currentUser?.reauthenticate(with: credential, completion: { authData, error in
+                    if let error = error {
+                        print("Error linking email \(error.localizedDescription)")
+                        completion(false)
+                        return
+                    }
+                    
+                    let emailAndPasswordCredential = EmailAuthProvider.credential(withEmail: email, password: password)
+                    
+                    Auth.auth().currentUser?.link(with: emailAndPasswordCredential, completion: { authDataResult, error in
+                        if let error = error {
+                            print("Error linking email \(error.localizedDescription)")
+                            completion(false)
+                            return
+                        }
+                        completion(true)
+                    })
+                })
             }
             
-            let emailAndPasswordCredential = EmailAuthProvider.credential(withEmail: email, password: password)
-            
-            Auth.auth().currentUser?.link(with: emailAndPasswordCredential, completion: { authDataResult, error in
-                if let error = error {
-                    print("Error linking email \(error.localizedDescription)")
-                    completion(false)
-                    return
-                }
-                completion(true)
-            })
-        })
+        }
+        
     }
 }
