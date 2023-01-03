@@ -60,6 +60,17 @@ final class AuthenticationViewModel: ObservableObject {
         }
     }
     
+    func googleLogin(completion: @escaping(String) -> Void) {
+        useCase.loginGoogle { [self] result in
+            switch result {
+            case .success(let user):
+                self.user = .init(email: user.email)
+                completion(user.email)
+            case .failure(let error):
+                self.messageError = error.localizedDescription
+            }
+        }
+    }
 }
 
 extension AuthenticationViewModel {

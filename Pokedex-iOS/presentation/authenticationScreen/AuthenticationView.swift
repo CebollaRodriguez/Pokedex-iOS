@@ -44,7 +44,7 @@ struct AuthenticationView: View {
     }
     
     var logInButtons: some View {
-        VStack {
+        VStack(spacing: 20) {
             Text("Login with:")
             Button {
                 authSheetView = .login
@@ -67,6 +67,20 @@ struct AuthenticationView: View {
                 
             }
             .tint(.blue)
+            Button {
+                viewModel.googleLogin { email in
+                    sessionManager.localLogIn(email: email)
+                }
+            } label: {
+                HStack {
+                    Image("google_logo")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                    Text("Google")
+                }
+                
+            }
+            .tint(.red)
             
         }
         .frame(width: 300)

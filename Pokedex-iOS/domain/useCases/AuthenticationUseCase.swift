@@ -28,5 +28,8 @@ final class AuthenticationUseCase {
         authService.loginFacebook(completion: completion)
     }
     
+    func loginGoogle(completion: @escaping(Result<UserModel, Error>) -> Void) {
+        authService.loginGoogle(completion: completion)
+    }
     
 }

@@ -32,6 +32,10 @@ final class AuthenticationService {
         firebaseAuthentication.loginWithFacebook(completion: completion)
     }
     
+    func loginGoogle(completion: @escaping(Result<UserModel, Error>) -> Void) {
+        firebaseAuthentication.loginWithGoogle(completion: completion)
+    }
+    
     func userLogOut() throws {
         try firebaseAuthentication.userLogOut()
     }

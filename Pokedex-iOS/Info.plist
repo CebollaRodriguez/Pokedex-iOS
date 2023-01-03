@@ -2,31 +2,38 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb821480405584304</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.798007438001-8etc6d5ki63j62a09tlaahk5m86e7lk9</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>821480405584304</string>
+	<key>FacebookClientToken</key>
+	<string>395eab6f74f85c872cacc400d0373f5b</string>
+	<key>FacebookDisplayName</key>
+	<string>Pokedex</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
+	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-    
-    <key>CFBundleURLTypes</key>
-    <array>
-      <dict>
-      <key>CFBundleURLSchemes</key>
-      <array>
-        <string>fb821480405584304</string>
-      </array>
-      </dict>
-    </array>
-    <key>FacebookAppID</key>
-    <string>821480405584304</string>
-    <key>FacebookClientToken</key>
-    <string>395eab6f74f85c872cacc400d0373f5b</string>
-    <key>FacebookDisplayName</key>
-    <string>Pokedex</string>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-      <string>fbapi</string>
-      <string>fb-messenger-share-api</string>
-    </array>
 </dict>
 </plist>

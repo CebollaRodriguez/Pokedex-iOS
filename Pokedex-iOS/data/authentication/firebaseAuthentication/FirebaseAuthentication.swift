@@ -10,6 +10,7 @@ import FirebaseAuth
 
 final class FirebaseAuthentication {
     private let facebookAuth = FacebookAuthentication()
+    private let googleAuth = GoogleAuthentication()
     
     func getCurrentUser()-> UserModel?{
         guard let email = Auth.auth().currentUser?.email else { return nil }
@@ -61,6 +62,31 @@ final class FirebaseAuthentication {
                 }
             case .failure(let error):
                 print("Error sigIn with facebook \(error.localizedDescription)")
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func loginWithGoogle(completion: @escaping(Result<UserModel, Error>) -> Void) {
+        
+        googleAuth.googleLogin { result in
+            switch result {
+            case.success(let user):
+                guard let idToken = user.idToken else { return }
+                let token = idToken.debugDescription
+                let acces = user.accessToken.debugDescription
+                let credential = GoogleAuthProvider.credential(withIDToken: idToken.tokenString, accessToken: user.accessToken.tokenString)
+                Auth.auth().signIn(with: credential) { result, error in
+                    if let error = error {
+                        print("LOIGIN WITH Google, FIREBASEAUTH: \(error.localizedDescription)")
+                        completion(.failure(error))
+                        return
+                    }
+                    let userEmail = result?.user.email ?? "No email"
+                    completion(.success(.init(email: userEmail)))
+                }
+                
+            case .failure(let error):
                 completion(.failure(error))
             }
         }
