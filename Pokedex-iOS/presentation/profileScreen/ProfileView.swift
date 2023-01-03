@@ -10,7 +10,9 @@ import SwiftUI
 struct ProfileView: View {
     @EnvironmentObject var session: SessionManager
     @StateObject private var profileViewModel: ProfileViewModel = .build()
-    
+    @State private var isClick = false
+    @State private var emailText = ""
+    @State private var passwordText = ""
     var body: some View {
         
         ZStack {
@@ -30,16 +32,49 @@ struct ProfileView: View {
         }
     }
     
+    var linkEmailView: some View {
+        VStack {
+            Group {
+                Text("Enter your email to link it to this account ")
+                    .foregroundColor(.secondary)
+                    .font(.caption)
+                    .padding(.top,2)
+                TextField("Email",text: $emailText)
+                TextField("Password",text:  $passwordText)
+                Button {
+                    profileViewModel.userLinkEmailAndPassword(email: emailText, password: passwordText)
+                } label: {
+                    Text("Link email")
+                        .padding(.horizontal, 20)
+                }
+                .buttonStyle(.bordered)
+                .tint(.blue)
+            
+
+            }
+            .textFieldStyle(.roundedBorder)
+        }
+        .padding(.horizontal,10)
+    }
+    
     var buttonsLink: some View {
         Form {
             Section {
                 Button {
-                    
+                    self.isClick.toggle()
                 } label: {
-                    HStack {
-                        Image(systemName: "envelope.fill")
-                        Text("Link Email")
+                    VStack {
+                        HStack {
+                            Image(systemName: "envelope.fill")
+                            Text("Link Email")
+                            Spacer()
+                        }
+                        if self.isClick {
+                            linkEmailView
+                        }
+                        
                     }
+                    
                 }
                 .disabled(profileViewModel.isEmailAndPasswordLinked())
                 Button {
@@ -64,12 +99,12 @@ struct ProfileView: View {
             }
             .alert(profileViewModel.isAccountLinked ? "Linked Account" : "Linking account error", isPresented: $profileViewModel.showAlert) {
                 Button("Accept") {
-                            
+                    self.isClick = false
                 }
             } message: {
-                Text(profileViewModel.isAccountLinked ? "✅ Your account was linked succesful!" : "❌ Error linking facebook account")
+                Text(profileViewModel.isAccountLinked ? "✅ Your account was linked succesful!" : "❌ Error linking your account")
             }
-
+            
         }
         
     }
