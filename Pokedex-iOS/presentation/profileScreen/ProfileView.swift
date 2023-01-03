@@ -13,57 +13,64 @@ struct ProfileView: View {
     
     var body: some View {
         
-        VStack {
-            Form {
-                Section {
-                    Button {
-                        
-                    } label: {
-                        HStack {
-                            Image(systemName: "envelope.fill")
-                            Text("Link Email")
-                        }
-                    }
-                    .disabled(profileViewModel.isEmailAndPasswordLinked())
-                    Button {
-                        profileViewModel.userLinkFacebook()
-                    } label: {
-                        HStack {
-                            Image("facebook_ic")
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                            Text("Link Facebook")
-                        }
-                        
-                    }
-                    .disabled(profileViewModel.isFacebookLinked())
-                } header: {
-                    Text("Link other accounts with this session")
-                        .foregroundColor(.secondary)
-                        .font(.caption)
-                }
-                .task{
-                    profileViewModel.getCurrentProvider()
-                }
-                .alert(profileViewModel.isAccountLinked ? "Linked Account" : "Linking account error", isPresented: $profileViewModel.showAlert) {
-                    Button("Accept") {
-                                
-                    }
-                } message: {
-                    Text(profileViewModel.isAccountLinked ? "✅ Your account was linked succesful!" : "❌ Error linking facebook account")
-                }
-
+        ZStack {
+            VStack {
+                
+                buttonsLink
             }
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle("Profile")
-            .toolbar {
-                Button("Logout") {
-                    profileViewModel.userLogOut()
-                    session.localLogOut()
-                }
+            
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Profile")
+        .toolbar {
+            Button("Logout") {
+                profileViewModel.userLogOut()
+                session.localLogOut()
             }
         }
-        
+    }
+    
+    var buttonsLink: some View {
+        Form {
+            Section {
+                Button {
+                    
+                } label: {
+                    HStack {
+                        Image(systemName: "envelope.fill")
+                        Text("Link Email")
+                    }
+                }
+                .disabled(profileViewModel.isEmailAndPasswordLinked())
+                Button {
+                    profileViewModel.userLinkFacebook()
+                } label: {
+                    HStack {
+                        Image("facebook_ic")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                        Text("Link Facebook")
+                    }
+                    
+                }
+                .disabled(profileViewModel.isFacebookLinked())
+            } header: {
+                Text("Link other accounts with this session")
+                    .foregroundColor(.secondary)
+                    .font(.caption)
+            }
+            .task{
+                profileViewModel.getCurrentProvider()
+            }
+            .alert(profileViewModel.isAccountLinked ? "Linked Account" : "Linking account error", isPresented: $profileViewModel.showAlert) {
+                Button("Accept") {
+                            
+                }
+            } message: {
+                Text(profileViewModel.isAccountLinked ? "✅ Your account was linked succesful!" : "❌ Error linking facebook account")
+            }
+
+        }
         
     }
 }

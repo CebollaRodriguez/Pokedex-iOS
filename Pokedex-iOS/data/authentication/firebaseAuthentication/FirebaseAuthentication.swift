@@ -93,7 +93,7 @@ final class FirebaseAuthentication {
                         completion(false)
                         return
                     }
-                    let email = authData?.user.email ?? "No Email"
+                    _ = authData?.user.email ?? "No Email"
                     completion(true)
                     
                 })
@@ -102,5 +102,46 @@ final class FirebaseAuthentication {
                 completion(false)
             }
         }
+    }
+    
+    func getCurrentCredential() -> AuthCredential? {
+        guard let providerId = currentProvider().last else{
+            return nil
+        }
+        switch providerId {
+        case .facebook:
+            guard let accessToken = facebookAuth.getAccesToken() else {
+                return nil
+            }
+            let credential = FacebookAuthProvider.credential(withAccessToken: accessToken)
+            return credential
+        case .emailAndPaswword, .unknown:
+            return nil
+        }
+    }
+    
+    func linkEmailAndPassword(email: String, password: String, completion: @escaping(Bool) -> Void) {
+        guard let credential = getCurrentCredential() else {
+            completion(false)
+            return
+        }
+        Auth.auth().currentUser?.reauthenticate(with: credential, completion: { authData, error in
+            if let error = error {
+                print("Error linking email \(error.localizedDescription)")
+                completion(false)
+                return
+            }
+            
+            let emailAndPasswordCredential = EmailAuthProvider.credential(withEmail: email, password: password)
+            
+            Auth.auth().currentUser?.link(with: emailAndPasswordCredential, completion: { authDataResult, error in
+                if let error = error {
+                    print("Error linking email \(error.localizedDescription)")
+                    completion(false)
+                    return
+                }
+                completion(true)
+            })
+        })
     }
 }

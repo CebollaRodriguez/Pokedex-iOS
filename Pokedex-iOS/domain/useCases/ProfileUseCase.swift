@@ -24,7 +24,11 @@ final class ProfileUseCase {
         try authService.userLogOut()
     }
     
-    func userLinkFAcebook(completion: @escaping(Bool) -> Void) {
+    func userLinkFacebook(completion: @escaping(Bool) -> Void) {
         authService.linkFacebook(completion: completion)
+    }
+    
+    func userLinkEmailAndPassword(email: String, password: String, completion: @escaping(Bool) -> Void) {
+        authService.linkEmailAndPassword(email: email, password: password, completion: completion)
     }
 }

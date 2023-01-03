@@ -38,7 +38,15 @@ class ProfileViewModel: ObservableObject {
     }
     
     func userLinkFacebook() {
-        useCase.userLinkFAcebook { [weak self] isSucces in
+        useCase.userLinkFacebook { [weak self] isSucces in
+            self?.isAccountLinked = isSucces
+            self?.showAlert.toggle()
+            self?.getCurrentProvider()
+        }
+    }
+    
+    func userLinkEmailAndPassword(email: String, password: String) {
+        useCase.userLinkEmailAndPassword(email: email, password: password) { [weak self] isSucces in
             self?.isAccountLinked = isSucces
             self?.showAlert.toggle()
             self?.getCurrentProvider()

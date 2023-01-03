@@ -44,4 +44,8 @@ final class AuthenticationService {
         firebaseAuthentication.linkFacebook(completion: completion)
     }
     
+    func linkEmailAndPassword(email: String, password: String, completion: @escaping(Bool) -> Void) {
+        firebaseAuthentication.linkEmailAndPassword(email: email, password: password, completion: completion)
+    }
+    
 }
