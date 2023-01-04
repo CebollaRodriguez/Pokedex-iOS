@@ -20,8 +20,8 @@ class PokedexUseCase {
             case .success(let response):
                 if let pokedexResponse = response {
                     
-                    let pokemonsList = pokedexResponse.pokemonList.map { pokedexModel in
-                        PokemonInPokedex(id: pokedexModel.pokemonId, name: pokedexModel.pokemonInPokedex.name, url: pokedexModel.pokemonInPokedex.url)
+                    let pokemonsList = pokedexResponse.pokemon_entries.map { pokedexModel in
+                        PokemonInPokedex(id: pokedexModel.entry_number, name: pokedexModel.pokemon_species.name, url: pokedexModel.pokemon_species.url)
                     }
                     completion(.success(.init(pokedexName: pokedexResponse.name, pokemons: pokemonsList)))
                 }

@@ -9,22 +9,16 @@ import Foundation
 
 struct PokedexResponse: Decodable {
     let name: String
-    let pokemonList: [PokedexModel]
+    let pokemon_entries: [PokedexModel]
     
-    enum CodingKeys: String, CodingKey {
-        case name = "name"
-        case pokemonList = "pokemon_entries"
-    }
+    
 }
 
 struct PokedexModel: Decodable {
-    let pokemonId: Int
-    let pokemonInPokedex: PokemonInPokedexModel
+    let entry_number: Int
+    let pokemon_species: PokemonInPokedexModel
     
-    enum Codingkeys: String, CodingKey {
-        case pokemonId = "entry_number"
-        case pokemonInPokedex = "pokemon_species"
-    }
+    
     
 }
 
@@ -32,3 +26,14 @@ struct PokemonInPokedexModel: Decodable {
     let name: String
     let url: String
 }
+/*
+ enum CodingKeys: String, CodingKey {
+     case name = "name"
+     case pokemonList = "pokemon_entries"
+ }
+ 
+ enum Codingkeys: String, CodingKey {
+     case pokemonId = "entry_number"
+     case pokemonInPokedex = "pokemon_species"
+ }
+ */

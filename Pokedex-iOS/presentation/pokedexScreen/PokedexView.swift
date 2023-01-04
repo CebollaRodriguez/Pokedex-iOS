@@ -13,10 +13,49 @@ struct PokedexView: View {
     var body: some View {
         VStack {
             Text(viewModel.model.pokedexName)
+            pokemons
+            Text("Hola")
+                .font(.largeTitle)
+            
         }
         .onAppear{
             viewModel.getPokedex(url: pokedexUrl)
         }
+    }
+    
+    var pokemons: some View {
+        
+        ScrollView {
+            LazyVGrid(columns: [
+                GridItem(.adaptive(minimum: 100)),
+                GridItem(.adaptive(minimum: 100)),
+                GridItem(.adaptive(minimum: 100))
+            ]) {
+                ForEach(viewModel.model.pokemons, id: \.id) { pokemon in
+                    NavigationLink{
+                        PokemonView(pokemonId: pokemon.id)
+                    } label: {
+                        HStack {
+                            Spacer()
+                            Text(pokemon.name)
+                                .foregroundColor(.primary)
+                                .font(.caption.bold())
+                            
+                            Spacer()
+                        }
+                        
+                        .frame(height: 150)
+                        .background(.red)
+                        .cornerRadius(10)
+                        
+                    }
+                    .padding(2)
+                }
+            }
+            .padding(.horizontal,20)
+        }
+        
+
     }
 }
 
