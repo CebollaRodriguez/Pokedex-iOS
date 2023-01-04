@@ -207,6 +207,17 @@ final class FirebaseAuthentication {
             }
             
         }
-        
+    }
+    
+    func deleteAccount(completion: @escaping(Result<Bool, Error>) -> Void) {
+        Auth.auth().currentUser?.delete{ error in
+            if let error = error {
+                completion(.failure(error))
+                
+            } else {
+                completion(.success(true))
+            }
+            
+        }
     }
 }

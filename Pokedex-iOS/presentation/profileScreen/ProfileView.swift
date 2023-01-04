@@ -11,6 +11,7 @@ struct ProfileView: View {
     @EnvironmentObject var session: SessionManager
     @StateObject private var profileViewModel: ProfileViewModel = .build()
     @State private var isClick = false
+    @State private var wantDelete = false
     @State private var emailText = ""
     @State private var passwordText = ""
     var body: some View {
@@ -19,6 +20,7 @@ struct ProfileView: View {
             VStack {
                 
                 buttonsLink
+                
             }
             
         }
@@ -56,6 +58,37 @@ struct ProfileView: View {
         }
         .padding(.horizontal,10)
     }
+    var buttonDelete: some View {
+        VStack {
+            Button {
+                self.wantDelete.toggle()
+            } label: {
+                HStack {
+                    Spacer()
+                    Text("Delete account")
+                        .foregroundColor(.white)
+                        .padding()
+                    
+                    Spacer()
+                }
+                .background(.red)
+            }
+            .cornerRadius(30)
+            
+        }
+        .alert("Do you want to delete your account?", isPresented: self.$wantDelete) {
+            HStack{
+                Button("Cancel") {
+                    self.wantDelete = false
+                }
+                Button("Delete") {
+                    profileViewModel.deleteAccount()
+                }
+            }
+        }
+        
+        
+    }
     
     var buttonsLink: some View {
         Form {
@@ -73,7 +106,7 @@ struct ProfileView: View {
                         if self.isClick {
                             linkEmailView
                         }
-                    }   
+                    }
                 }
                 .disabled(profileViewModel.isEmailAndPasswordLinked())
                 Button {
@@ -98,13 +131,13 @@ struct ProfileView: View {
                     }
                 }
                 .disabled(profileViewModel.isGoogleLinked())
-
+                
             } header: {
                 Text("Link other accounts with this session")
                     .foregroundColor(.secondary)
                     .font(.caption)
             }
-            .onAppear{
+            .task{
                 profileViewModel.getCurrentProvider()
             }
             .alert(profileViewModel.isAccountLinked ? "Linked Account" : "Linking account error", isPresented: $profileViewModel.showAlert) {
@@ -114,6 +147,15 @@ struct ProfileView: View {
             } message: {
                 Text(profileViewModel.isAccountLinked ? "✅ Your account was linked succesful!" : "❌ Error linking your account")
             }
+            buttonDelete
+                
+        }
+        .alert(profileViewModel.isDelete ? "Account deleted" : "An error has occurred", isPresented: $profileViewModel.showDeleteAlert) {
+            Button("Accept") {
+                session.localLogOut()
+            }
+        } message: {
+            Text(profileViewModel.isDelete ? "✅ Your account was deleted successful" : "❌ Error deleting your account, contact with support")
         }
         
     }

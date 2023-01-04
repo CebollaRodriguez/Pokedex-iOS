@@ -42,8 +42,6 @@ final class AuthenticationService {
     
     func currentProvider() -> [LinkedAccountModel] {
         return firebaseAuthentication.currentProvider()
-        print(firebaseAuthentication.currentProvider())
-        print("si")
     }
     
     func linkFacebook(completion: @escaping(Bool) -> Void) {
@@ -58,4 +56,7 @@ final class AuthenticationService {
         firebaseAuthentication.linkEmailAndPassword(email: email, password: password, completion: completion)
     }
     
+    func deleteAccount(completion: @escaping(Result<Bool, Error>) -> Void) {
+        firebaseAuthentication.deleteAccount(completion: completion)
+    }
 }

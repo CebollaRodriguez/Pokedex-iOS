@@ -11,6 +11,11 @@ class ProfileViewModel: ObservableObject {
     @Published var linkedAccounts: [LinkedAccount] = []
     @Published var showAlert: Bool = false
     @Published var isAccountLinked: Bool = false
+    // Published when deleteAccount() was called
+    @Published var messageError: String = ""
+    @Published var showDeleteAlert: Bool = false
+    @Published var isDelete: Bool = false
+    
     private let useCase: ProfileUseCase
     
     init(profileUseCase: ProfileUseCase) {
@@ -65,6 +70,20 @@ class ProfileViewModel: ObservableObject {
             self?.isAccountLinked = isSucces
             self?.showAlert.toggle()
             self?.getCurrentProvider()
+        }
+    }
+    
+    func deleteAccount() {
+        useCase.deleteAccount { [weak self] result in
+            switch result {
+            case .success(let isSuccess):
+                self?.showDeleteAlert.toggle()
+                self?.isDelete = isSuccess
+                
+            case .failure(let error):
+                self?.messageError = error.localizedDescription
+                
+            }
         }
     }
 }

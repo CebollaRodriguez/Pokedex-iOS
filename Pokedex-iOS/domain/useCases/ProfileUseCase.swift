@@ -35,4 +35,8 @@ final class ProfileUseCase {
     func userLinkEmailAndPassword(email: String, password: String, completion: @escaping(Bool) -> Void) {
         authService.linkEmailAndPassword(email: email, password: password, completion: completion)
     }
+    
+    func deleteAccount(completion: @escaping(Result<Bool, Error>) -> Void) {
+        authService.deleteAccount(completion: completion)
+    }
 }
