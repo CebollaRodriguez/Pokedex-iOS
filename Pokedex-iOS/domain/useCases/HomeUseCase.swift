@@ -9,13 +9,26 @@ import Foundation
 
 final class HomeUseCase {
     
-    private let authRepository: AuthenticationService
+    private let pokedexService: PokedexService
     
-    init(authRepository: AuthenticationService = AuthenticationService()) {
-        self.authRepository = authRepository
+    init(pokedexService: PokedexService = PokedexService()) {
+        self.pokedexService = pokedexService
     }
     
-    func userLogOut() throws {
-        try authRepository.userLogOut()
+    func getPokexesList(completion: @escaping(Result<[Pokedexes], Error>) -> Void) {
+        pokedexService.getPokedexesList { result in
+            switch result {
+            case .success(let pokedexesResponse):
+                if let pokedexesModel = pokedexesResponse?.results {
+                    let pokedexes = pokedexesModel.map{ pokedex in
+                        Pokedexes.init(name: pokedex.name, url: pokedex.url)
+                    }
+                    completion(.success(pokedexes))
+                    
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 }

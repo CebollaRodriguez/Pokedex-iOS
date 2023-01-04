@@ -38,6 +38,15 @@
 		5F755192295E8C4B004BE007 /* LoginEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F755191295E8C4B004BE007 /* LoginEmailView.swift */; };
 		5F755194295E94C8004BE007 /* RegisterEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F755193295E94C8004BE007 /* RegisterEmailView.swift */; };
 		5F755196295E957B004BE007 /* DismissView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F755195295E957B004BE007 /* DismissView.swift */; };
+		5F9124E02965F48700DB89D9 /* PokemonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9124DF2965F48700DB89D9 /* PokemonAPI.swift */; };
+		5F9124E32965F4C700DB89D9 /* ListPokedexesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9124E22965F4C700DB89D9 /* ListPokedexesResponse.swift */; };
+		5F9124E72965F89100DB89D9 /* PokedexService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9124E62965F89100DB89D9 /* PokedexService.swift */; };
+		5F9124E92965F9F600DB89D9 /* Pokedexes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9124E82965F9F600DB89D9 /* Pokedexes.swift */; };
+		5F9124EC2966188900DB89D9 /* PokedexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9124EB2966188900DB89D9 /* PokedexView.swift */; };
+		5F9124EE2966191500DB89D9 /* PokedexViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9124ED2966191500DB89D9 /* PokedexViewModel.swift */; };
+		5F9124F1296619C300DB89D9 /* PokedexResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9124F0296619C300DB89D9 /* PokedexResponse.swift */; };
+		5F9124F329661DA100DB89D9 /* Pokedex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9124F229661DA100DB89D9 /* Pokedex.swift */; };
+		5F9124F529661E8600DB89D9 /* PokedexUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9124F429661E8600DB89D9 /* PokedexUseCase.swift */; };
 		5FAA9394296128E900C58B67 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 5FAA9393296128E900C58B67 /* FacebookLogin */; };
 		5FAA939929612E9500C58B67 /* FacebookAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAA939829612E9500C58B67 /* FacebookAuthentication.swift */; };
 		5FE9B9DA2952222E0006C2E2 /* Pokedex_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE9B9D92952222E0006C2E2 /* Pokedex_iOSApp.swift */; };
@@ -95,6 +104,15 @@
 		5F755191295E8C4B004BE007 /* LoginEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEmailView.swift; sourceTree = "<group>"; };
 		5F755193295E94C8004BE007 /* RegisterEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterEmailView.swift; sourceTree = "<group>"; };
 		5F755195295E957B004BE007 /* DismissView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissView.swift; sourceTree = "<group>"; };
+		5F9124DF2965F48700DB89D9 /* PokemonAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonAPI.swift; sourceTree = "<group>"; };
+		5F9124E22965F4C700DB89D9 /* ListPokedexesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPokedexesResponse.swift; sourceTree = "<group>"; };
+		5F9124E62965F89100DB89D9 /* PokedexService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexService.swift; sourceTree = "<group>"; };
+		5F9124E82965F9F600DB89D9 /* Pokedexes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokedexes.swift; sourceTree = "<group>"; };
+		5F9124EB2966188900DB89D9 /* PokedexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexView.swift; sourceTree = "<group>"; };
+		5F9124ED2966191500DB89D9 /* PokedexViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexViewModel.swift; sourceTree = "<group>"; };
+		5F9124F0296619C300DB89D9 /* PokedexResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexResponse.swift; sourceTree = "<group>"; };
+		5F9124F229661DA100DB89D9 /* Pokedex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokedex.swift; sourceTree = "<group>"; };
+		5F9124F429661E8600DB89D9 /* PokedexUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexUseCase.swift; sourceTree = "<group>"; };
 		5FAA939529612B4400C58B67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5FAA939829612E9500C58B67 /* FacebookAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAuthentication.swift; sourceTree = "<group>"; };
 		5FE9B9D62952222E0006C2E2 /* Pokedex-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pokedex-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,6 +206,8 @@
 		5F156C6A295F8377006E5F28 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				5F9124EF296619AF00DB89D9 /* pokedexResponse */,
+				5F9124E12965F4AD00DB89D9 /* listPokedexesResponse */,
 				5F156C6B295F8382006E5F28 /* UserModel.swift */,
 				5F14AB4429634A460013A925 /* LinkedAccountModel.swift */,
 			);
@@ -197,6 +217,7 @@
 		5F156C6D295F850B006E5F28 /* services */ = {
 			isa = PBXGroup;
 			children = (
+				5F9124E52965F87C00DB89D9 /* pokedexService */,
 				5F156C6E295F8527006E5F28 /* AuthenticationService.swift */,
 			);
 			path = services;
@@ -209,6 +230,7 @@
 				5F156C872960B68F006E5F28 /* AuthenticationUseCase.swift */,
 				5F14AB4629634CAE0013A925 /* ProfileUseCase.swift */,
 				5F14AB4C29636C010013A925 /* SplashUseCase.swift */,
+				5F9124F429661E8600DB89D9 /* PokedexUseCase.swift */,
 			);
 			path = useCases;
 			sourceTree = "<group>";
@@ -216,6 +238,7 @@
 		5F156C76295F8C3A006E5F28 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				5F9124E42965F82200DB89D9 /* pokedexes */,
 				5F156C77295F8C44006E5F28 /* User.swift */,
 				5F14AB5329638A780013A925 /* LinkedAccount.swift */,
 			);
@@ -225,6 +248,7 @@
 		5F156C79296098C0006E5F28 /* network */ = {
 			isa = PBXGroup;
 			children = (
+				5F9124DC2965F45D00DB89D9 /* pokemonAPI */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -271,6 +295,56 @@
 				5F755195295E957B004BE007 /* DismissView.swift */,
 			);
 			path = authSheet;
+			sourceTree = "<group>";
+		};
+		5F9124DC2965F45D00DB89D9 /* pokemonAPI */ = {
+			isa = PBXGroup;
+			children = (
+				5F9124DF2965F48700DB89D9 /* PokemonAPI.swift */,
+			);
+			path = pokemonAPI;
+			sourceTree = "<group>";
+		};
+		5F9124E12965F4AD00DB89D9 /* listPokedexesResponse */ = {
+			isa = PBXGroup;
+			children = (
+				5F9124E22965F4C700DB89D9 /* ListPokedexesResponse.swift */,
+			);
+			path = listPokedexesResponse;
+			sourceTree = "<group>";
+		};
+		5F9124E42965F82200DB89D9 /* pokedexes */ = {
+			isa = PBXGroup;
+			children = (
+				5F9124E82965F9F600DB89D9 /* Pokedexes.swift */,
+				5F9124F229661DA100DB89D9 /* Pokedex.swift */,
+			);
+			path = pokedexes;
+			sourceTree = "<group>";
+		};
+		5F9124E52965F87C00DB89D9 /* pokedexService */ = {
+			isa = PBXGroup;
+			children = (
+				5F9124E62965F89100DB89D9 /* PokedexService.swift */,
+			);
+			path = pokedexService;
+			sourceTree = "<group>";
+		};
+		5F9124EA2966187400DB89D9 /* pokedexScreen */ = {
+			isa = PBXGroup;
+			children = (
+				5F9124EB2966188900DB89D9 /* PokedexView.swift */,
+				5F9124ED2966191500DB89D9 /* PokedexViewModel.swift */,
+			);
+			path = pokedexScreen;
+			sourceTree = "<group>";
+		};
+		5F9124EF296619AF00DB89D9 /* pokedexResponse */ = {
+			isa = PBXGroup;
+			children = (
+				5F9124F0296619C300DB89D9 /* PokedexResponse.swift */,
+			);
+			path = pokedexResponse;
 			sourceTree = "<group>";
 		};
 		5FAA939629612E6700C58B67 /* authentication */ = {
@@ -389,6 +463,7 @@
 		5FEBD24329522BB400050E6A /* presentation */ = {
 			isa = PBXGroup;
 			children = (
+				5F9124EA2966187400DB89D9 /* pokedexScreen */,
 				5F14AB4E296371A80013A925 /* splashScreen */,
 				5F14AB41296346840013A925 /* profileScreen */,
 				5F156C8029609F59006E5F28 /* homeScreen */,
@@ -558,6 +633,7 @@
 				5F755189295E7DE5004BE007 /* AuthenticationView.swift in Sources */,
 				5F14AB4929634F910013A925 /* ProfileViewModel.swift in Sources */,
 				5F156C78295F8C44006E5F28 /* User.swift in Sources */,
+				5F9124E32965F4C700DB89D9 /* ListPokedexesResponse.swift in Sources */,
 				5FE9B9DA2952222E0006C2E2 /* Pokedex_iOSApp.swift in Sources */,
 				5FE9B9DC2952222E0006C2E2 /* Persistence.swift in Sources */,
 				5F14AB4729634CAE0013A925 /* ProfileUseCase.swift in Sources */,
@@ -565,10 +641,17 @@
 				5F14AB50296371B70013A925 /* SplashViewModel.swift in Sources */,
 				5F156C75295F870F006E5F28 /* AuthenticationViewModel.swift in Sources */,
 				5F04974A295D02A60091E269 /* SplashScreenView.swift in Sources */,
+				5F9124F329661DA100DB89D9 /* Pokedex.swift in Sources */,
+				5F9124F1296619C300DB89D9 /* PokedexResponse.swift in Sources */,
+				5F9124E92965F9F600DB89D9 /* Pokedexes.swift in Sources */,
+				5F9124E72965F89100DB89D9 /* PokedexService.swift in Sources */,
 				5F14AB5C2964A8C30013A925 /* GoogleAuthentication.swift in Sources */,
 				5F755194295E94C8004BE007 /* RegisterEmailView.swift in Sources */,
 				5F14AB5F2964AB6E0013A925 /* ApplicationUtility.swift in Sources */,
+				5F9124EE2966191500DB89D9 /* PokedexViewModel.swift in Sources */,
+				5F9124F529661E8600DB89D9 /* PokedexUseCase.swift in Sources */,
 				5F156C69295F8327006E5F28 /* FirebaseAuthentication.swift in Sources */,
+				5F9124EC2966188900DB89D9 /* PokedexView.swift in Sources */,
 				5FAA939929612E9500C58B67 /* FacebookAuthentication.swift in Sources */,
 				5FE9B9E12952222E0006C2E2 /* ContentView.swift in Sources */,
 				5F14AB4D29636C010013A925 /* SplashUseCase.swift in Sources */,
@@ -576,6 +659,7 @@
 				5F156C862960A2FE006E5F28 /* HomeViewModel.swift in Sources */,
 				5FE9B9DF2952222E0006C2E2 /* Pokedex_iOS.xcdatamodeld in Sources */,
 				5F156C6F295F8527006E5F28 /* AuthenticationService.swift in Sources */,
+				5F9124E02965F48700DB89D9 /* PokemonAPI.swift in Sources */,
 				5F14AB43296346A00013A925 /* ProfileView.swift in Sources */,
 				5F14AB4529634A460013A925 /* LinkedAccountModel.swift in Sources */,
 				5F14AB5429638A780013A925 /* LinkedAccount.swift in Sources */,

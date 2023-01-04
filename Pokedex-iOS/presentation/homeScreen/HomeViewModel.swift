@@ -8,25 +8,28 @@
 import Foundation
 
 class HomeViewModel: ObservableObject {
-    private let userLogOutUseCase: HomeUseCase
-
-    init(userLogOutUseCase: HomeUseCase){
-        self.userLogOutUseCase = userLogOutUseCase
+    @Published var pokedexes: [Pokedexes] = []
+    @Published var messageError: String = ""
+    private let useCase: HomeUseCase
+    
+    init(useCase: HomeUseCase) {
+        self.useCase = useCase
     }
     
-    
-    func userLogOut() {
-        do {
-            try userLogOutUseCase.userLogOut()
-            
-        } catch {
-            print("Error logout")
+    func getPokedexeslist() {
+        useCase.getPokexesList { [weak self] result in
+            switch result {
+            case .success(let pokedexList):
+                self?.pokedexes = pokedexList
+            case .failure(let error):
+                self?.messageError = error.localizedDescription
+            }
         }
     }
 }
 
 extension HomeViewModel {
     static func build() -> HomeViewModel{
-        return HomeViewModel(userLogOutUseCase: HomeUseCase())
+        return HomeViewModel(useCase: HomeUseCase())
     }
 }

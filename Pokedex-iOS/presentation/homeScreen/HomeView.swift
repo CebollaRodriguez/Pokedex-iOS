@@ -17,7 +17,11 @@ struct HomeView: View {
                 VStack {
                     Text("Welcome \(email)")
                         .padding(.top, 20)
-                    Spacer()
+                    
+                    pokedexesList
+                }
+                .onAppear{
+                    homeViewModel.getPokedexeslist()
                 }
                 .tabItem {
                     Label("Home", systemImage: "house.fill")
@@ -29,11 +33,48 @@ struct HomeView: View {
                     }
                 
             }
-            
             .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle("Home")
-            
         }
+    }
+    
+    var pokedexesList: some View {
+        
+        VStack {
+            Text("Choose a pokedex")
+                .foregroundColor(.secondary)
+                .font(.title)
+            ScrollView {
+                LazyVGrid(columns: [
+                    GridItem(.adaptive(minimum: 100)),
+                    GridItem(.adaptive(minimum: 100)),
+                ]) {
+                    ForEach(homeViewModel.pokedexes, id: \.name) { pokedex in
+                        NavigationLink {
+                            PokedexView(pokedexUrl: pokedex.url)
+                        } label: {
+                            HStack{
+                                Spacer()
+                                Text(pokedex.name)
+                                
+                                    .foregroundColor(.primary)
+                                Spacer()
+                            }
+                            .frame(height: 80)
+
+                        }
+                        
+                        .buttonStyle(.borderless)
+                        .background()
+                        .padding(3)
+                        .shadow(radius: 5)
+
+                    }
+                }
+
+            }
+            .padding(.bottom)
+        }
+        .padding(.horizontal, 30)
     }
 }
 
