@@ -8,8 +8,8 @@
 import Foundation
 import FacebookLogin
 
-final class FacebookAuthentication {
-    let loginManager = LoginManager()
+final class FacebookAuthentication: FacebookAuthenticationProtocol {
+    private let loginManager = LoginManager()
     
     func loginFacebook(completion: @escaping(Result<String, Error>) ->Void) {
         loginManager.logIn(permissions: ["email"], from: nil){ result, error in

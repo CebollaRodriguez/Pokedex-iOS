@@ -7,10 +7,10 @@
 
 import Foundation
 
-final class AuthenticationUseCase {
-    private let authService: AuthenticationService
+class AuthenticationUseCase: AuthenticationUseCaseProtocol {
+    private let authService: AuthenticationServiceProtocol
     
-    init(authService: AuthenticationService = AuthenticationService()) {
+    init(authService: AuthenticationServiceProtocol) {
         self.authService = authService
     }
     

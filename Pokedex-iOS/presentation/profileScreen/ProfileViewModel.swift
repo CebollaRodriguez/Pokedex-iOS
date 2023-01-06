@@ -16,9 +16,9 @@ class ProfileViewModel: ObservableObject {
     @Published var showDeleteAlert: Bool = false
     @Published var isDelete: Bool = false
     
-    private let useCase: ProfileUseCase
+    private let useCase: ProfileUseCaseProtocol
     
-    init(profileUseCase: ProfileUseCase) {
+    init(profileUseCase: ProfileUseCaseProtocol) {
         self.useCase = profileUseCase
     }
     
@@ -85,11 +85,5 @@ class ProfileViewModel: ObservableObject {
                 
             }
         }
-    }
-}
-
-extension ProfileViewModel {
-    static func build() -> ProfileViewModel {
-        return ProfileViewModel(profileUseCase: ProfileUseCase())
     }
 }

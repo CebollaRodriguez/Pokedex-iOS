@@ -8,9 +8,14 @@
 import Foundation
 import FirebaseAuth
 
-final class FirebaseAuthentication {
-    private let facebookAuth = FacebookAuthentication()
-    private let googleAuth = GoogleAuthentication()
+final class FirebaseAuthentication: FirebaseAuthenticationProtocol {
+    private let facebookAuth: FacebookAuthenticationProtocol
+    private let googleAuth: GoogleAuthenticationProtocol
+    
+    init(facebookAuth: FacebookAuthenticationProtocol, googleAuth: GoogleAuthenticationProtocol) {
+        self.facebookAuth = facebookAuth
+        self.googleAuth = googleAuth
+    }
     
     func getCurrentUser()-> UserModel?{
         guard let email = Auth.auth().currentUser?.email else { return nil }
@@ -31,6 +36,7 @@ final class FirebaseAuthentication {
             
         }
     }
+    
     func userLogin(email: String, password: String, completion: @escaping(Result<UserModel, Error>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) {result, error in
             if let error = error{
@@ -70,9 +76,10 @@ final class FirebaseAuthentication {
     func loginWithGoogle(completion: @escaping(Result<UserModel, Error>) -> Void) {
         googleAuth.googleLogin { result in
             switch result {
-            case.success(let user):
-                guard let idToken = user.idToken else { return }
-                let credential = GoogleAuthProvider.credential(withIDToken: idToken.tokenString, accessToken: user.accessToken.tokenString)
+            case.success(let tokens):
+                guard let idToken = tokens?.first else { return }
+                guard let accesToken = tokens?.last else { return }
+                let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accesToken)
                 Auth.auth().signIn(with: credential) { result, error in
                     if let error = error {
                         print("LOIGIN WITH Google, FIREBASEAUTH: \(error.localizedDescription)")
@@ -130,12 +137,13 @@ final class FirebaseAuthentication {
     func linkGoogle(completion: @escaping(Bool) -> Void) {
         googleAuth.googleLogin { result in
             switch result {
-            case.success(let user):
-                guard let idToken = user.idToken else { return }
-                let credential = GoogleAuthProvider.credential(withIDToken: idToken.tokenString, accessToken: user.accessToken.tokenString)
-                Auth.auth().currentUser?.link(with: credential) { result, error in
+            case.success(let tokens):
+                guard let idToken = tokens?.first else { return }
+                guard let accesToken = tokens?.last else { return }
+                let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accesToken)
+                Auth.auth().signIn(with: credential) { result, error in
                     if let error = error {
-                        print("Error link w/ Google: \(error.localizedDescription)")
+                        print("LOIGIN WITH Google, FIREBASEAUTH: \(error.localizedDescription)")
                         completion(false)
                         return
                     }

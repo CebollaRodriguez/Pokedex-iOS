@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class HomeUseCase {
+final class HomeUseCase: HomeUseCaseProtocol {
     
     private let pokedexService: PokedexService
     

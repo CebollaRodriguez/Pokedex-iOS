@@ -7,10 +7,10 @@
 
 import Foundation
 
-final class AuthenticationService {
-    private let firebaseAuthentication: FirebaseAuthentication
+final class AuthenticationService: AuthenticationServiceProtocol {
+    private let firebaseAuthentication: FirebaseAuthenticationProtocol
     
-    init(firebaseAuthentication: FirebaseAuthentication = FirebaseAuthentication()) {
+    init(firebaseAuthentication: FirebaseAuthenticationProtocol) {
         self.firebaseAuthentication = firebaseAuthentication
     }
     

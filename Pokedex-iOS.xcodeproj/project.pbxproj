@@ -31,6 +31,26 @@
 		5F156C8429609FA7006E5F28 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C8329609FA7006E5F28 /* HomeView.swift */; };
 		5F156C862960A2FE006E5F28 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C852960A2FE006E5F28 /* HomeViewModel.swift */; };
 		5F156C882960B68F006E5F28 /* AuthenticationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C872960B68F006E5F28 /* AuthenticationUseCase.swift */; };
+		5F4C48C8296891D1007B9265 /* FacebookAuthenticationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C48C7296891D1007B9265 /* FacebookAuthenticationProtocol.swift */; };
+		5F4C48CA296892B7007B9265 /* FacebookAuthenticationMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C48C9296892B7007B9265 /* FacebookAuthenticationMock.swift */; };
+		5F4C48D029689348007B9265 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C48CF29689348007B9265 /* Constants.swift */; };
+		5F4C48D2296893B5007B9265 /* GoogleAuthenticationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C48D1296893B5007B9265 /* GoogleAuthenticationProtocol.swift */; };
+		5F4C48D4296896D5007B9265 /* GoogleAuthenticationMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C48D3296896D5007B9265 /* GoogleAuthenticationMock.swift */; };
+		5F4C48D8296897F5007B9265 /* AuthenticationClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C48D7296897F5007B9265 /* AuthenticationClasses.swift */; };
+		5F4C48DA29689996007B9265 /* FirebaseAuthenticationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C48D929689996007B9265 /* FirebaseAuthenticationProtocol.swift */; };
+		5F4C48DC29689AA1007B9265 /* FirebaseAuthenticationMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C48DB29689AA1007B9265 /* FirebaseAuthenticationMock.swift */; };
+		5F4C48DE29689DC1007B9265 /* AuthenticationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C48DD29689DC1007B9265 /* AuthenticationServiceProtocol.swift */; };
+		5F4C48E129689FDB007B9265 /* AuthenticationServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C48E029689FDB007B9265 /* AuthenticationServiceMock.swift */; };
+		5F4C48E42968A1A6007B9265 /* SplashUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C48E32968A1A6007B9265 /* SplashUseCaseMock.swift */; };
+		5F4C48E72968A234007B9265 /* UseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C48E62968A234007B9265 /* UseCases.swift */; };
+		5F4C48EB2968A297007B9265 /* SplashUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C48EA2968A297007B9265 /* SplashUseCaseProtocol.swift */; };
+		5F4C48EE2968A3FD007B9265 /* HomeUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C48ED2968A3FD007B9265 /* HomeUseCaseMock.swift */; };
+		5F4C48F02968A41F007B9265 /* HomeUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C48EF2968A41F007B9265 /* HomeUseCaseProtocol.swift */; };
+		5F4C48F32968A47E007B9265 /* AuthenticationUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C48F22968A47E007B9265 /* AuthenticationUseCaseMock.swift */; };
+		5F4C48F52968A4B0007B9265 /* AuthenticationUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C48F42968A4B0007B9265 /* AuthenticationUseCaseProtocol.swift */; };
+		5F4C48F82968CFFE007B9265 /* ProfileUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C48F72968CFFE007B9265 /* ProfileUseCaseProtocol.swift */; };
+		5F4C48FA2968D05B007B9265 /* ProfileUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C48F92968D05B007B9265 /* ProfileUseCaseMock.swift */; };
+		5F4C48FC2968D22A007B9265 /* ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C48FB2968D22A007B9265 /* ViewModels.swift */; };
 		5F608F4A295E6E7A00648F00 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5F608F49295E6E7A00648F00 /* FirebaseAnalytics */; };
 		5F755181295E6FF4004BE007 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F755180295E6FF4004BE007 /* GoogleService-Info.plist */; };
 		5F755184295E7CB1004BE007 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5F755183295E7CB1004BE007 /* FirebaseAnalyticsSwift */; };
@@ -102,6 +122,26 @@
 		5F156C8329609FA7006E5F28 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		5F156C852960A2FE006E5F28 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		5F156C872960B68F006E5F28 /* AuthenticationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationUseCase.swift; sourceTree = "<group>"; };
+		5F4C48C7296891D1007B9265 /* FacebookAuthenticationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAuthenticationProtocol.swift; sourceTree = "<group>"; };
+		5F4C48C9296892B7007B9265 /* FacebookAuthenticationMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAuthenticationMock.swift; sourceTree = "<group>"; };
+		5F4C48CF29689348007B9265 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5F4C48D1296893B5007B9265 /* GoogleAuthenticationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthenticationProtocol.swift; sourceTree = "<group>"; };
+		5F4C48D3296896D5007B9265 /* GoogleAuthenticationMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthenticationMock.swift; sourceTree = "<group>"; };
+		5F4C48D7296897F5007B9265 /* AuthenticationClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationClasses.swift; sourceTree = "<group>"; };
+		5F4C48D929689996007B9265 /* FirebaseAuthenticationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthenticationProtocol.swift; sourceTree = "<group>"; };
+		5F4C48DB29689AA1007B9265 /* FirebaseAuthenticationMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthenticationMock.swift; sourceTree = "<group>"; };
+		5F4C48DD29689DC1007B9265 /* AuthenticationServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceProtocol.swift; sourceTree = "<group>"; };
+		5F4C48E029689FDB007B9265 /* AuthenticationServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceMock.swift; sourceTree = "<group>"; };
+		5F4C48E32968A1A6007B9265 /* SplashUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashUseCaseMock.swift; sourceTree = "<group>"; };
+		5F4C48E62968A234007B9265 /* UseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCases.swift; sourceTree = "<group>"; };
+		5F4C48EA2968A297007B9265 /* SplashUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashUseCaseProtocol.swift; sourceTree = "<group>"; };
+		5F4C48ED2968A3FD007B9265 /* HomeUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUseCaseMock.swift; sourceTree = "<group>"; };
+		5F4C48EF2968A41F007B9265 /* HomeUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUseCaseProtocol.swift; sourceTree = "<group>"; };
+		5F4C48F22968A47E007B9265 /* AuthenticationUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationUseCaseMock.swift; sourceTree = "<group>"; };
+		5F4C48F42968A4B0007B9265 /* AuthenticationUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationUseCaseProtocol.swift; sourceTree = "<group>"; };
+		5F4C48F72968CFFE007B9265 /* ProfileUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUseCaseProtocol.swift; sourceTree = "<group>"; };
+		5F4C48F92968D05B007B9265 /* ProfileUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUseCaseMock.swift; sourceTree = "<group>"; };
+		5F4C48FB2968D22A007B9265 /* ViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModels.swift; sourceTree = "<group>"; };
 		5F755180295E6FF4004BE007 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5F755188295E7DE5004BE007 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		5F75518D295E8093004BE007 /* AuthenticationSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationSheetView.swift; sourceTree = "<group>"; };
@@ -196,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				5F14AB5B2964A8C30013A925 /* GoogleAuthentication.swift */,
+				5F4C48D3296896D5007B9265 /* GoogleAuthenticationMock.swift */,
 			);
 			path = googleAuthentication;
 			sourceTree = "<group>";
@@ -212,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				5F156C68295F8327006E5F28 /* FirebaseAuthentication.swift */,
+				5F4C48DB29689AA1007B9265 /* FirebaseAuthenticationMock.swift */,
 			);
 			path = firebaseAuthentication;
 			sourceTree = "<group>";
@@ -230,8 +272,8 @@
 		5F156C6D295F850B006E5F28 /* services */ = {
 			isa = PBXGroup;
 			children = (
+				5F4C48DF29689FBF007B9265 /* authenticationService */,
 				5F9124E52965F87C00DB89D9 /* pokedexService */,
-				5F156C6E295F8527006E5F28 /* AuthenticationService.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -239,10 +281,10 @@
 		5F156C70295F8603006E5F28 /* useCases */ = {
 			isa = PBXGroup;
 			children = (
-				5F156C7E29609CB3006E5F28 /* HomeUseCase.swift */,
-				5F156C872960B68F006E5F28 /* AuthenticationUseCase.swift */,
-				5F14AB4629634CAE0013A925 /* ProfileUseCase.swift */,
-				5F14AB4C29636C010013A925 /* SplashUseCase.swift */,
+				5F4C48F62968CF76007B9265 /* profileUseCase */,
+				5F4C48F12968A44F007B9265 /* authenticationUseCase */,
+				5F4C48EC2968A3ED007B9265 /* homeUseCase */,
+				5F4C48E22968A188007B9265 /* splashUseCase */,
 				5F9124F429661E8600DB89D9 /* PokedexUseCase.swift */,
 			);
 			path = useCases;
@@ -273,6 +315,116 @@
 				5F156C852960A2FE006E5F28 /* HomeViewModel.swift */,
 			);
 			path = homeScreen;
+			sourceTree = "<group>";
+		};
+		5F4C48C529689114007B9265 /* enviroments */ = {
+			isa = PBXGroup;
+			children = (
+				5F14AB5129637E110013A925 /* SessionManager.swift */,
+			);
+			path = enviroments;
+			sourceTree = "<group>";
+		};
+		5F4C48C62968913B007B9265 /* prototocols */ = {
+			isa = PBXGroup;
+			children = (
+				5F4C48E92968A26B007B9265 /* domain */,
+				5F4C48E82968A25D007B9265 /* data */,
+			);
+			path = prototocols;
+			sourceTree = "<group>";
+		};
+		5F4C48CC29689321007B9265 /* dataMock */ = {
+			isa = PBXGroup;
+			children = (
+				5F4C48CF29689348007B9265 /* Constants.swift */,
+			);
+			path = dataMock;
+			sourceTree = "<group>";
+		};
+		5F4C48D52968977D007B9265 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5F4C48E52968A1DE007B9265 /* ownClasses */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
+		5F4C48DF29689FBF007B9265 /* authenticationService */ = {
+			isa = PBXGroup;
+			children = (
+				5F156C6E295F8527006E5F28 /* AuthenticationService.swift */,
+				5F4C48E029689FDB007B9265 /* AuthenticationServiceMock.swift */,
+			);
+			path = authenticationService;
+			sourceTree = "<group>";
+		};
+		5F4C48E22968A188007B9265 /* splashUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				5F14AB4C29636C010013A925 /* SplashUseCase.swift */,
+				5F4C48E32968A1A6007B9265 /* SplashUseCaseMock.swift */,
+			);
+			path = splashUseCase;
+			sourceTree = "<group>";
+		};
+		5F4C48E52968A1DE007B9265 /* ownClasses */ = {
+			isa = PBXGroup;
+			children = (
+				5F4C48D7296897F5007B9265 /* AuthenticationClasses.swift */,
+				5F4C48E62968A234007B9265 /* UseCases.swift */,
+				5F4C48FB2968D22A007B9265 /* ViewModels.swift */,
+			);
+			path = ownClasses;
+			sourceTree = "<group>";
+		};
+		5F4C48E82968A25D007B9265 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				5F4C48C7296891D1007B9265 /* FacebookAuthenticationProtocol.swift */,
+				5F4C48D1296893B5007B9265 /* GoogleAuthenticationProtocol.swift */,
+				5F4C48D929689996007B9265 /* FirebaseAuthenticationProtocol.swift */,
+				5F4C48DD29689DC1007B9265 /* AuthenticationServiceProtocol.swift */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		5F4C48E92968A26B007B9265 /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				5F4C48EA2968A297007B9265 /* SplashUseCaseProtocol.swift */,
+				5F4C48EF2968A41F007B9265 /* HomeUseCaseProtocol.swift */,
+				5F4C48F42968A4B0007B9265 /* AuthenticationUseCaseProtocol.swift */,
+				5F4C48F72968CFFE007B9265 /* ProfileUseCaseProtocol.swift */,
+			);
+			path = domain;
+			sourceTree = "<group>";
+		};
+		5F4C48EC2968A3ED007B9265 /* homeUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				5F156C7E29609CB3006E5F28 /* HomeUseCase.swift */,
+				5F4C48ED2968A3FD007B9265 /* HomeUseCaseMock.swift */,
+			);
+			path = homeUseCase;
+			sourceTree = "<group>";
+		};
+		5F4C48F12968A44F007B9265 /* authenticationUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				5F156C872960B68F006E5F28 /* AuthenticationUseCase.swift */,
+				5F4C48F22968A47E007B9265 /* AuthenticationUseCaseMock.swift */,
+			);
+			path = authenticationUseCase;
+			sourceTree = "<group>";
+		};
+		5F4C48F62968CF76007B9265 /* profileUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				5F14AB4629634CAE0013A925 /* ProfileUseCase.swift */,
+				5F4C48F92968D05B007B9265 /* ProfileUseCaseMock.swift */,
+			);
+			path = profileUseCase;
 			sourceTree = "<group>";
 		};
 		5F755182295E7CB1004BE007 /* Frameworks */ = {
@@ -374,6 +526,7 @@
 			isa = PBXGroup;
 			children = (
 				5FAA939829612E9500C58B67 /* FacebookAuthentication.swift */,
+				5F4C48C9296892B7007B9265 /* FacebookAuthenticationMock.swift */,
 			);
 			path = facebookAuthentication;
 			sourceTree = "<group>";
@@ -403,6 +556,7 @@
 		5FE9B9D82952222E0006C2E2 /* Pokedex-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				5F4C48CC29689321007B9265 /* dataMock */,
 				5FAA939529612B4400C58B67 /* Info.plist */,
 				5FEBD24329522BB400050E6A /* presentation */,
 				5FEBD24229522BA500050E6A /* domain */,
@@ -445,8 +599,10 @@
 		5FEBD24029522B9300050E6A /* core */ = {
 			isa = PBXGroup;
 			children = (
+				5F4C48D52968977D007B9265 /* extensions */,
+				5F4C48C62968913B007B9265 /* prototocols */,
+				5F4C48C529689114007B9265 /* enviroments */,
 				5F14AB5D2964AB4C0013A925 /* utilities */,
-				5F14AB5129637E110013A925 /* SessionManager.swift */,
 				5F75518C295E805E004BE007 /* enum_classes */,
 			);
 			path = core;
@@ -641,45 +797,65 @@
 			files = (
 				5F156C7F29609CB3006E5F28 /* HomeUseCase.swift in Sources */,
 				5F75518E295E8093004BE007 /* AuthenticationSheetView.swift in Sources */,
+				5F4C48DA29689996007B9265 /* FirebaseAuthenticationProtocol.swift in Sources */,
 				5F755196295E957B004BE007 /* DismissView.swift in Sources */,
+				5F4C48CA296892B7007B9265 /* FacebookAuthenticationMock.swift in Sources */,
+				5F4C48D2296893B5007B9265 /* GoogleAuthenticationProtocol.swift in Sources */,
 				5F755192295E8C4B004BE007 /* LoginEmailView.swift in Sources */,
 				5F156C882960B68F006E5F28 /* AuthenticationUseCase.swift in Sources */,
+				5F4C48E42968A1A6007B9265 /* SplashUseCaseMock.swift in Sources */,
+				5F4C48FC2968D22A007B9265 /* ViewModels.swift in Sources */,
 				5F755189295E7DE5004BE007 /* AuthenticationView.swift in Sources */,
+				5F4C48EB2968A297007B9265 /* SplashUseCaseProtocol.swift in Sources */,
 				5F126D39296631A70091D1E5 /* PokemonViewModel.swift in Sources */,
 				5F14AB4929634F910013A925 /* ProfileViewModel.swift in Sources */,
+				5F4C48D8296897F5007B9265 /* AuthenticationClasses.swift in Sources */,
+				5F4C48F82968CFFE007B9265 /* ProfileUseCaseProtocol.swift in Sources */,
 				5F156C78295F8C44006E5F28 /* User.swift in Sources */,
 				5F9124E32965F4C700DB89D9 /* ListPokedexesResponse.swift in Sources */,
 				5FE9B9DA2952222E0006C2E2 /* Pokedex_iOSApp.swift in Sources */,
 				5FE9B9DC2952222E0006C2E2 /* Persistence.swift in Sources */,
+				5F4C48E72968A234007B9265 /* UseCases.swift in Sources */,
 				5F14AB4729634CAE0013A925 /* ProfileUseCase.swift in Sources */,
+				5F4C48E129689FDB007B9265 /* AuthenticationServiceMock.swift in Sources */,
 				5F14AB5229637E110013A925 /* SessionManager.swift in Sources */,
 				5F14AB50296371B70013A925 /* SplashViewModel.swift in Sources */,
 				5F156C75295F870F006E5F28 /* AuthenticationViewModel.swift in Sources */,
+				5F4C48F02968A41F007B9265 /* HomeUseCaseProtocol.swift in Sources */,
 				5F04974A295D02A60091E269 /* SplashScreenView.swift in Sources */,
 				5F9124F329661DA100DB89D9 /* Pokedex.swift in Sources */,
 				5F9124F1296619C300DB89D9 /* PokedexResponse.swift in Sources */,
 				5F9124E92965F9F600DB89D9 /* Pokedexes.swift in Sources */,
 				5F9124E72965F89100DB89D9 /* PokedexService.swift in Sources */,
 				5F14AB5C2964A8C30013A925 /* GoogleAuthentication.swift in Sources */,
+				5F4C48D029689348007B9265 /* Constants.swift in Sources */,
 				5F755194295E94C8004BE007 /* RegisterEmailView.swift in Sources */,
 				5F14AB5F2964AB6E0013A925 /* ApplicationUtility.swift in Sources */,
 				5F9124EE2966191500DB89D9 /* PokedexViewModel.swift in Sources */,
+				5F4C48D4296896D5007B9265 /* GoogleAuthenticationMock.swift in Sources */,
+				5F4C48DE29689DC1007B9265 /* AuthenticationServiceProtocol.swift in Sources */,
+				5F4C48F52968A4B0007B9265 /* AuthenticationUseCaseProtocol.swift in Sources */,
+				5F4C48FA2968D05B007B9265 /* ProfileUseCaseMock.swift in Sources */,
 				5F9124F529661E8600DB89D9 /* PokedexUseCase.swift in Sources */,
 				5F126D3B296631B60091D1E5 /* PokemonView.swift in Sources */,
 				5F156C69295F8327006E5F28 /* FirebaseAuthentication.swift in Sources */,
 				5F9124EC2966188900DB89D9 /* PokedexView.swift in Sources */,
 				5FAA939929612E9500C58B67 /* FacebookAuthentication.swift in Sources */,
+				5F4C48DC29689AA1007B9265 /* FirebaseAuthenticationMock.swift in Sources */,
 				5FE9B9E12952222E0006C2E2 /* ContentView.swift in Sources */,
 				5F14AB4D29636C010013A925 /* SplashUseCase.swift in Sources */,
 				5F156C6C295F8382006E5F28 /* UserModel.swift in Sources */,
 				5F156C862960A2FE006E5F28 /* HomeViewModel.swift in Sources */,
 				5FE9B9DF2952222E0006C2E2 /* Pokedex_iOS.xcdatamodeld in Sources */,
 				5F156C6F295F8527006E5F28 /* AuthenticationService.swift in Sources */,
+				5F4C48EE2968A3FD007B9265 /* HomeUseCaseMock.swift in Sources */,
 				5F9124E02965F48700DB89D9 /* PokemonAPI.swift in Sources */,
+				5F4C48F32968A47E007B9265 /* AuthenticationUseCaseMock.swift in Sources */,
 				5F14AB43296346A00013A925 /* ProfileView.swift in Sources */,
 				5F14AB4529634A460013A925 /* LinkedAccountModel.swift in Sources */,
 				5F14AB5429638A780013A925 /* LinkedAccount.swift in Sources */,
 				5F156C8429609FA7006E5F28 /* HomeView.swift in Sources */,
+				5F4C48C8296891D1007B9265 /* FacebookAuthenticationProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

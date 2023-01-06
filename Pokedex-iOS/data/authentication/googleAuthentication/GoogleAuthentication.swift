@@ -9,8 +9,9 @@ import Foundation
 import Firebase
 import GoogleSignIn
 
-class GoogleAuthentication {
-    func googleLogin(completion: @escaping(Result<GIDGoogleUser, Error>) -> Void) {
+class GoogleAuthentication: GoogleAuthenticationProtocol {
+    
+    func googleLogin(completion: @escaping(Result<[String]?, Error>) -> Void) {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
         
         let config = GIDConfiguration(clientID: clientID)
@@ -26,7 +27,10 @@ class GoogleAuthentication {
             }
             
             guard let user = signInResult?.user else { return }
-            completion(.success(user))
+            guard let idToken = user.idToken?.tokenString else { return }
+            let accessToken = user.accessToken.tokenString
+            
+            completion(.success([idToken,accessToken]))
             
         }
     }

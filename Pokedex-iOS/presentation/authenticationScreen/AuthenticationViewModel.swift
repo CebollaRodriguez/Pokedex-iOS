@@ -10,10 +10,10 @@ import Foundation
 final class AuthenticationViewModel: ObservableObject {
     @Published var user: User?
     @Published var messageError: String?
-    private let useCase: AuthenticationUseCase
-    private let sessionManager = SessionManager()
     
-    init(authenticationUseCase: AuthenticationUseCase) {
+    private let useCase: AuthenticationUseCaseProtocol
+    
+    init(authenticationUseCase: AuthenticationUseCaseProtocol) {
         self.useCase = authenticationUseCase
     }
     
@@ -70,11 +70,5 @@ final class AuthenticationViewModel: ObservableObject {
                 self?.messageError = error.localizedDescription
             }
         }
-    }
-}
-
-extension AuthenticationViewModel {
-    static func build()-> AuthenticationViewModel {
-        return AuthenticationViewModel(authenticationUseCase: AuthenticationUseCase())
     }
 }

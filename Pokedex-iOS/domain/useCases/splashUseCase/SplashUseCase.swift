@@ -7,10 +7,10 @@
 
 import Foundation
 
-final class SplashUseCase {
-    private let authService: AuthenticationService
+class SplashUseCase: SplashUseCaseProtocol {
+    private let authService: AuthenticationServiceProtocol
     
-    init(authService: AuthenticationService = AuthenticationService()) {
+    init(authService: AuthenticationServiceProtocol) {
         self.authService = authService
     }
     

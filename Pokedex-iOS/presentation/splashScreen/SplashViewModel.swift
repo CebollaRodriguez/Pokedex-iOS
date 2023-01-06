@@ -8,9 +8,9 @@
 import Foundation
 
 final class SplashViewModel: ObservableObject {
-    private let useCase: SplashUseCase
+    private let useCase: SplashUseCaseProtocol
     
-    init(splashUseCase: SplashUseCase) {
+    init(splashUseCase: SplashUseCaseProtocol) {
         self.useCase = splashUseCase
     }
     
@@ -25,8 +25,3 @@ final class SplashViewModel: ObservableObject {
     }
 }
 
-extension SplashViewModel {
-    static func build() -> SplashViewModel {
-        return SplashViewModel(splashUseCase: SplashUseCase())
-    }
-}
