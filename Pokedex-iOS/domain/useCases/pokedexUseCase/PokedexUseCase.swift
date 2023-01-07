@@ -7,10 +7,10 @@
 
 import Foundation
 
-class PokedexUseCase {
-    private let pokedexService: PokedexService
+class PokedexUseCase: PokedexUseCaseProtocol {
+    private let pokedexService: PokedexServiceProtocol
     
-    init(pokedexService: PokedexService = PokedexService()) {
+    init(pokedexService: PokedexServiceProtocol ) {
         self.pokedexService = pokedexService
     }
     

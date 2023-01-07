@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+class HomeUseCaseMock: HomeUseCaseProtocol {
+    func getPokexesList(completion: @escaping (Result<[Pokedexes], Error>) -> Void) {
+        completion(.success([.init(name: "Test", url: "UrlTest")]))
+    }
+}

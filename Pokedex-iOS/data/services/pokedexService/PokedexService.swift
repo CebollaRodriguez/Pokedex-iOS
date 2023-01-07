@@ -7,10 +7,10 @@
 
 import Foundation
 
-class PokedexService {
-    private let api: PokemonAPI
+class PokedexService: PokedexServiceProtocol {
+    private let api: PokemonApiProtocol
     
-    init(api: PokemonAPI = PokemonAPI()) {
+    init(api: PokemonApiProtocol) {
         self.api = api
     }
     

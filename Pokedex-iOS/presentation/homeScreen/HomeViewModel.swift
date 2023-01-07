@@ -10,9 +10,9 @@ import Foundation
 class HomeViewModel: ObservableObject {
     @Published var pokedexes: [Pokedexes] = []
     @Published var messageError: String = ""
-    private let useCase: HomeUseCase
+    private let useCase: HomeUseCaseProtocol
     
-    init(useCase: HomeUseCase) {
+    init(useCase: HomeUseCaseProtocol) {
         self.useCase = useCase
     }
     
@@ -25,11 +25,5 @@ class HomeViewModel: ObservableObject {
                 self?.messageError = error.localizedDescription
             }
         }
-    }
-}
-
-extension HomeViewModel {
-    static func build() -> HomeViewModel{
-        return HomeViewModel(useCase: HomeUseCase())
     }
 }

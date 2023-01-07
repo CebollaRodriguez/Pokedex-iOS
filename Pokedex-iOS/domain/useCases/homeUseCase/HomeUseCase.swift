@@ -9,9 +9,9 @@ import Foundation
 
 final class HomeUseCase: HomeUseCaseProtocol {
     
-    private let pokedexService: PokedexService
+    private let pokedexService: PokedexServiceProtocol
     
-    init(pokedexService: PokedexService = PokedexService()) {
+    init(pokedexService: PokedexServiceProtocol) {
         self.pokedexService = pokedexService
     }
     
@@ -31,4 +31,5 @@ final class HomeUseCase: HomeUseCaseProtocol {
             }
         }
     }
+    
 }

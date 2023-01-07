@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class PokemonAPI {
+ class PokemonAPI: PokemonApiProtocol {
     func listPokedexes(completion: @escaping(Result<ListPokedexesResponse?, Error>) -> Void) {
         let url = URL(string: "https://pokeapi.co/api/v2/pokedex")
         
@@ -42,4 +42,26 @@ final class PokemonAPI {
         .resume()
     }
     
+    func getOnePokemon(id: Int, completion: @escaping(Result<PokemonResponse, Error>) -> Void) {
+        let pokemonUrl = URL(string: "https://pokeapi.co/api/v2/pokemon-species/\(id)/")
+        
+        URLSession.shared.dataTask(with: pokemonUrl!) { data, response, error in
+            if let error = error {
+                print("Error getting Pokemon by API: \(error.localizedDescription)")
+                completion(.failure(error))
+                return
+            }
+            
+            guard let data = data else {
+                return
+                
+            }
+            
+            let pokemon = try? JSONDecoder().decode(PokemonResponse.self, from: data)
+            if let pokemon = pokemon {
+                completion(.success(pokemon))
+            }
+        }
+        .resume()
+    }
 }

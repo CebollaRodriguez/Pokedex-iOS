@@ -9,8 +9,12 @@ import SwiftUI
 
 struct PokemonView: View {
     let pokemonId: Int
+    @StateObject private var viewModel: PokemonViewModel = .build()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text(viewModel.name)
+            .onAppear{
+                viewModel.getPokemon(id: pokemonId)
+            }
     }
 }
 

@@ -10,9 +10,9 @@ import Foundation
 class PokedexViewModel: ObservableObject {
     @Published var model: Pokedex = .init(pokedexName: "S/N", pokemons: [])
     @Published var messageError: String = ""
-    private let useCase: PokedexUseCase
+    private let useCase: PokedexUseCaseProtocol
     
-    init(useCase: PokedexUseCase) {
+    init(useCase: PokedexUseCaseProtocol) {
         self.useCase = useCase
     }
     
@@ -25,11 +25,5 @@ class PokedexViewModel: ObservableObject {
                 self?.messageError = error.localizedDescription
             }
         }
-    }
-}
-
-extension PokedexViewModel {
-    static func build() -> PokedexViewModel {
-        return PokedexViewModel(useCase: PokedexUseCase())
     }
 }
