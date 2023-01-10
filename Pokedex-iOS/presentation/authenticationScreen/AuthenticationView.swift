@@ -33,7 +33,7 @@ struct AuthenticationView: View {
     
     var registerButton: some View {
         HStack{
-            Text("Witout account?")
+            Text("Without account?")
             Button {
                 authSheetView = .register
             } label: {
@@ -44,12 +44,16 @@ struct AuthenticationView: View {
     }
     
     var logInButtons: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: 15) {
             Text("Login with:")
             Button {
                 authSheetView = .login
             } label: {
-                Label("Email", systemImage: "envelope.fill")
+                HStack {
+                    Spacer()
+                    Label("Email", systemImage: "envelope.fill")
+                    Spacer()
+                }
                 
             }
             .tint(.black)
@@ -59,10 +63,12 @@ struct AuthenticationView: View {
                 }
             } label: {
                 HStack {
+                    Spacer()
                     Image("facebook_ic")
                         .resizable()
                         .frame(width: 20, height: 20)
                     Text("Facebook")
+                    Spacer()
                 }
                 
             }
@@ -73,20 +79,22 @@ struct AuthenticationView: View {
                 }
             } label: {
                 HStack {
+                    Spacer()
                     Image("google_logo")
                         .resizable()
                         .frame(width: 20, height: 20)
                     Text("Google")
+                    Spacer()
                 }
                 
             }
             .tint(.red)
             
         }
-        .frame(width: 300)
+        .frame(width: 200)
         .buttonStyle(.bordered)
         .buttonBorderShape(.capsule)
-        .padding(.top, 50)
+        .padding(.top, 30)
     }
     
     var topImage: some View {

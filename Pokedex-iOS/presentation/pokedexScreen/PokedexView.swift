@@ -37,9 +37,12 @@ struct PokedexView: View {
                     } label: {
                         HStack {
                             Spacer()
-                            Text(pokemon.name)
-                                .foregroundColor(.primary)
-                                .font(.caption.bold())
+                            VStack {
+                                Text(pokemon.name)
+                                    .foregroundColor(.primary)
+                                    .font(.caption.bold()) 
+                            }
+                            
                             
                             Spacer()
                         }

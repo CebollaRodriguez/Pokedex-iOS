@@ -18,20 +18,26 @@ struct ProfileView: View {
         
         ZStack {
             VStack {
-                
-                buttonsLink
+                Form {
+                    buttonsLink
+                    buttonsAccount
+                }
+                .alert(profileViewModel.isDelete ? "Account deleted" : "An error has occurred", isPresented: $profileViewModel.showDeleteAlert) {
+                    Button("Accept") {
+                        if profileViewModel.isDelete {
+                            session.localLogOut()
+                        }
+                    }
+                } message: {
+                    Text(profileViewModel.isDelete ? "✅ Your account was deleted successful" : "❌ Error deleting your account, contact with support")
+                }
                 
             }
             
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Profile")
-        .toolbar {
-            Button("Logout") {
-                profileViewModel.userLogOut()
-                session.localLogOut()
-            }
-        }
+        
     }
     
     var linkEmailView: some View {
@@ -58,25 +64,47 @@ struct ProfileView: View {
         }
         .padding(.horizontal,10)
     }
-    var buttonDelete: some View {
-        VStack {
-            Button {
-                self.wantDelete.toggle()
-            } label: {
-                HStack {
-                    Spacer()
-                    Text("Delete account")
-                        .foregroundColor(.white)
-                        .padding()
-                    
-                    Spacer()
+    
+    
+    var buttonsAccount: some View {
+        Section {
+            VStack (spacing: 10) {
+                Button {
+                    profileViewModel.userLogOut()
+                    session.localLogOut()
+                } label: {
+                    HStack {
+                        Spacer()
+                        Text("Log Out")
+                            .foregroundColor(.white)
+                            .padding()
+                        Spacer()
+                    }
+                    .background(.blue)
+                    .cornerRadius(30)
                 }
-                .background(.red)
+                Button {
+                    self.wantDelete.toggle()
+                } label: {
+                    HStack {
+                        Spacer()
+                        Text("Delete account")
+                            .foregroundColor(.white)
+                            .padding()
+                        
+                        Spacer()
+                    }
+                    .background(.red)
+                    .cornerRadius(30)
+                }
+                
             }
-            .cornerRadius(30)
             
+            
+        } header: {
+            Text("Account actions")
         }
-        .alert("Do you want to delete your account?", isPresented: self.$wantDelete) {
+        .alert("Delete Account", isPresented: self.$wantDelete) {
             HStack{
                 Button("Cancel") {
                     self.wantDelete = false
@@ -85,79 +113,68 @@ struct ProfileView: View {
                     profileViewModel.deleteAccount()
                 }
             }
+        } message: {
+            Text("Do you want to delete your account?")
+            
         }
-        
-        
     }
     
     var buttonsLink: some View {
-        Form {
-            Section {
-                Button {
-                    self.isClick.toggle()
-                } label: {
-                    VStack {
-                        HStack {
-                            Image(systemName: "envelope.fill")
-                                .frame(width: 20, height: 20)
-                            Text("Link Email")
-                            Spacer()
-                        }
-                        if self.isClick {
-                            linkEmailView
-                        }
-                    }
-                }
-                .disabled(profileViewModel.isEmailAndPasswordLinked())
-                Button {
-                    profileViewModel.userLinkFacebook()
-                } label: {
+        Section {
+            Button {
+                self.isClick.toggle()
+            } label: {
+                VStack {
                     HStack {
-                        Image("facebook_ic")
-                            .resizable()
+                        Image(systemName: "envelope.fill")
                             .frame(width: 20, height: 20)
-                        Text("Link Facebook")
+                        Text("Link Email")
+                        Spacer()
+                    }
+                    if self.isClick {
+                        linkEmailView
                     }
                 }
-                .disabled(profileViewModel.isFacebookLinked())
-                Button {
-                    profileViewModel.userLinkGoogle()
-                } label: {
-                    HStack {
-                        Image("google_logo")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                        Text("Link Google")
-                    }
+            }
+            .disabled(profileViewModel.isEmailAndPasswordLinked())
+            Button {
+                profileViewModel.userLinkFacebook()
+            } label: {
+                HStack {
+                    Image("facebook_ic")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                    Text("Link Facebook")
                 }
-                .disabled(profileViewModel.isGoogleLinked())
-                
-            } header: {
-                Text("Link other accounts with this session")
-                    .foregroundColor(.secondary)
-                    .font(.caption)
             }
-            .task{
-                profileViewModel.getCurrentProvider()
-            }
-            .alert(profileViewModel.isAccountLinked ? "Linked Account" : "Linking account error", isPresented: $profileViewModel.showAlert) {
-                Button("Accept") {
-                    self.isClick = false
+            .disabled(profileViewModel.isFacebookLinked())
+            Button {
+                profileViewModel.userLinkGoogle()
+            } label: {
+                HStack {
+                    Image("google_logo")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                    Text("Link Google")
                 }
-            } message: {
-                Text(profileViewModel.isAccountLinked ? "✅ Your account was linked succesful!" : "❌ Error linking your account")
             }
-            buttonDelete
-                
+            .disabled(profileViewModel.isGoogleLinked())
+            
+        } header: {
+            Text("Link other accounts with this session")
+                .foregroundColor(.secondary)
+                .font(.caption)
         }
-        .alert(profileViewModel.isDelete ? "Account deleted" : "An error has occurred", isPresented: $profileViewModel.showDeleteAlert) {
+        .task{
+            profileViewModel.getCurrentProvider()
+        }
+        .alert(profileViewModel.isAccountLinked ? "Linked Account" : "Linking account error", isPresented: $profileViewModel.showAlert) {
             Button("Accept") {
-                session.localLogOut()
+                self.isClick = false
             }
         } message: {
-            Text(profileViewModel.isDelete ? "✅ Your account was deleted successful" : "❌ Error deleting your account, contact with support")
+            Text(profileViewModel.isAccountLinked ? "✅ Your account was linked succesful!" : "❌ Error linking your account")
         }
-        
     }
 }
 

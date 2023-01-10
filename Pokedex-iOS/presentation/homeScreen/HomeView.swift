@@ -14,15 +14,7 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             TabView {
-                VStack {
-                    Text("Welcome \(email)")
-                        .padding(.top, 20)
-                    
-                    pokedexesList
-                }
-                .onAppear{
-                    homeViewModel.getPokedexeslist()
-                }
+                homeBody
                 .tabItem {
                     Label("Home", systemImage: "house.fill")
                 }
@@ -37,12 +29,24 @@ struct HomeView: View {
         }
     }
     
+    var homeBody: some View {
+        VStack {
+            Text("Welcome \(email)")
+                .padding(.top, 20)
+            pokedexesList
+        }
+        .onAppear{
+            homeViewModel.getPokedexeslist()
+        }
+    }
+    
     var pokedexesList: some View {
         
         VStack {
             Text("Choose a pokedex")
                 .foregroundColor(.secondary)
                 .font(.title)
+                .padding(.top, 3)
             ScrollView {
                 LazyVGrid(columns: [
                     GridItem(.adaptive(minimum: 100)),
