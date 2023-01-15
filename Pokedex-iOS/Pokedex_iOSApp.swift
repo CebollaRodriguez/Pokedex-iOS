@@ -34,8 +34,7 @@ struct Pokedex_iOSApp: App {
         WindowGroup {
             SplashScreenView()
                 .environmentObject(SessionManager())
-            //ContentView()
-                //.environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

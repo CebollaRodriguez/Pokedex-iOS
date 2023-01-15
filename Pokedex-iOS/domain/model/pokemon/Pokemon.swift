@@ -12,4 +12,5 @@ struct Pokemon {
     let id: Int
     let color: String
     let evolutionChainUrl: String
+    let pokemonEvolutions: [PokemonEvolutions]
 }

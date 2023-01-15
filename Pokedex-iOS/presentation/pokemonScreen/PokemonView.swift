@@ -11,12 +11,20 @@ struct PokemonView: View {
     let pokemonId: Int
     @StateObject private var viewModel: PokemonViewModel = .build()
     var body: some View {
-        Text(viewModel.name)
+        NavigationView {
+            VStack {
+                List(viewModel.model.pokemonEvolutions, id: \.evoName) { evo in
+                    Text(evo.evoId)
+                }
+            }
             .onAppear{
                 viewModel.getPokemon(id: pokemonId)
             }
+            .navigationTitle()
+        }
     }
 }
+
 
 struct PokemonView_Previews: PreviewProvider {
     static var previews: some View {

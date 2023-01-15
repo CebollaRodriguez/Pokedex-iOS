@@ -9,6 +9,6 @@ import Foundation
 
 class PokemonUseCaseMock: PokemonUseCaseProtocol {
     func getPokemon(id: Int, completion: @escaping (Result<Pokemon, Error>) -> Void) {
-        completion(.success(.init(name: "Teste", id: 1, color: "ColorTest", evolutionChainUrl: "UrlTest")))
+        completion(.success(.init(name: "Teste", id: 1, color: "ColorTest", evolutionChainUrl: "UrlTest", pokemonEvolutions: [])))
     }
 }

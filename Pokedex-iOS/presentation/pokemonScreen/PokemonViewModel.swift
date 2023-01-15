@@ -9,6 +9,9 @@ import Foundation
 
 class PokemonViewModel: ObservableObject {
     @Published var name: String = ""
+    @Published var id: Int = 0
+    @Published var pokemonEvolution: [PokemonEvolutions] = []
+    @Published var color
     @Published var messageError: String = ""
     
     private let useCase: PokemonUseCaseProtocol
@@ -23,6 +26,8 @@ class PokemonViewModel: ObservableObject {
             switch result {
             case .success(let pokemon):
                 self?.name = pokemon.name
+                self?.id = pokemon.id
+                self?.pokemonEvolution = pokemon.pokemonEvolutions
             case .failure(let error):
                 self?.messageError = error.localizedDescription
             }

@@ -7,7 +7,7 @@
 
 import Foundation
 
- class PokemonAPI: PokemonApiProtocol {
+class PokemonAPI: PokemonApiProtocol {
     func listPokedexes(completion: @escaping(Result<ListPokedexesResponse?, Error>) -> Void) {
         let url = URL(string: "https://pokeapi.co/api/v2/pokedex")
         
@@ -20,7 +20,7 @@ import Foundation
             if let data = data {
                 let pokedexes = try? JSONDecoder().decode(ListPokedexesResponse.self, from: data)
                 completion(.success(pokedexes))
-
+                
             }
         }
         .resume()
@@ -54,12 +54,30 @@ import Foundation
             
             guard let data = data else {
                 return
-                
             }
             
-            let pokemon = try? JSONDecoder().decode(PokemonResponse.self, from: data)
-            if let pokemon = pokemon {
+            if let pokemon = try? JSONDecoder().decode(PokemonResponse.self, from: data) {
                 completion(.success(pokemon))
+            }
+        }
+        .resume()
+    }
+    
+    func getEvolutionSpecies(url: String, completion: @escaping(Result<EvolutionResponse, Error>) -> Void) {
+        let evoUrl = URL(string: url)
+        
+        URLSession.shared.dataTask(with: evoUrl!) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let data = data else {
+                return
+            }
+            
+            if let evolutionResponse = try? JSONDecoder().decode(EvolutionResponse.self, from: data) {
+                completion(.success(evolutionResponse))
             }
         }
         .resume()

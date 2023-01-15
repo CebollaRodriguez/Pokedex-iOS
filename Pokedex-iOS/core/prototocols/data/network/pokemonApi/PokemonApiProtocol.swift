@@ -14,4 +14,6 @@ protocol PokemonApiProtocol: AnyObject {
     func onePokedex(url:String, completion: @escaping(Result<PokedexResponse?, Error>) -> Void)
     
     func getOnePokemon(id: Int, completion: @escaping(Result<PokemonResponse, Error>) -> Void)
+    
+    func getEvolutionSpecies(url: String, completion: @escaping(Result<EvolutionResponse, Error>) -> Void)
 }

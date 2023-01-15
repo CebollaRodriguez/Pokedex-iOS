@@ -8,12 +8,12 @@
 import Foundation
 
 struct Pokedex {
-    let pokedexName: String
+    var pokedexName: String
     let pokemons: [PokemonInPokedex]
 }
 
 struct PokemonInPokedex {
     let id: Int
-    let name: String
+    var name: String
     let url: String
 }

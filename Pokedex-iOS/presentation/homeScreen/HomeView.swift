@@ -18,13 +18,18 @@ struct HomeView: View {
                 .tabItem {
                     Label("Home", systemImage: "house.fill")
                 }
-                ProfileView()
-                    .tabItem {
-                        Label("Profile", systemImage: "person.fill")
-                        
-                    }
+                
                 
             }
+            .toolbar(content: {
+                NavigationLink {
+                    ProfileView()
+                } label: {
+                    Image(systemName: "person.fill")
+                        
+                }
+
+            })
             .navigationBarTitleDisplayMode(.inline)
         }
     }
@@ -53,12 +58,13 @@ struct HomeView: View {
                     GridItem(.adaptive(minimum: 100)),
                 ]) {
                     ForEach(homeViewModel.pokedexes, id: \.name) { pokedex in
+                        var pokedexName = pokedex.name
                         NavigationLink {
                             PokedexView(pokedexUrl: pokedex.url)
                         } label: {
                             HStack{
                                 Spacer()
-                                Text(pokedex.name)
+                                Text(pokedexName.firstUpper())
                                 
                                     .foregroundColor(.primary)
                                 Spacer()

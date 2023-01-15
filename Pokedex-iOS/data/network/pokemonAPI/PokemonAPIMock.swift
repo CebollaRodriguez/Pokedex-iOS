@@ -8,6 +8,10 @@
 import Foundation
 
 class PokemonAPIMock: PokemonApiProtocol {
+    func getEvolutionSpecies(url: String, completion: @escaping (Result<EvolutionResponse, Error>) -> Void) {
+        
+    }
+    
     func listPokedexes(completion: @escaping (Result<ListPokedexesResponse?, Error>) -> Void) {
         completion(.success(.init(results: [.init(name: "Test", url: "UrlTest")])))
     }
