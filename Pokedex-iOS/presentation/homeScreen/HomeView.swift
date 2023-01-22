@@ -21,7 +21,7 @@ struct HomeView: View {
                 
                 
             }
-            .toolbar(content: {
+            .toolbar {
                 NavigationLink {
                     ProfileView()
                 } label: {
@@ -29,7 +29,7 @@ struct HomeView: View {
                         
                 }
 
-            })
+            }
             .navigationBarTitleDisplayMode(.inline)
         }
     }

@@ -34,7 +34,8 @@ class PokemonUseCase: PokemonUseCaseProtocol {
         }
     }
     
-    func mapEvo(evolutions: EvolutionResponse) -> [PokemonEvolutions]{
+    private func mapEvo(evolutions: EvolutionResponse) -> [PokemonEvolutions]{
+        //Unifying the evolutions in a only list
         var flag = true
         var evo: [ChainEvolutionResponse] = []
         var list: [ChainEvolutionResponse] = []

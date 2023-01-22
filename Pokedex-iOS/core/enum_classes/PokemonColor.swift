@@ -7,6 +7,13 @@
 
 import Foundation
 
-enum PokemonColor: String {
-    case Color
+enum PokemonColor: String {    
+    
+    case black = "black"
+    case blue = "blue"
+    case brown = "brown"
+    case gray = "gray"
+    case green = "green"
+    case unowned
+    
 }
