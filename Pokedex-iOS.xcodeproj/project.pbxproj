@@ -826,6 +826,7 @@
 				5FE9B9D32952222E0006C2E2 /* Frameworks */,
 				5FE9B9D42952222E0006C2E2 /* Resources */,
 				D0D4EBBC123AD7B8DBD146EB /* [CP] Embed Pods Frameworks */,
+				FF1E884A2554921B860EC1EC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -993,6 +994,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pokedex-iOS/Pods-Pokedex-iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF1E884A2554921B860EC1EC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pokedex-iOS/Pods-Pokedex-iOS-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pokedex-iOS/Pods-Pokedex-iOS-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pokedex-iOS/Pods-Pokedex-iOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
