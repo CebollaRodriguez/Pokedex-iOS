@@ -102,8 +102,8 @@ struct PokemonView: View {
             Text(evoName)
                 .frame(width: .infinity, height: 30)
                 .foregroundColor(.white)
-                .font(.headline)
-                .fontWeight(.bold)
+                .font(.headline.bold())
+                
         }
     }
     

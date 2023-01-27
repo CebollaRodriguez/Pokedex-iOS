@@ -102,6 +102,7 @@
 		5FE9B9F12952222F0006C2E2 /* Pokedex_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE9B9F02952222F0006C2E2 /* Pokedex_iOSTests.swift */; };
 		5FE9B9FB2952222F0006C2E2 /* Pokedex_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE9B9FA2952222F0006C2E2 /* Pokedex_iOSUITests.swift */; };
 		5FE9B9FD2952222F0006C2E2 /* Pokedex_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE9B9FC2952222F0006C2E2 /* Pokedex_iOSUITestsLaunchTests.swift */; };
+		F4C7F02804696295285F64DC /* Pods_Pokedex_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4569D5E39181DDD1FF2569AE /* Pods_Pokedex_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +123,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4569D5E39181DDD1FF2569AE /* Pods_Pokedex_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pokedex_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F049749295D02A60091E269 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		5F126D38296631A70091D1E5 /* PokemonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonViewModel.swift; sourceTree = "<group>"; };
 		5F126D3A296631B60091D1E5 /* PokemonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonView.swift; sourceTree = "<group>"; };
@@ -216,6 +218,8 @@
 		5FE9B9F62952222F0006C2E2 /* Pokedex-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pokedex-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE9B9FA2952222F0006C2E2 /* Pokedex_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokedex_iOSUITests.swift; sourceTree = "<group>"; };
 		5FE9B9FC2952222F0006C2E2 /* Pokedex_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokedex_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B0E59AF9B8569F47DD2EACFF /* Pods-Pokedex-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokedex-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Pokedex-iOS/Pods-Pokedex-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		C0ADDC5487B8C91BB714C73E /* Pods-Pokedex-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokedex-iOS.release.xcconfig"; path = "Target Support Files/Pods-Pokedex-iOS/Pods-Pokedex-iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +233,7 @@
 				5F14AB592964A6530013A925 /* GoogleSignInSwift in Frameworks */,
 				5F755186295E7D3D004BE007 /* FirebaseAuth in Frameworks */,
 				5F608F4A295E6E7A00648F00 /* FirebaseAnalytics in Frameworks */,
+				F4C7F02804696295285F64DC /* Pods_Pokedex_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +578,7 @@
 		5F755182295E7CB1004BE007 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4569D5E39181DDD1FF2569AE /* Pods_Pokedex_iOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -686,6 +692,7 @@
 				5FE9B9F92952222F0006C2E2 /* Pokedex-iOSUITests */,
 				5FE9B9D72952222E0006C2E2 /* Products */,
 				5F755182295E7CB1004BE007 /* Frameworks */,
+				AD9DBD55365770AD73DC857F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -797,6 +804,16 @@
 			path = db;
 			sourceTree = "<group>";
 		};
+		AD9DBD55365770AD73DC857F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B0E59AF9B8569F47DD2EACFF /* Pods-Pokedex-iOS.debug.xcconfig */,
+				C0ADDC5487B8C91BB714C73E /* Pods-Pokedex-iOS.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -804,9 +821,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5FE9BA002952222F0006C2E2 /* Build configuration list for PBXNativeTarget "Pokedex-iOS" */;
 			buildPhases = (
+				1F670899E342A3D2BE248EC3 /* [CP] Check Pods Manifest.lock */,
 				5FE9B9D22952222E0006C2E2 /* Sources */,
 				5FE9B9D32952222E0006C2E2 /* Frameworks */,
 				5FE9B9D42952222E0006C2E2 /* Resources */,
+				D0D4EBBC123AD7B8DBD146EB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -895,7 +914,7 @@
 			mainGroup = 5FE9B9CD2952222E0006C2E2;
 			packageReferences = (
 				5F608F48295E6E7A00648F00 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				5FAA9392296128E900C58B67 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				5FAA9392296128E900C58B67 /* XCRemoteSwiftPackageReference "facebook-ios-sdk.git" */,
 				5F14AB552964A6530013A925 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = 5FE9B9D72952222E0006C2E2 /* Products */;
@@ -935,6 +954,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1F670899E342A3D2BE248EC3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Pokedex-iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D0D4EBBC123AD7B8DBD146EB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pokedex-iOS/Pods-Pokedex-iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pokedex-iOS/Pods-Pokedex-iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pokedex-iOS/Pods-Pokedex-iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5FE9B9D22952222E0006C2E2 /* Sources */ = {
@@ -1110,6 +1171,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1162,6 +1224,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -1171,6 +1234,7 @@
 		};
 		5FE9BA012952222F0006C2E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0E59AF9B8569F47DD2EACFF /* Pods-Pokedex-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1194,7 +1258,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
@@ -1202,7 +1266,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Pokedex-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1211,6 +1277,7 @@
 		};
 		5FE9BA022952222F0006C2E2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0ADDC5487B8C91BB714C73E /* Pods-Pokedex-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1234,7 +1301,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
@@ -1242,7 +1309,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Pokedex-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1397,7 +1466,7 @@
 				minimumVersion = 9.0.0;
 			};
 		};
-		5FAA9392296128E900C58B67 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+		5FAA9392296128E900C58B67 /* XCRemoteSwiftPackageReference "facebook-ios-sdk.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/facebook/facebook-ios-sdk.git";
 			requirement = {
@@ -1435,7 +1504,7 @@
 		};
 		5FAA9393296128E900C58B67 /* FacebookLogin */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5FAA9392296128E900C58B67 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			package = 5FAA9392296128E900C58B67 /* XCRemoteSwiftPackageReference "facebook-ios-sdk.git" */;
 			productName = FacebookLogin;
 		};
 /* End XCSwiftPackageProductDependency section */
