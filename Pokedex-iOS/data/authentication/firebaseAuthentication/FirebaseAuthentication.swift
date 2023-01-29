@@ -161,7 +161,7 @@ final class FirebaseAuthentication: FirebaseAuthenticationProtocol {
         guard let providerId = currentProvider().last else{
             return
         }
-        print(providerId)
+        
         switch providerId {
         case .facebook:
             guard let accessToken = facebookAuth.getAccesToken() else {

@@ -42,3 +42,9 @@ extension PokemonViewModel {
         return PokemonViewModel(useCase: Constants.isMock ? PokemonUseCaseMock() : PokemonUseCase.build() )
     }
 }
+
+extension ExploreViewModel {
+    static func build() -> ExploreViewModel {
+        return ExploreViewModel(useCase: ExploreUseCase.build())
+    }
+}

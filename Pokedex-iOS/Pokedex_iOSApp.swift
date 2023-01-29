@@ -9,11 +9,13 @@ import SwiftUI
 import Firebase
 import FacebookLogin
 import GoogleSignIn
+import GoogleMaps
 
 class AppDelegate: NSObject,UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         FirebaseApp.configure()
+        GMSServices.provideAPIKey("AIzaSyDkAn9zmo2rt1p4PatMmo-eE7yfJDioZpY")
         return true
     }
     @available(iOS 9.0, *)

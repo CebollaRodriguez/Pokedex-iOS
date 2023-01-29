@@ -31,6 +31,14 @@
 		5F156C8429609FA7006E5F28 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C8329609FA7006E5F28 /* HomeView.swift */; };
 		5F156C862960A2FE006E5F28 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C852960A2FE006E5F28 /* HomeViewModel.swift */; };
 		5F156C882960B68F006E5F28 /* AuthenticationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F156C872960B68F006E5F28 /* AuthenticationUseCase.swift */; };
+		5F19318D2985DA0F002029DE /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F19318C2985DA0F002029DE /* ExploreView.swift */; };
+		5F19318F2985DA4B002029DE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F19318E2985DA4B002029DE /* MapView.swift */; };
+		5F1931922985DD1B002029DE /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1931912985DD1B002029DE /* LocationService.swift */; };
+		5F1931952985DF11002029DE /* UserExplore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1931942985DF11002029DE /* UserExplore.swift */; };
+		5F1931992985E1AB002029DE /* ExploreUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1931982985E1AB002029DE /* ExploreUseCase.swift */; };
+		5F19319B2985E1F0002029DE /* LocationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F19319A2985E1F0002029DE /* LocationServiceProtocol.swift */; };
+		5F19319D2985E28F002029DE /* ExploreUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F19319C2985E28E002029DE /* ExploreUseCaseProtocol.swift */; };
+		5F19319F2985E2DC002029DE /* ExploreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F19319E2985E2DC002029DE /* ExploreViewModel.swift */; };
 		5F4C48C8296891D1007B9265 /* FacebookAuthenticationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C48C7296891D1007B9265 /* FacebookAuthenticationProtocol.swift */; };
 		5F4C48CA296892B7007B9265 /* FacebookAuthenticationMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C48C9296892B7007B9265 /* FacebookAuthenticationMock.swift */; };
 		5F4C48D029689348007B9265 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C48CF29689348007B9265 /* Constants.swift */; };
@@ -146,6 +154,14 @@
 		5F156C8329609FA7006E5F28 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		5F156C852960A2FE006E5F28 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		5F156C872960B68F006E5F28 /* AuthenticationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationUseCase.swift; sourceTree = "<group>"; };
+		5F19318C2985DA0F002029DE /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
+		5F19318E2985DA4B002029DE /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		5F1931912985DD1B002029DE /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		5F1931942985DF11002029DE /* UserExplore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserExplore.swift; sourceTree = "<group>"; };
+		5F1931982985E1AB002029DE /* ExploreUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreUseCase.swift; sourceTree = "<group>"; };
+		5F19319A2985E1F0002029DE /* LocationServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceProtocol.swift; sourceTree = "<group>"; };
+		5F19319C2985E28E002029DE /* ExploreUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreUseCaseProtocol.swift; sourceTree = "<group>"; };
+		5F19319E2985E2DC002029DE /* ExploreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewModel.swift; sourceTree = "<group>"; };
 		5F4C48C7296891D1007B9265 /* FacebookAuthenticationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAuthenticationProtocol.swift; sourceTree = "<group>"; };
 		5F4C48C9296892B7007B9265 /* FacebookAuthenticationMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAuthenticationMock.swift; sourceTree = "<group>"; };
 		5F4C48CF29689348007B9265 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -310,6 +326,7 @@
 		5F156C6A295F8377006E5F28 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				5F1931932985DEF8002029DE /* userExplore */,
 				5F4C49042968DD43007B9265 /* evolutionResponse */,
 				5F4C48FD2968D9B4007B9265 /* pokemonResponse */,
 				5F9124EF296619AF00DB89D9 /* pokedexResponse */,
@@ -323,6 +340,7 @@
 		5F156C6D295F850B006E5F28 /* services */ = {
 			isa = PBXGroup;
 			children = (
+				5F1931902985DD04002029DE /* locationService */,
 				5F4C49052968DDA2007B9265 /* pokemonService */,
 				5F4C48DF29689FBF007B9265 /* authenticationService */,
 				5F9124E52965F87C00DB89D9 /* pokedexService */,
@@ -333,6 +351,7 @@
 		5F156C70295F8603006E5F28 /* useCases */ = {
 			isa = PBXGroup;
 			children = (
+				5F1931972985E197002029DE /* exploreUseCase */,
 				5F4C49222968EB14007B9265 /* pokedexUseCase */,
 				5F4C49082968E020007B9265 /* pokemonUseCase */,
 				5F4C48F62968CF76007B9265 /* profileUseCase */,
@@ -369,6 +388,40 @@
 				5F156C852960A2FE006E5F28 /* HomeViewModel.swift */,
 			);
 			path = homeScreen;
+			sourceTree = "<group>";
+		};
+		5F19318B2985D9F5002029DE /* exploreScreen */ = {
+			isa = PBXGroup;
+			children = (
+				5F19318C2985DA0F002029DE /* ExploreView.swift */,
+				5F19318E2985DA4B002029DE /* MapView.swift */,
+				5F19319E2985E2DC002029DE /* ExploreViewModel.swift */,
+			);
+			path = exploreScreen;
+			sourceTree = "<group>";
+		};
+		5F1931902985DD04002029DE /* locationService */ = {
+			isa = PBXGroup;
+			children = (
+				5F1931912985DD1B002029DE /* LocationService.swift */,
+			);
+			path = locationService;
+			sourceTree = "<group>";
+		};
+		5F1931932985DEF8002029DE /* userExplore */ = {
+			isa = PBXGroup;
+			children = (
+				5F1931942985DF11002029DE /* UserExplore.swift */,
+			);
+			path = userExplore;
+			sourceTree = "<group>";
+		};
+		5F1931972985E197002029DE /* exploreUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				5F1931982985E1AB002029DE /* ExploreUseCase.swift */,
+			);
+			path = exploreUseCase;
 			sourceTree = "<group>";
 		};
 		5F4C48C529689114007B9265 /* enviroments */ = {
@@ -453,6 +506,7 @@
 				5F4C48F72968CFFE007B9265 /* ProfileUseCaseProtocol.swift */,
 				5F4C49252968EB9C007B9265 /* PokedexUseCaseProtocol.swift */,
 				5F4C492D2968F733007B9265 /* PokemonUseCaseProtocol.swift */,
+				5F19319C2985E28E002029DE /* ExploreUseCaseProtocol.swift */,
 			);
 			path = domain;
 			sourceTree = "<group>";
@@ -546,6 +600,7 @@
 				5F4C48DD29689DC1007B9265 /* AuthenticationServiceProtocol.swift */,
 				5F4C491C2968E6FC007B9265 /* PokedexServiceProtocol.swift */,
 				5F4C49272968F58A007B9265 /* PokemonServiceProtocol.swift */,
+				5F19319A2985E1F0002029DE /* LocationServiceProtocol.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -785,6 +840,7 @@
 		5FEBD24329522BB400050E6A /* presentation */ = {
 			isa = PBXGroup;
 			children = (
+				5F19318B2985D9F5002029DE /* exploreScreen */,
 				5F126D37296631980091D1E5 /* pokemonScreen */,
 				5F9124EA2966187400DB89D9 /* pokedexScreen */,
 				5F14AB4E296371A80013A925 /* splashScreen */,
@@ -810,7 +866,6 @@
 				B0E59AF9B8569F47DD2EACFF /* Pods-Pokedex-iOS.debug.xcconfig */,
 				C0ADDC5487B8C91BB714C73E /* Pods-Pokedex-iOS.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -915,7 +970,7 @@
 			mainGroup = 5FE9B9CD2952222E0006C2E2;
 			packageReferences = (
 				5F608F48295E6E7A00648F00 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				5FAA9392296128E900C58B67 /* XCRemoteSwiftPackageReference "facebook-ios-sdk.git" */,
+				5FAA9392296128E900C58B67 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 				5F14AB552964A6530013A925 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = 5FE9B9D72952222E0006C2E2 /* Products */;
@@ -1037,11 +1092,13 @@
 				5F4C491B2968E5BA007B9265 /* PokemonClasses.swift in Sources */,
 				5F4C49282968F58A007B9265 /* PokemonServiceProtocol.swift in Sources */,
 				5F14AB4929634F910013A925 /* ProfileViewModel.swift in Sources */,
+				5F1931952985DF11002029DE /* UserExplore.swift in Sources */,
 				5F4C48D8296897F5007B9265 /* AuthenticationClasses.swift in Sources */,
 				5F4C49072968DDAE007B9265 /* PokemonService.swift in Sources */,
 				5F4C48F82968CFFE007B9265 /* ProfileUseCaseProtocol.swift in Sources */,
 				5F156C78295F8C44006E5F28 /* User.swift in Sources */,
 				5F9124E32965F4C700DB89D9 /* ListPokedexesResponse.swift in Sources */,
+				5F1931992985E1AB002029DE /* ExploreUseCase.swift in Sources */,
 				5FE9B9DA2952222E0006C2E2 /* Pokedex_iOSApp.swift in Sources */,
 				5F4C492A2968F5C0007B9265 /* PokemonServiceMock.swift in Sources */,
 				5FE9B9DC2952222E0006C2E2 /* Persistence.swift in Sources */,
@@ -1052,6 +1109,7 @@
 				5FA4D44C2974A90B008EC7AF /* PokemonColor.swift in Sources */,
 				5FA4D44829748B31008EC7AF /* ChainEvolutionResponse.swift in Sources */,
 				5F14AB5229637E110013A925 /* SessionManager.swift in Sources */,
+				5F19319F2985E2DC002029DE /* ExploreViewModel.swift in Sources */,
 				5F14AB50296371B70013A925 /* SplashViewModel.swift in Sources */,
 				5F156C75295F870F006E5F28 /* AuthenticationViewModel.swift in Sources */,
 				5F4C48F02968A41F007B9265 /* HomeUseCaseProtocol.swift in Sources */,
@@ -1081,6 +1139,7 @@
 				5FAA939929612E9500C58B67 /* FacebookAuthentication.swift in Sources */,
 				5F4C49262968EB9C007B9265 /* PokedexUseCaseProtocol.swift in Sources */,
 				5F4C49032968DB70007B9265 /* EvolutionChainResponse.swift in Sources */,
+				5F19319D2985E28F002029DE /* ExploreUseCaseProtocol.swift in Sources */,
 				5F4C48DC29689AA1007B9265 /* FirebaseAuthenticationMock.swift in Sources */,
 				5FE9B9E12952222E0006C2E2 /* ContentView.swift in Sources */,
 				5F14AB4D29636C010013A925 /* SplashUseCase.swift in Sources */,
@@ -1088,14 +1147,18 @@
 				5F4C48FF2968D9D2007B9265 /* PokemonResponse.swift in Sources */,
 				5F156C862960A2FE006E5F28 /* HomeViewModel.swift in Sources */,
 				5FE9B9DF2952222E0006C2E2 /* Pokedex_iOS.xcdatamodeld in Sources */,
+				5F1931922985DD1B002029DE /* LocationService.swift in Sources */,
 				5F156C6F295F8527006E5F28 /* AuthenticationService.swift in Sources */,
 				5F4C49012968DB22007B9265 /* PokemonColorResponse.swift in Sources */,
+				5F19318D2985DA0F002029DE /* ExploreView.swift in Sources */,
 				5F4C49192968E4BA007B9265 /* PokemonAPIMock.swift in Sources */,
 				5F4C48EE2968A3FD007B9265 /* HomeUseCaseMock.swift in Sources */,
 				5F4C49172968E45D007B9265 /* PokemonApiProtocol.swift in Sources */,
 				5F9124E02965F48700DB89D9 /* PokemonAPI.swift in Sources */,
 				5F4C49242968EB3F007B9265 /* PokedexUseCaseMock.swift in Sources */,
 				5F4C492C2968F709007B9265 /* PokemonUseCaseMock.swift in Sources */,
+				5F19319B2985E1F0002029DE /* LocationServiceProtocol.swift in Sources */,
+				5F19318F2985DA4B002029DE /* MapView.swift in Sources */,
 				5F4C492E2968F733007B9265 /* PokemonUseCaseProtocol.swift in Sources */,
 				5F4C48F32968A47E007B9265 /* AuthenticationUseCaseMock.swift in Sources */,
 				5F14AB43296346A00013A925 /* ProfileView.swift in Sources */,
@@ -1266,6 +1329,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Pokedex-iOS/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Accept to capture pokemon";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Accept to capture pokemon";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -1309,6 +1374,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Pokedex-iOS/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Accept to capture pokemon";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Accept to capture pokemon";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -1484,7 +1551,7 @@
 				minimumVersion = 9.0.0;
 			};
 		};
-		5FAA9392296128E900C58B67 /* XCRemoteSwiftPackageReference "facebook-ios-sdk.git" */ = {
+		5FAA9392296128E900C58B67 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/facebook/facebook-ios-sdk.git";
 			requirement = {
@@ -1522,7 +1589,7 @@
 		};
 		5FAA9393296128E900C58B67 /* FacebookLogin */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5FAA9392296128E900C58B67 /* XCRemoteSwiftPackageReference "facebook-ios-sdk.git" */;
+			package = 5FAA9392296128E900C58B67 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
 			productName = FacebookLogin;
 		};
 /* End XCSwiftPackageProductDependency section */

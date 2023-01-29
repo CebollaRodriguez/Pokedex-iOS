@@ -18,8 +18,10 @@ struct HomeView: View {
                 .tabItem {
                     Label("Home", systemImage: "house.fill")
                 }
-                
-                
+                ExploreView()
+                    .tabItem {
+                       Label("Explore", systemImage: "map.fill")
+                    }
             }
             .toolbar {
                 NavigationLink {

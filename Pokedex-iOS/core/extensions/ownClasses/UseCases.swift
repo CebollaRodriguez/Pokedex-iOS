@@ -42,3 +42,9 @@ extension PokemonUseCase {
         return PokemonUseCase(pokemonService: Constants.isMock ? PokemonServiceMock() : PokemonService.build() )
     }
 }
+
+extension ExploreUseCase {
+    static func build() -> ExploreUseCase {
+        return ExploreUseCase(locationService: LocationService())
+    }
+}
