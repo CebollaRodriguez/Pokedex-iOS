@@ -14,26 +14,29 @@ struct MapView: UIViewRepresentable {
     typealias UIViewType = GMSMapView
     
     func makeUIView(context: Context) -> GMSMapView {
-        let camera = GMSCameraPosition.camera(withLatitude: userExplore.latitude, longitude: userExplore.longitude, zoom: 10)
+        let camera = GMSCameraPosition.camera(withLatitude: userExplore.latitude, longitude: userExplore.longitude, zoom: 15)
         let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
         mapView.settings.compassButton = true
         mapView.settings.indoorPicker  = false
-        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        mapView.settings.rotateGestures = true
+        mapView.settings.zoomGestures = true
         
+        mapView.delegate = context.coordinator
         return mapView
     }
     
     func updateUIView(_ uiView: GMSMapView, context: Context) {
-        GMSCameraPosition.camera(withLatitude: userExplore.latitude, longitude: userExplore.longitude, zoom: 13)
+        
+            
         
         
-    } 
+    }
     
-    
+    func makeCoordinator() -> Coordinator {
+        return Coordinator()
+    }
 }
 
-class MapDelegate: NSObject, GMSMapViewDelegate {
-    
-}
+

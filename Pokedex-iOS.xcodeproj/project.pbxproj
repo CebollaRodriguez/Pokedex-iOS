@@ -39,6 +39,8 @@
 		5F19319B2985E1F0002029DE /* LocationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F19319A2985E1F0002029DE /* LocationServiceProtocol.swift */; };
 		5F19319D2985E28F002029DE /* ExploreUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F19319C2985E28E002029DE /* ExploreUseCaseProtocol.swift */; };
 		5F19319F2985E2DC002029DE /* ExploreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F19319E2985E2DC002029DE /* ExploreViewModel.swift */; };
+		5F1D0EB829873E1900EAF050 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5F1D0EB729873E1900EAF050 /* Settings.bundle */; };
+		5F461FBE2988B79E00B0FC8B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F461FBD2988B79E00B0FC8B /* Coordinator.swift */; };
 		5F4C48C8296891D1007B9265 /* FacebookAuthenticationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C48C7296891D1007B9265 /* FacebookAuthenticationProtocol.swift */; };
 		5F4C48CA296892B7007B9265 /* FacebookAuthenticationMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C48C9296892B7007B9265 /* FacebookAuthenticationMock.swift */; };
 		5F4C48D029689348007B9265 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C48CF29689348007B9265 /* Constants.swift */; };
@@ -162,6 +164,8 @@
 		5F19319A2985E1F0002029DE /* LocationServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceProtocol.swift; sourceTree = "<group>"; };
 		5F19319C2985E28E002029DE /* ExploreUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreUseCaseProtocol.swift; sourceTree = "<group>"; };
 		5F19319E2985E2DC002029DE /* ExploreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewModel.swift; sourceTree = "<group>"; };
+		5F1D0EB729873E1900EAF050 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		5F461FBD2988B79E00B0FC8B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		5F4C48C7296891D1007B9265 /* FacebookAuthenticationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAuthenticationProtocol.swift; sourceTree = "<group>"; };
 		5F4C48C9296892B7007B9265 /* FacebookAuthenticationMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAuthenticationMock.swift; sourceTree = "<group>"; };
 		5F4C48CF29689348007B9265 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -396,6 +400,7 @@
 				5F19318C2985DA0F002029DE /* ExploreView.swift */,
 				5F19318E2985DA4B002029DE /* MapView.swift */,
 				5F19319E2985E2DC002029DE /* ExploreViewModel.swift */,
+				5F461FBD2988B79E00B0FC8B /* Coordinator.swift */,
 			);
 			path = exploreScreen;
 			sourceTree = "<group>";
@@ -775,6 +780,7 @@
 				5FE9B9E42952222F0006C2E2 /* Pokedex_iOS.entitlements */,
 				5FE9B9DD2952222E0006C2E2 /* Pokedex_iOS.xcdatamodeld */,
 				5FE9B9E52952222F0006C2E2 /* Preview Content */,
+				5F1D0EB729873E1900EAF050 /* Settings.bundle */,
 			);
 			path = "Pokedex-iOS";
 			sourceTree = "<group>";
@@ -989,6 +995,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F1D0EB829873E1900EAF050 /* Settings.bundle in Resources */,
 				5FE9B9E72952222F0006C2E2 /* Preview Assets.xcassets in Resources */,
 				5FE9B9E32952222F0006C2E2 /* Assets.xcassets in Resources */,
 				5F755181295E6FF4004BE007 /* GoogleService-Info.plist in Resources */,
@@ -1115,6 +1122,7 @@
 				5F4C48F02968A41F007B9265 /* HomeUseCaseProtocol.swift in Sources */,
 				5F04974A295D02A60091E269 /* SplashScreenView.swift in Sources */,
 				5F9124F329661DA100DB89D9 /* Pokedex.swift in Sources */,
+				5F461FBE2988B79E00B0FC8B /* Coordinator.swift in Sources */,
 				5F9124F1296619C300DB89D9 /* PokedexResponse.swift in Sources */,
 				5F9124E92965F9F600DB89D9 /* Pokedexes.swift in Sources */,
 				5FA4D44429725BF2008EC7AF /* strings.swift in Sources */,

@@ -21,4 +21,8 @@ class ExploreUseCase: ExploreUseCaseProtocol {
     func checkLocationPermission()-> Bool? {
         locationService.checkLocationPermission()
     }
+    
+    func getDistance(completion: @escaping (Double) -> Void) {
+        locationService.getDistance(completion: completion)
+    }
 }

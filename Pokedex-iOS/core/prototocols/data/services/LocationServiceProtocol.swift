@@ -10,5 +10,7 @@ import Foundation
 protocol LocationServiceProtocol: AnyObject {
     func getUserLocation(_ completion: @escaping (Result<UserExplore, Error>) -> Void)
     
-    func checkLocationPermission()-> Bool? 
+    func checkLocationPermission()-> Bool?
+    
+    func getDistance(completion: @escaping (Double) -> Void)
 }

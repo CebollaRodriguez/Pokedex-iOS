@@ -12,4 +12,5 @@ protocol ExploreUseCaseProtocol: AnyObject {
     
     func checkLocationPermission()-> Bool? 
     
+    func getDistance(completion: @escaping (Double) -> Void)
 }

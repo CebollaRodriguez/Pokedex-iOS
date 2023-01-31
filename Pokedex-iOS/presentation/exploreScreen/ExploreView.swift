@@ -10,23 +10,87 @@ import SwiftUI
 struct ExploreView: View {
     @StateObject private var viewModel: ExploreViewModel = .build()
     @State private var isExploring = false
+    @State private var isError: Bool = false
     var body: some View {
-        VStack {
-            
-            MapView(userExplore: $viewModel.userExplore,isLocationEnable: $viewModel.isLocationAuthorized)
-            buttonExplore
-        }
-        .task {
-            viewModel.getCurrentLocation()
+        ZStack {
+            if viewModel.isLocationAuthorized {
+                viewisAuthorized
+            } else {
+                viewIsNotAuthorized
+            }
         }
     }
     
-
+    var viewisAuthorized: some View {
+        ZStack {
+            VStack {
+                MapView(userExplore: $viewModel.userExplore,isLocationEnable: $viewModel.isLocationAuthorized)
+                buttonExplore
+            }
+            
+            if isExploring {
+                distanceFormat
+            }
+            
+        }
+    }
+    
+    var viewIsNotAuthorized: some View {
+        VStack {
+            if !isError {
+                ProgressView()
+                    .onAppear{
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            self.isError = !viewModel.isLocationAuthorized
+                        }
+                    }
+                    .task {
+                        viewModel.getCurrentLocation()
+                    }
+            } else {
+                Rectangle()
+                    .foregroundColor(.gray)
+                
+                buttonPerrmisionAuthorization
+            }
+            
+            
+        }
+    }
+    
+    var distanceFormat: some View {
+        VStack {
+            HStack {
+                Group{
+                    Label("\(viewModel.distanceTravel) meters", systemImage: "figure.walk")
+                        .foregroundColor(.gray)
+                        .padding(10)
+                }
+                .background(.white)
+                .cornerRadius(10)
+                Spacer()
+            }
+            Spacer()
+        }
+        .padding()
+    }
+    
+    var buttonPerrmisionAuthorization: some View {
+        VStack {
+            Link("Press here to change the location authorization and explore your world with pokemons", destination: URL(string: UIApplication.openSettingsURLString)!)
+                .padding()
+        }
+    }
+    
     var buttonExplore: some View {
         VStack {
             
             Button {
                 self.isExploring.toggle()
+                
+                if isExploring {
+                    viewModel.getDistance()
+                }
             } label: {
                 HStack {
                     Spacer()
@@ -40,9 +104,8 @@ struct ExploreView: View {
                 .shadow(radius: 6)
             }
             .padding()
-
+            
         }
-        .padding(.bottom, 20)
     }
 }
 
