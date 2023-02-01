@@ -11,18 +11,20 @@ struct ExploreView: View {
     @StateObject private var viewModel: ExploreViewModel = .build()
     @State private var isExploring = false
     @State private var isError: Bool = false
+    @State private var isCapture: Bool = false
+    @State private var isEscape: Bool = false
+
     var body: some View {
         ZStack {
             if viewModel.isLocationAuthorized {
-                viewisAuthorized
+                viewIsAuthorized
             } else {
                 viewIsNotAuthorized
             }
-            pokemonFounded
         }
     }
     
-    var viewisAuthorized: some View {
+    var viewIsAuthorized: some View {
         ZStack {
             VStack {
                 MapView(userExplore: $viewModel.userExplore,isLocationEnable: $viewModel.isLocationAuthorized)
@@ -35,31 +37,57 @@ struct ExploreView: View {
             
             if viewModel.isGoalComplete {
                 pokemonFounded
+                    
             }
+            
+        }
+        .onAppear {
+            viewModel.getPokedexList()
             
         }
     }
     
     var pokemonFounded: some View {
         VStack {
-            Text("Felicidades, encotro un pokemon!!!")
+            
+            var pokemonUrl: String = viewModel.pokemonFounded?.url ?? ""
+            var pokemonName: String = viewModel.pokemonFounded?.name ?? ""
+            Text("Pokemon Founded!!!")
+                .font(.callout)
+            Text("A wild \(pokemonName.firstUpper()) was founded")
+                .font(.caption)
+                .foregroundColor(.secondary)
+            
+            
+            AsyncImage(url: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(pokemonUrl.getPokemonIdByUrl()).png")
+            ) { image in
+                image
+                    .resizable()
+                    .frame(width: 80, height: 80)
+            } placeholder: {
+                ProgressView()
+            }
+            
             HStack{
                 Button {
-                    
+                    viewModel.isGoalComplete = false
                 } label: {
-                    Text("Atrapar")
+                    Text("Capture")
+                        .padding(.trailing)
                 }
                 Button {
-                    
+                    viewModel.isGoalComplete = false
                 } label: {
-                    Text("Huir")
+                    Text("Escape")
+                        .padding(.leading)
                 }
 
             }
+            .padding(.top)
         }
+        .padding(30)
         .background(.white)
         .cornerRadius(10)
-        .padding(50)
     }
     
     var viewIsNotAuthorized: some View {

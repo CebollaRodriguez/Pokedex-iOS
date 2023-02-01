@@ -14,8 +14,7 @@ struct PokedexView: View {
         VStack {
             Text(viewModel.model.pokedexName)
             pokemons
-            Text("Hola")
-                .font(.largeTitle)
+            
             
         }
         .onAppear{

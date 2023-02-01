@@ -45,6 +45,6 @@ extension PokemonUseCase {
 
 extension ExploreUseCase {
     static func build() -> ExploreUseCase {
-        return ExploreUseCase(locationService: LocationService())
+        return ExploreUseCase(locationService: LocationService(), pokedexService: PokedexService.build())
     }
 }

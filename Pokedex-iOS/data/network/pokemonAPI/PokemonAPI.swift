@@ -33,7 +33,7 @@ class PokemonAPI: PokemonApiProtocol {
                 completion(.failure(error))
                 return
             }
-            print(String(describing: data).utf8)
+            
             if let data = data {
                 let pokedex = try? JSONDecoder().decode(PokedexResponse.self, from: data)
                 completion(.success(pokedex))

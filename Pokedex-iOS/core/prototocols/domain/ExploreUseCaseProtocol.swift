@@ -15,4 +15,7 @@ protocol ExploreUseCaseProtocol: AnyObject {
     func getDistance(completion: @escaping (Double) -> Void)
     
     func stopTracking()
+    
+    func getPokedexList(completion: @escaping (Result <Pokedex, Error>) -> Void)
+    
 }
