@@ -9,12 +9,12 @@ import Foundation
 import GoogleMaps
 
 class Coordinator: NSObject {
-    private var completionFinishRendering: ((GMSMapView) -> Void)?
+    
     
     
 }
 
 extension Coordinator: GMSMapViewDelegate {
     
-
+    
 }

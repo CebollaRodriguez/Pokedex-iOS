@@ -13,4 +13,6 @@ protocol LocationServiceProtocol: AnyObject {
     func checkLocationPermission()-> Bool?
     
     func getDistance(completion: @escaping (Double) -> Void)
+    
+    func stopTracking()
 }

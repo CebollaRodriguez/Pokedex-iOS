@@ -12,6 +12,8 @@ class ExploreViewModel: ObservableObject {
     @Published var messageError: String = ""
     @Published var isLocationAuthorized: Bool = false
     @Published var distanceTravel: Int = 0
+    @Published var isGoalComplete: Bool = false
+    
     private let useCase: ExploreUseCaseProtocol
     
     init(useCase: ExploreUseCaseProtocol) {
@@ -37,9 +39,20 @@ class ExploreViewModel: ObservableObject {
     }
     
     func getDistance() {
-        useCase.getDistance { [weak self]distance in
+        useCase.getDistance { [weak self] distance in
             
             self?.distanceTravel = Int(distance.rounded(.down))
+            
+            if self?.distanceTravel ?? 0 > 100  {
+                self?.isGoalComplete = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 8.0) {
+                    self?.isGoalComplete = false
+                }
+            }
         }
+    }
+    
+    func stopTracking() {
+        useCase.stopTracking()
     }
 }

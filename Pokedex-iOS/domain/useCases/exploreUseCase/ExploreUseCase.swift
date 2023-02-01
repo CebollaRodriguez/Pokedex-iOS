@@ -25,4 +25,8 @@ class ExploreUseCase: ExploreUseCaseProtocol {
     func getDistance(completion: @escaping (Double) -> Void) {
         locationService.getDistance(completion: completion)
     }
+    
+    func stopTracking() {
+        locationService.stopTracking()
+    }
 }

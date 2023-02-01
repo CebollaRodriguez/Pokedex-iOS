@@ -18,6 +18,7 @@ struct ExploreView: View {
             } else {
                 viewIsNotAuthorized
             }
+            pokemonFounded
         }
     }
     
@@ -32,7 +33,33 @@ struct ExploreView: View {
                 distanceFormat
             }
             
+            if viewModel.isGoalComplete {
+                pokemonFounded
+            }
+            
         }
+    }
+    
+    var pokemonFounded: some View {
+        VStack {
+            Text("Felicidades, encotro un pokemon!!!")
+            HStack{
+                Button {
+                    
+                } label: {
+                    Text("Atrapar")
+                }
+                Button {
+                    
+                } label: {
+                    Text("Huir")
+                }
+
+            }
+        }
+        .background(.white)
+        .cornerRadius(10)
+        .padding(50)
     }
     
     var viewIsNotAuthorized: some View {
@@ -77,7 +104,7 @@ struct ExploreView: View {
     
     var buttonPerrmisionAuthorization: some View {
         VStack {
-            Link("Press here to change the location authorization and explore your world with pokemons", destination: URL(string: UIApplication.openSettingsURLString)!)
+            Link("Press here to change the location authorization and explore the Pokemon's World", destination: URL(string: UIApplication.openSettingsURLString)!)
                 .padding()
         }
     }
@@ -90,6 +117,8 @@ struct ExploreView: View {
                 
                 if isExploring {
                     viewModel.getDistance()
+                } else {
+                    viewModel.stopTracking()
                 }
             } label: {
                 HStack {
