@@ -49,16 +49,15 @@ struct ExploreView: View {
     
     var pokemonFounded: some View {
         VStack {
-            
             var pokemonUrl: String = viewModel.pokemonFounded?.url ?? ""
             var pokemonName: String = viewModel.pokemonFounded?.name ?? ""
+            
             Text("Pokemon Founded!!!")
                 .font(.callout)
             Text("A wild \(pokemonName.firstUpper()) was founded")
                 .font(.caption)
                 .foregroundColor(.secondary)
-            
-            
+                .padding(.top,10)
             AsyncImage(url: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(pokemonUrl.getPokemonIdByUrl()).png")
             ) { image in
                 image

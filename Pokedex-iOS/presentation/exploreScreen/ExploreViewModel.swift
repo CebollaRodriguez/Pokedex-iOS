@@ -52,7 +52,7 @@ class ExploreViewModel: ObservableObject {
                 if self?.pokemonFounded != nil {
                     self?.isGoalComplete = true
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 6.0) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) {
                     self?.isGoalComplete = false
                     self?.pokemonFounded = nil
                     

@@ -22,6 +22,10 @@ struct HomeView: View {
                     .tabItem {
                        Label("Explore", systemImage: "map.fill")
                     }
+                FavoriteView()
+                    .tabItem {
+                        Label("Favorite", systemImage: "star")
+                    }
             }
             .toolbar {
                 NavigationLink {

@@ -57,6 +57,7 @@ struct PokemonView: View {
         ScrollView(.horizontal) {
             HStack {
                 ForEach(viewModel.pokemonEvolution, id: \.evoName) { evolution in
+                    
                     AsyncImage(url: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(evolution.evoId).png")
                     ) { image in
                         image
