@@ -10,6 +10,7 @@ import SwiftUI
 struct PokedexView: View {
     let pokedexUrl: String
     @StateObject private var viewModel: PokedexViewModel = .build()
+    @Environment(\.managedObjectContext) private var moc
     var body: some View {
         VStack {
             Text(viewModel.model.pokedexName)
@@ -24,6 +25,7 @@ struct PokedexView: View {
     
     var pokemons: some View {
         
+        
         ScrollView {
             LazyVGrid(columns: [
                 GridItem(.adaptive(minimum: 100)),
@@ -31,15 +33,17 @@ struct PokedexView: View {
                 GridItem(.adaptive(minimum: 100))
             ]) {
                 ForEach(viewModel.model.pokemons, id: \.id) { pokemon in
+                    var pokemonId: String = pokemon.url
                     NavigationLink{
-                        PokemonView(pokemonId: pokemon.id)
+                        PokemonView(pokemonId: Int(pokemonId.getPokemonIdByUrl())!)
+                            .environment(\.managedObjectContext, self.moc)
                     } label: {
                         HStack {
                             Spacer()
                             VStack {
                                 Text(pokemon.name)
                                     .foregroundColor(.primary)
-                                    .font(.caption.bold()) 
+                                    .font(.caption)
                             }
                             
                             
@@ -55,14 +59,16 @@ struct PokedexView: View {
                 }
             }
             .padding(.horizontal,20)
+            
         }
-        
-
     }
 }
+
+
 
 struct PokedexView_Previews: PreviewProvider {
     static var previews: some View {
         PokedexView(pokedexUrl:"https://pokeapi.co/api/v2/pokedex/1/")
     }
 }
+

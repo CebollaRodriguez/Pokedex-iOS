@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     let email: String
     @StateObject private var homeViewModel: HomeViewModel = .build()
+    @Environment(\.managedObjectContext) private var moc
     
     var body: some View {
         NavigationView {
@@ -19,10 +20,12 @@ struct HomeView: View {
                     Label("Home", systemImage: "house.fill")
                 }
                 ExploreView()
+                    .environment(\.managedObjectContext, self.moc)
                     .tabItem {
                        Label("Explore", systemImage: "map.fill")
                     }
                 FavoriteView()
+                    .environment(\.managedObjectContext, self.moc)
                     .tabItem {
                         Label("Favorite", systemImage: "star")
                     }
@@ -67,6 +70,7 @@ struct HomeView: View {
                         var pokedexName = pokedex.name
                         NavigationLink {
                             PokedexView(pokedexUrl: pokedex.url)
+                                .environment(\.managedObjectContext, self.moc)
                         } label: {
                             HStack{
                                 Spacer()

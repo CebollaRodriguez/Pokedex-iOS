@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SplashScreenView: View {
     @EnvironmentObject var session: SessionManager
+    @Environment(\.managedObjectContext) private var moc
     @State private var size = 0.8
     @State private var opacity = 0.5
     @State private var isActive = true
@@ -49,6 +50,7 @@ struct SplashScreenView: View {
             if let email = session.email {
                 if email != "" {
                     HomeView(email: email)
+                        .environment(\.managedObjectContext, self.moc)
                     
                 } else {
                     AuthenticationView()

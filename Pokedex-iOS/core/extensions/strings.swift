@@ -18,16 +18,18 @@ extension String {
         var id = ""
         var cont = 2
         var flag = true
-        
-        while (flag) {
-            let number: Character = self[String.Index(encodedOffset: self.count - cont) ]
-            if (number != "/") {
-                id.append(number)
-                cont += 1
-            } else {
-                flag = false
+        if self.count > 2 {
+            while (flag) {
+                let number: Character = self[String.Index(encodedOffset: self.count - cont) ]
+                if (number != "/") {
+                    id.append(number)
+                    cont += 1
+                } else {
+                    flag = false
+                }
             }
         }
+        
         return id
     }
 }
