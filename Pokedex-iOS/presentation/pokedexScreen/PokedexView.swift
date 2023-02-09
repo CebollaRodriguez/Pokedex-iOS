@@ -33,9 +33,9 @@ struct PokedexView: View {
                 GridItem(.adaptive(minimum: 100))
             ]) {
                 ForEach(viewModel.model.pokemons, id: \.id) { pokemon in
-                    var pokemonId: String = pokemon.url
+                    var pokemonUrl: String = pokemon.url
                     NavigationLink{
-                        PokemonView(pokemonId: Int(pokemonId.getPokemonIdByUrl())!)
+                        PokemonView(pokemonId: Int(pokemonUrl.getPokemonIdByUrl())!)
                             .environment(\.managedObjectContext, self.moc)
                     } label: {
                         HStack {
@@ -44,6 +44,8 @@ struct PokedexView: View {
                                 Text(pokemon.name)
                                     .foregroundColor(.primary)
                                     .font(.caption)
+                                Text("id pokemon: \(pokemonUrl.getPokemonIdByUrl())")
+
                             }
                             
                             

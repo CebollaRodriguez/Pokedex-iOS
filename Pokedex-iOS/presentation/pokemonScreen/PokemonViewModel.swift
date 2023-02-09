@@ -42,10 +42,13 @@ class PokemonViewModel: ObservableObject {
     }
     
     func checkIsFavorite(listFav: FetchedResults<PokemonFavorite>) {
+        var inFavorite: Bool = false
         self.isFavorite = listFav.contains(where: { pokemonFav in
-            guard let pokemonName = pokemonFav.name else { return false }
-            
-            return pokemonName == self.name
+            if let pokemonName = pokemonFav.name {
+                print("Pokemon in fav: \(pokemonName) debe ser igual a: \(self.name)")
+                inFavorite = pokemonName == self.name
+            }
+            return inFavorite
         })
     }
     
@@ -63,6 +66,14 @@ class PokemonViewModel: ObservableObject {
             return .gray
         case .unowned:
             return nil
+        case .pink:
+            return .pink
+        case .red:
+            return .red
+        case .white:
+            return .purple
+        case .yellow:
+            return .yellow
         }
     }
 }

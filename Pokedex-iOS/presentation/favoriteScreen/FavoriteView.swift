@@ -51,12 +51,12 @@ struct FavoriteView: View {
                 GridItem(.adaptive(minimum: 100))
             ]) {
                 ForEach(pokemons, id: \.id) { pokemon in
-                    if pokemon.url?.count ?? 0 > 2 {
-                        var pokemonUrl = pokemon.url!
+                    if pokemon.url?.count ?? 0 > 0 {
+                        var pokemonId = pokemon.url!
                         var pokemonName: String = pokemon.name!
                         
                         NavigationLink{
-                            PokemonView(pokemonId: Int(pokemonUrl.getPokemonIdByUrl())!)
+                            PokemonView(pokemonId: Int(pokemonId)!)
                                 .environment(\.managedObjectContext, self.moc)
                         } label: {
                             HStack {
@@ -66,6 +66,7 @@ struct FavoriteView: View {
                                     Text(pokemonName)
                                         .foregroundColor(.primary)
                                         .font(.caption)
+                                    
                                 }
                                 Spacer()
                             }

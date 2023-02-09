@@ -14,6 +14,10 @@ enum PokemonColor: String {
     case brown = "brown"
     case gray = "gray"
     case green = "green"
+    case pink = "pink"
+    case red = "red"
+    case white = "white"
+    case yellow = "yellow"
     case unowned
     
 }

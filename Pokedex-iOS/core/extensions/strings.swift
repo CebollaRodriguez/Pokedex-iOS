@@ -22,7 +22,7 @@ extension String {
             while (flag) {
                 let number: Character = self[String.Index(encodedOffset: self.count - cont) ]
                 if (number != "/") {
-                    id.append(number)
+                    id = String(number) + id
                     cont += 1
                 } else {
                     flag = false

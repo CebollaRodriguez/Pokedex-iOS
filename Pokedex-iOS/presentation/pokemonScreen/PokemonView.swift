@@ -26,6 +26,7 @@ struct PokemonView: View {
     @State private var isEvoClick = false
     @State private var evoNameOpacity = 0.1
     @State private var isFavorite: Bool = false
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -38,12 +39,6 @@ struct PokemonView: View {
                         Spacer()
                         evoNameToast
                     }
-                    .opacity(evoNameOpacity)
-                    .onAppear {
-                        withAnimation (.easeIn(duration: 1.0)) {
-                            self.evoNameOpacity = 0.2
-                        }
-                    }
                 }
             }
             .task{
@@ -52,38 +47,8 @@ struct PokemonView: View {
             .toolbar {
                 
                 ToolbarItem(placement: .principal) {
-                    HStack {
-                        Spacer()
-                        Text(viewModel.name)
-                            .font(.largeTitle)
-                        Spacer()
-                        Button {
-                            let addFavorite = PokemonFavorite(context: self.moc)
-                            if !self.isFavorite {
-                                addFavorite.name = viewModel.name
-                                addFavorite.url = viewModel.pokemonUrl
-                                addFavorite.id = UUID()
-                            } else {
-                                let favPokemon = pokemons.filter( { fav in
-                                    guard let name = fav.name else { return false }
-                                    return name == viewModel.name
-                               })
-                                guard let pokemonFav = favPokemon.first else { return }
-                                self.moc.delete(pokemonFav)
-                            }
-                            self.isFavorite.toggle()
-                            try! self.moc.save()
-                        } label: {
-                            if viewModel.name.count > 2 {
-                                Image(systemName: "star.fill")
-                                    .foregroundColor(self.isFavorite ? viewModel.color : .gray)
-                            }
-                            
-                        }
-                        
-
-                    }
                     
+                    toolbarScreen
                 }
                 
                 
@@ -92,6 +57,41 @@ struct PokemonView: View {
         
         
     }
+    
+    var toolbarScreen: some View {
+        HStack {
+            Spacer()
+            Text(viewModel.name)
+                .font(.largeTitle)
+            Spacer()
+            Button {
+                let addFavorite = PokemonFavorite(context: self.moc)
+                if !self.isFavorite {
+                    addFavorite.name = viewModel.name
+                    addFavorite.url = String(viewModel.id)
+                    addFavorite.id = UUID()
+                } else {
+                    let favPokemon = pokemons.filter( { fav in
+                        guard let name = fav.name else { return false }
+                        return name == viewModel.name
+                   })
+                    guard let pokemonFav = favPokemon.first else { return }
+                    self.moc.delete(pokemonFav)
+                }
+                self.isFavorite.toggle()
+                try! self.moc.save()
+            } label: {
+                if viewModel.name.count > 2 {
+                    Image(systemName: "star.fill")
+                        .foregroundColor(self.isFavorite ? viewModel.color : .gray)
+                }
+                
+            }
+            
+
+        }
+    }
+    
     var pokemonEvolutions: some View {
         ScrollView(.horizontal) {
             HStack {
@@ -118,7 +118,7 @@ struct PokemonView: View {
     }
     
     var pokemonImage: some View {
-        AsyncImage(url: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(viewModel.pokemonUrl.getPokemonIdByUrl()).png")
+        AsyncImage(url: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(viewModel.id).png")
         ) { image in
             image
                 .resizable()
@@ -127,27 +127,28 @@ struct PokemonView: View {
             ProgressView()
         }
         .task {
-            viewModel.checkIsFavorite(listFav: pokemons)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                viewModel.checkIsFavorite(listFav: pokemons)
                 self.isFavorite = viewModel.isFavorite
             }
         }
     }
     
     var evoNameToast: some View {
-        ZStack {
+        HStack {
+            
             Rectangle()
                 .background(.gray)
-                .frame(width: .infinity, height: 30)
+                .frame(width: 200, height: 30)
                 .opacity(0.2)
                 .cornerRadius(20)
                 .padding(40)
-                
-
-            Text(evoName)
-                .frame(width: .infinity, height: 30)
-                .foregroundColor(.white)
-                .font(.headline.bold())
+                .overlay {
+                    Text(evoName)
+                        .frame( height: 30)
+                        .foregroundColor(.white)
+                        .font(.headline.bold())
+                }
                 
         }
     }
