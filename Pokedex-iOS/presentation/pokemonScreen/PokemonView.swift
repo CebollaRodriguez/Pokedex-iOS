@@ -16,7 +16,7 @@ struct PokemonView: View {
     @FetchRequest(
         sortDescriptors: [
             NSSortDescriptor(keyPath: \PokemonFavorite.name, ascending: true),
-            NSSortDescriptor(keyPath: \PokemonFavorite.url, ascending: true)
+            NSSortDescriptor(keyPath: \PokemonFavorite.pokemonId, ascending: true)
         ],
         animation: .default)
     private var pokemons: FetchedResults<PokemonFavorite>
@@ -65,11 +65,11 @@ struct PokemonView: View {
                 .font(.largeTitle)
             Spacer()
             Button {
-                let addFavorite = PokemonFavorite(context: self.moc)
                 if !self.isFavorite {
+                    let addFavorite = PokemonFavorite(context: self.moc)
                     addFavorite.name = viewModel.name
-                    addFavorite.url = String(viewModel.id)
-                    addFavorite.id = UUID()
+                    addFavorite.pokemonId = Int32(viewModel.id)
+                    addFavorite.uuid = UUID()
                 } else {
                     let favPokemon = pokemons.filter( { fav in
                         guard let name = fav.name else { return false }

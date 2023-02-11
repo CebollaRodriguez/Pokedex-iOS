@@ -16,9 +16,10 @@ extension PokemonFavorite {
         return NSFetchRequest<PokemonFavorite>(entityName: "PokemonFavorite")
     }
 
-    @NSManaged public var id: UUID?
+    @NSManaged public var pokemonId: Int32
     @NSManaged public var name: String?
-    @NSManaged public var url: String?
+    @NSManaged public var uuid: UUID?
+
 
 }
 

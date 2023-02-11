@@ -14,7 +14,7 @@ struct FavoriteView: View {
     @FetchRequest(
         sortDescriptors: [
             NSSortDescriptor(keyPath: \PokemonFavorite.name, ascending: true),
-            NSSortDescriptor(keyPath: \PokemonFavorite.url, ascending: true)
+            NSSortDescriptor(keyPath: \PokemonFavorite.pokemonId, ascending: true)
         ],
         animation: .default)
     private var pokemons: FetchedResults<PokemonFavorite>
@@ -50,20 +50,20 @@ struct FavoriteView: View {
                 GridItem(.adaptive(minimum: 100)),
                 GridItem(.adaptive(minimum: 100))
             ]) {
-                ForEach(pokemons, id: \.id) { pokemon in
-                    if pokemon.url?.count ?? 0 > 0 {
-                        var pokemonId = pokemon.url!
+                ForEach(pokemons, id: \.uuid) { pokemon in
+                    if pokemon.pokemonId > 0 {
+                        
                         var pokemonName: String = pokemon.name!
                         
                         NavigationLink{
-                            PokemonView(pokemonId: Int(pokemonId)!)
+                            PokemonView(pokemonId: Int(pokemon.pokemonId))
                                 .environment(\.managedObjectContext, self.moc)
                         } label: {
                             HStack {
                                 Spacer()
                                 VStack {
                                     
-                                    Text(pokemonName)
+                                    Text(pokemonName.firstUpper())
                                         .foregroundColor(.primary)
                                         .font(.caption)
                                     
