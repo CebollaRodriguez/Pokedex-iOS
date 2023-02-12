@@ -21,7 +21,10 @@ struct DropDown: View {
             let size = $0.size
             
             VStack(alignment: .leading, spacing: 0) {
-                ForEach(content.filter{$0 != selection}, id: \.self) { title in
+                RowView(selection, size)
+                ForEach(content.filter{
+                    $0 != selection
+                }, id: \.self) { title in
                     RowView(title, size)
                 }
             }
@@ -30,7 +33,8 @@ struct DropDown: View {
                     .fill(inActiveTint)
             }
             // Refresh View with the selection
-            .offset(y: (CGFloat(content.firstIndex(of: selection) ?? 0) * -55))
+            //.offset(y: (CGFloat(content.firstIndex(of: selection) ?? 0) * -55))
+            
         }
         .frame(height: 55)
         .overlay(alignment: .trailing) {
@@ -41,8 +45,8 @@ struct DropDown: View {
             Rectangle()
                 .frame(height: expandView ? CGFloat(content.count) * 55 : 55)
                 // Refresh Mask with the selection when is expanded
-                .offset(y: expandView ? (CGFloat(content.firstIndex(of: selection) ?? 0) * -55) : 0)
-
+                //.offset(y: expandView ? (CGFloat(content.firstIndex(of: selection) ?? 0) * -55) : 0)
+                
         }
     }
     
@@ -64,8 +68,10 @@ struct DropDown: View {
             .onTapGesture {
                 withAnimation(.interactiveSpring(response: 0.6, dampingFraction: 0.7, blendDuration: 0.7)) {
                     if expandView {
-                        selection = title
                         expandView = false
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                            selection = title
+                        }
                     } else {
                         if selection == title {
                             expandView = true

@@ -19,11 +19,12 @@ struct HomeView: View {
                 content: $homeViewModel.pokedexesName,
                 selection: $homeViewModel.selection,
                 activeTint: .primary.opacity(0.1),
-                inActiveTint: .black.opacity(0.05)
+                inActiveTint: .primary.opacity(0.05)
             )
             .frame(width: 180)
-            
+            Spacer()
         }
+        
         .onAppear{
             homeViewModel.getPokedexeslist()
         }
