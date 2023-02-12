@@ -72,7 +72,7 @@ struct FavoriteView: View {
                             }
                             
                             .frame(height: 150)
-                            .background(.red)
+                            .background(Color(.secondarySystemBackground))
                             .cornerRadius(10)
                             
                         }

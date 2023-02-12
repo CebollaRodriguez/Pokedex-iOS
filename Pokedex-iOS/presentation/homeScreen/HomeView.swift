@@ -8,50 +8,26 @@
 import SwiftUI
 
 struct HomeView: View {
-    let email: String
+    
     @StateObject private var homeViewModel: HomeViewModel = .build()
     @Environment(\.managedObjectContext) private var moc
     
-    var body: some View {
-        NavigationView {
-            TabView {
-                homeBody
-                .tabItem {
-                    Label("Home", systemImage: "house.fill")
-                }
-                ExploreView()
-                    .environment(\.managedObjectContext, self.moc)
-                    .tabItem {
-                       Label("Explore", systemImage: "map.fill")
-                    }
-                FavoriteView()
-                    .environment(\.managedObjectContext, self.moc)
-                    .tabItem {
-                        Label("Favorite", systemImage: "star")
-                    }
-            }
-            .toolbar {
-                NavigationLink {
-                    ProfileView()
-                } label: {
-                    Image(systemName: "person.fill")
-                        
-                }
-
-            }
-            .navigationBarTitleDisplayMode(.inline)
-        }
-    }
     
-    var homeBody: some View {
+    var body: some View {
         VStack {
-            Text("Welcome \(email)")
-                .padding(.top, 20)
-            pokedexesList
+            DropDown(
+                content: $homeViewModel.pokedexesName,
+                selection: $homeViewModel.selection,
+                activeTint: .primary.opacity(0.1),
+                inActiveTint: .black.opacity(0.05)
+            )
+            .frame(width: 180)
+            
         }
         .onAppear{
             homeViewModel.getPokedexeslist()
         }
+        
     }
     
     var pokedexesList: some View {
@@ -100,6 +76,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(email: "gabrielsanchezperaza@gmail.com")
+        HomeView()
     }
 }

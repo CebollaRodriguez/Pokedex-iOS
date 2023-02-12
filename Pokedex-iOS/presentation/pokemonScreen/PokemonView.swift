@@ -26,6 +26,7 @@ struct PokemonView: View {
     @State private var isEvoClick = false
     @State private var evoNameOpacity = 0.1
     @State private var isFavorite: Bool = false
+    @State private var isFavoriteClick: Bool = false
     
     var body: some View {
         NavigationView {
@@ -39,6 +40,10 @@ struct PokemonView: View {
                         Spacer()
                         evoNameToast
                     }
+                }
+                
+                if isFavoriteClick {
+                    
                 }
             }
             .task{
@@ -56,6 +61,29 @@ struct PokemonView: View {
         }
         
         
+    }
+    
+    var favoriteStateToast: some View {
+        VStack {
+            Spacer()
+            Rectangle()
+                .background(.gray)
+                .frame(width: 200, height: 30)
+                .opacity(0.2)
+                .cornerRadius(20)
+                .padding(40)
+                .overlay {
+                    Text(isFavorite ? "Saving in favorites" : "Deleting of favorites")
+                        .frame( height: 30)
+                        .foregroundColor(.white)
+                        .font(.headline.bold())
+                }
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                self.isFavoriteClick = false
+            }
+        }
     }
     
     var toolbarScreen: some View {
@@ -80,6 +108,8 @@ struct PokemonView: View {
                 }
                 self.isFavorite.toggle()
                 try! self.moc.save()
+                self.isFavoriteClick.toggle()
+                
             } label: {
                 if viewModel.name.count > 2 {
                     Image(systemName: "star.fill")

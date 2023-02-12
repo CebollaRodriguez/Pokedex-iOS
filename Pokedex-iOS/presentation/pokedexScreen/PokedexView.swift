@@ -11,15 +11,28 @@ struct PokedexView: View {
     let pokedexUrl: String
     @StateObject private var viewModel: PokedexViewModel = .build()
     @Environment(\.managedObjectContext) private var moc
+    @State private var isContentVisible: Bool = false
     var body: some View {
         VStack {
             Text(viewModel.model.pokedexName)
-            pokemons
+            if isContentVisible {
+                pokemons
+            } else {
+                pokemons
+                    .redacted(reason: .placeholder)
+            }
+            
+                
             
             
         }
         .onAppear{
             viewModel.getPokedex(url: pokedexUrl)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                withAnimation(.easeInOut(duration: 1.5)) {
+                    self.isContentVisible.toggle()
+                }
+            }
         }
     }
     
@@ -34,6 +47,8 @@ struct PokedexView: View {
             ]) {
                 ForEach(viewModel.model.pokemons, id: \.id) { pokemon in
                     var pokemonUrl: String = pokemon.url
+                    var name = pokemon.name
+                    
                     NavigationLink{
                         PokemonView(pokemonId: Int(pokemonUrl.getPokemonIdByUrl())!)
                             .environment(\.managedObjectContext, self.moc)
@@ -41,10 +56,22 @@ struct PokedexView: View {
                         HStack {
                             Spacer()
                             VStack {
-                                Text(pokemon.name)
+                                AsyncImage(url: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(pokemon.id).png")
+                                ) { image in
+                                    image
+                                        .resizable()
+                                        .frame(width: 80, height: 90)
+                                } placeholder: {
+                                    if isContentVisible {
+                                        ProgressView()
+                                    } else {
+                                        
+                                    }
+                                        
+                                }
+                                Text(name.firstUpper())
                                     .foregroundColor(.primary)
                                     .font(.caption)
-                                Text("id pokemon: \(pokemonUrl.getPokemonIdByUrl())")
 
                             }
                             
@@ -53,7 +80,7 @@ struct PokedexView: View {
                         }
                         
                         .frame(height: 150)
-                        .background(.red)
+                        .background(Color(.secondarySystemBackground))
                         .cornerRadius(10)
                         
                     }

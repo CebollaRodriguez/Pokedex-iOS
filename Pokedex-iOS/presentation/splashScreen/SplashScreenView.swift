@@ -49,7 +49,7 @@ struct SplashScreenView: View {
         } else {
             if let email = session.email {
                 if email != "" {
-                    HomeView(email: email)
+                    AppTabView()
                         .environment(\.managedObjectContext, self.moc)
                     
                 } else {

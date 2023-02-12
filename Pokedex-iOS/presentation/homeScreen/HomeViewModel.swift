@@ -10,6 +10,8 @@ import Foundation
 class HomeViewModel: ObservableObject {
     @Published var pokedexes: [Pokedexes] = []
     @Published var messageError: String = ""
+    @Published var pokedexesName: [String] = []
+    @Published var selection: String = ""
     private let useCase: HomeUseCaseProtocol
     
     init(useCase: HomeUseCaseProtocol) {
@@ -21,9 +23,17 @@ class HomeViewModel: ObservableObject {
             switch result {
             case .success(let pokedexList):
                 self?.pokedexes = pokedexList
+                self?.getPokedexesName(pokedexList)
             case .failure(let error):
                 self?.messageError = error.localizedDescription
             }
         }
+    }
+    
+    private func getPokedexesName(_ list: [Pokedexes]) {
+        pokedexesName = list.map { pokedex in
+            String(pokedex.name)
+        }
+        selection = pokedexesName.first ?? ""
     }
 }

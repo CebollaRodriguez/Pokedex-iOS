@@ -11,8 +11,6 @@ struct ExploreView: View {
     @StateObject private var viewModel: ExploreViewModel = .build()
     @State private var isExploring = false
     @State private var isError: Bool = false
-    @State private var isCapture: Bool = false
-    @State private var isEscape: Bool = false
 
     var body: some View {
         ZStack {
@@ -67,20 +65,16 @@ struct ExploreView: View {
                 ProgressView()
             }
             
-            HStack{
-                Button {
-                    viewModel.isGoalComplete = false
-                } label: {
-                    Text("Capture")
-                        .padding(.trailing)
+            Button {
+                viewModel.isGoalComplete = false
+            } label: {
+                HStack {
+                    Spacer()
+                    Text("View in Pokedex")
+                        .padding()
+                    Spacer()
                 }
-                Button {
-                    viewModel.isGoalComplete = false
-                } label: {
-                    Text("Escape")
-                        .padding(.leading)
-                }
-
+                
             }
             .padding(.top)
         }
