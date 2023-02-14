@@ -31,12 +31,15 @@ struct AppTabView: View {
                     }
             }
             .toolbar {
-                NavigationLink {
-                    ProfileView()
-                } label: {
-                    Image(systemName: "person.fill")
-                        
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink {
+                        ProfileView()
+                    } label: {
+                        Image(systemName: "person.fill")
+                            
+                    }
                 }
+                
 
             }
             .navigationBarTitleDisplayMode(.inline)

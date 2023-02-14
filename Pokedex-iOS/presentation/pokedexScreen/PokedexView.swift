@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct PokedexView: View {
-    @Binding var pokedex: Pokedexes
-    @Binding var wasChanged: Bool
     @StateObject private var viewModel: PokedexViewModel = .build()
     @Environment(\.managedObjectContext) private var moc
+    
+    // Pokedex Properties
+    @Binding var pokedex: Pokedexes
+    @Binding var wasChanged: Bool
+    // View propierties
     @State private var isContentVisible: Bool = false
     var body: some View {
         
@@ -60,19 +63,7 @@ struct PokedexView: View {
                         HStack {
                             Spacer()
                             VStack {
-                                AsyncImage(url: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(pokemonUrl.getPokemonIdByUrl()).png")
-                                ) { image in
-                                    image
-                                        .resizable()
-                                        .frame(width: 80, height: 90)
-                                } placeholder: {
-                                    if isContentVisible {
-                                        ProgressView()
-                                    } else {
-                                        
-                                    }
-                                    
-                                }
+                                PokemonImage(id: pokemonUrl.getPokemonIdByUrl(), width: 80, height: 90)
                                 Text(name.firstUpper())
                                     .foregroundColor(.primary)
                                     .font(.caption)

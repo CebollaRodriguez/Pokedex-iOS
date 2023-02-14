@@ -25,6 +25,9 @@ struct FavoriteView: View {
         NavigationView {
             VStack {
                 if !isEmpty {
+                    Text ("Your Favorites Pokemons")
+                        .font(.title)
+                        .foregroundColor(.secondary)
                     pokemonGrid
                 } else {
                     ProgressView()
@@ -62,7 +65,7 @@ struct FavoriteView: View {
                             HStack {
                                 Spacer()
                                 VStack {
-                                    
+                                    PokemonImage(id: String(pokemon.pokemonId), width: 80, height: 90)
                                     Text(pokemonName.firstUpper())
                                         .foregroundColor(.primary)
                                         .font(.caption)
