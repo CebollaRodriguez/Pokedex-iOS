@@ -8,37 +8,41 @@
 import SwiftUI
 
 struct PokedexView: View {
-    let pokedexUrl: String
+    @Binding var pokedex: Pokedexes
+    @Binding var wasChanged: Bool
     @StateObject private var viewModel: PokedexViewModel = .build()
     @Environment(\.managedObjectContext) private var moc
     @State private var isContentVisible: Bool = false
     var body: some View {
+        
+        if wasChanged {
+            pokedexViewContent
+        } else {
+            pokedexViewContent
+        }
+    }
+    
+    var pokedexViewContent : some View{
         VStack {
-            Text(viewModel.model.pokedexName)
+            
             if isContentVisible {
                 pokemons
             } else {
                 pokemons
                     .redacted(reason: .placeholder)
             }
-            
-                
-            
-            
         }
-        .onAppear{
-            viewModel.getPokedex(url: pokedexUrl)
+        .task {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                withAnimation(.easeInOut(duration: 1.5)) {
-                    self.isContentVisible.toggle()
+                if pokedex.name.count > 3 {
+                    viewModel.getPokedex(url: pokedex.url)
                 }
             }
         }
     }
     
     var pokemons: some View {
-        
-        
+
         ScrollView {
             LazyVGrid(columns: [
                 GridItem(.adaptive(minimum: 100)),
@@ -56,7 +60,7 @@ struct PokedexView: View {
                         HStack {
                             Spacer()
                             VStack {
-                                AsyncImage(url: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(pokemon.id).png")
+                                AsyncImage(url: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(pokemonUrl.getPokemonIdByUrl()).png")
                                 ) { image in
                                     image
                                         .resizable()
@@ -67,12 +71,12 @@ struct PokedexView: View {
                                     } else {
                                         
                                     }
-                                        
+                                    
                                 }
                                 Text(name.firstUpper())
                                     .foregroundColor(.primary)
                                     .font(.caption)
-
+                                
                             }
                             
                             
@@ -90,14 +94,18 @@ struct PokedexView: View {
             .padding(.horizontal,20)
             
         }
+        .onAppear{
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                
+                withAnimation(.easeInOut(duration: 1.5)) {
+                    self.isContentVisible = true
+                }
+            }
+        }
     }
 }
 
 
 
-struct PokedexView_Previews: PreviewProvider {
-    static var previews: some View {
-        PokedexView(pokedexUrl:"https://pokeapi.co/api/v2/pokedex/1/")
-    }
-}
 

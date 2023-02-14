@@ -23,6 +23,7 @@ class PokedexUseCase: PokedexUseCaseProtocol {
                     let pokemonsList = pokedexResponse.pokemon_entries.map { pokedexModel in
                         PokemonInPokedex(id: pokedexModel.entry_number, name: pokedexModel.pokemon_species.name, url: pokedexModel.pokemon_species.url)
                     }
+                    
                     completion(.success(.init(pokedexName: pokedexResponse.name, pokemons: pokemonsList)))
                 }
             case .failure(let error):

@@ -8,7 +8,7 @@
 import Foundation
 
 class PokedexViewModel: ObservableObject {
-    @Published var model: Pokedex = .init(pokedexName: "S/N", pokemons: [])
+    @Published var model: Pokedex = .init(pokedexName: "", pokemons: [])
     @Published var messageError: String = ""
     private let useCase: PokedexUseCaseProtocol
     

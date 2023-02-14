@@ -11,68 +11,47 @@ struct HomeView: View {
     
     @StateObject private var homeViewModel: HomeViewModel = .build()
     @Environment(\.managedObjectContext) private var moc
-    
+    @State private var expandView: Bool = false
+    @State private var wasChanged: Bool = false
     
     var body: some View {
-        VStack {
-            DropDown(
-                content: $homeViewModel.pokedexesName,
-                selection: $homeViewModel.selection,
-                activeTint: .primary.opacity(0.1),
-                inActiveTint: .primary.opacity(0.05)
-            )
-            .frame(width: 180)
-            Spacer()
+        NavigationView {
+            
+            ZStack {
+                
+                PokedexView(
+                    pokedex: $homeViewModel.selection,
+                    wasChanged: $wasChanged
+                )
+                .padding(.top,65)
+                .blur(radius: expandView ? 15 : 0)
+                .disabled(expandView)
+                VStack {
+                    HStack {
+                        DropDown(
+                            content: $homeViewModel.pokedexes,
+                            selection: $homeViewModel.selection,
+                            expandView: $expandView,
+                            wasChanged: $wasChanged,
+                            activeTint: .primary.opacity(0.1),
+                            inActiveTint: .primary.opacity(0.05)
+                        )
+                        .frame(width: 180)
+                        .padding(.leading, 20)
+                        Spacer()
+                    }
+                    
+                    Spacer()
+                }
+            }
+            
         }
-        
         .onAppear{
             homeViewModel.getPokedexeslist()
         }
         
     }
     
-    var pokedexesList: some View {
-        
-        VStack {
-            Text("Choose a pokedex")
-                .foregroundColor(.secondary)
-                .font(.title)
-                .padding(.top, 3)
-            ScrollView {
-                LazyVGrid(columns: [
-                    GridItem(.adaptive(minimum: 100)),
-                    GridItem(.adaptive(minimum: 100)),
-                ]) {
-                    ForEach(homeViewModel.pokedexes, id: \.name) { pokedex in
-                        var pokedexName = pokedex.name
-                        NavigationLink {
-                            PokedexView(pokedexUrl: pokedex.url)
-                                .environment(\.managedObjectContext, self.moc)
-                        } label: {
-                            HStack{
-                                Spacer()
-                                Text(pokedexName.firstUpper())
-                                
-                                    .foregroundColor(.primary)
-                                Spacer()
-                            }
-                            .frame(height: 80)
-
-                        }
-                        
-                        .buttonStyle(.borderless)
-                        .background()
-                        .padding(3)
-                        .shadow(radius: 5)
-
-                    }
-                }
-
-            }
-            .padding(.bottom)
-        }
-        .padding(.horizontal, 30)
-    }
 }
 
 struct HomeView_Previews: PreviewProvider {
