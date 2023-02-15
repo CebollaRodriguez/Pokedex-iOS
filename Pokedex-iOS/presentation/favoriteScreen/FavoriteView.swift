@@ -22,7 +22,7 @@ struct FavoriteView: View {
     
     var body: some View {
         
-        NavigationView {
+        VStack {
             VStack {
                 if !isEmpty {
                     Text ("Your Favorites Pokemons")

@@ -9,6 +9,7 @@ import SwiftUI
 import CoreData
 
 struct PokemonView: View {
+    // Pokemon Properties
     let pokemonId: Int
     
     @Environment(\.managedObjectContext) private var moc
@@ -21,41 +22,70 @@ struct PokemonView: View {
         animation: .default)
     private var pokemons: FetchedResults<PokemonFavorite>
     
+    // View proporties
     @StateObject private var viewModel: PokemonViewModel = .build()
     @State private var evoName = ""
     @State private var isEvoClick = false
     @State private var evoNameOpacity = 0.1
     @State private var isFavorite: Bool = false
     @State private var isFavoriteClick: Bool = false
+    // Offsets
+    @State private var offset: CGFloat = 0
+    @State private var startOffset: CGFloat = 0
+    @State private var nameOffSet: CGFloat = 0
     
     var body: some View {
         NavigationView {
-            ZStack {
-                VStack {
-                    pokemonImage
-                    pokemonEvolutions
-                }
-                if isEvoClick {
-                    VStack {
-                        Spacer()
-                        evoNameToast
+            VStack {
+                toolbarScreen
+                ZStack {
+                    ScrollView(showsIndicators: false) {
+                        VStack {
+                            pokemonImage
+                            Rectangle()
+                                .foregroundColor(viewModel.color)
+                                .frame(width: 200, height: 400)
+                            pokemonEvolutions
+                            Spacer()
+                        }
+                        
+                        // Getting offset
+                        .overlay(
+                            GeometryReader { proxy -> Color in
+                                
+                                let minY = proxy.frame(in: .global).minY
+                                
+                                DispatchQueue.main.async {
+                                    if startOffset == 0 {
+                                        startOffset = minY
+                                    }
+                                    offset = startOffset - minY
+                                    
+                                }
+                                
+                                return Color.clear
+                            }
+                                .frame(width: 0, height: 0)
+                            , alignment: .top
+                        )
+                    }
+                    
+                    if isEvoClick {
+                        VStack {
+                            Spacer()
+                            evoNameToast
+                        }
+                    }
+                    
+                    if isFavoriteClick {
+                        favoriteStateToast
                     }
                 }
-                
-                if isFavoriteClick {
-                    favoriteStateToast
+                .task{
+                    viewModel.getPokemon(id: pokemonId)
                 }
             }
-            .task{
-                viewModel.getPokemon(id: pokemonId)
-            }
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    toolbarScreen
-                }
-                
-                
-            }
+            
         }
         
         
@@ -85,39 +115,64 @@ struct PokemonView: View {
     }
     
     var toolbarScreen: some View {
-        HStack {
-            
-            Text(viewModel.name)
-                .font(.largeTitle)
-                .padding(.leading,10)
-            Spacer()
-            Button {
-                if !self.isFavorite {
-                    let addFavorite = PokemonFavorite(context: self.moc)
-                    addFavorite.name = viewModel.name
-                    addFavorite.pokemonId = Int32(viewModel.id)
-                    addFavorite.uuid = UUID()
-                } else {
-                    let favPokemon = pokemons.filter( { fav in
-                        guard let name = fav.name else { return false }
-                        return name == viewModel.name
-                   })
-                    guard let pokemonFav = favPokemon.first else { return }
-                    self.moc.delete(pokemonFav)
+        VStack {
+            HStack {
+                Spacer()
+                Button {
+                    if !self.isFavorite {
+                        let addFavorite = PokemonFavorite(context: self.moc)
+                        addFavorite.name = viewModel.name
+                        addFavorite.pokemonId = Int32(viewModel.id)
+                        addFavorite.uuid = UUID()
+                    } else {
+                        let favPokemon = pokemons.filter( { fav in
+                            guard let name = fav.name else { return false }
+                            return name == viewModel.name
+                        })
+                        guard let pokemonFav = favPokemon.first else { return }
+                        self.moc.delete(pokemonFav)
+                    }
+                    self.isFavorite.toggle()
+                    try! self.moc.save()
+                    self.isFavoriteClick.toggle()
+                    
+                } label: {
+                    if viewModel.name != "" {
+                        Image(systemName: isFavorite ? "star.fill" : "star")
+                            .foregroundColor(self.isFavorite ? viewModel.color : .gray)
+                            .padding(.trailing, 20)
+                            .font(.system(size: 25, weight: .semibold))
+                        
+                    }
                 }
-                self.isFavorite.toggle()
-                try! self.moc.save()
-                self.isFavoriteClick.toggle()
-                
-            } label: {
-                if viewModel.name.count > 2 {
-                    Image(systemName: "star.fill")
-                        .foregroundColor(self.isFavorite ? viewModel.color : .gray)
-                }
-                
             }
             
-
+            HStack {
+                Spacer()
+                Text(viewModel.name)
+                    .font(.largeTitle)
+                    .padding(.leading,10)
+                Spacer()
+                
+            }
+            .overlay(
+                GeometryReader { reader -> Color in
+                    let width = reader.frame(in: .global).maxX
+                    
+                    DispatchQueue.main.async {
+                        if nameOffSet == 0 {
+                            nameOffSet = width
+                        }
+                    }
+                    
+                    return Color.clear
+                }
+                    .frame(width: 0, height: 0)
+            )
+            .padding()
+            // getting offset and moving the view
+            .offset(getOffset())
+            
         }
     }
     
@@ -140,6 +195,9 @@ struct PokemonView: View {
                             }
                     } placeholder: {
                         ProgressView()
+                            .onDisappear{
+                                self.startOffset = 0
+                            }
                     }
                 }
             }
@@ -148,13 +206,13 @@ struct PokemonView: View {
     }
     
     var pokemonImage: some View {
-        PokemonImage(id: String(pokemonId), width: 200, height: 200)
-        .task {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                viewModel.checkIsFavorite(listFav: pokemons)
-                self.isFavorite = viewModel.isFavorite
+        PokemonImage(id: String(pokemonId), width: 300, height: 300)
+            .task {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                    viewModel.checkIsFavorite(listFav: pokemons)
+                    self.isFavorite = viewModel.isFavorite
+                }
             }
-        }
     }
     
     var evoNameToast: some View {
@@ -172,10 +230,19 @@ struct PokemonView: View {
                         .foregroundColor(.white)
                         .font(.headline.bold())
                 }
-                
+            
         }
     }
     
+    func getOffset ()->CGSize{
+        var size: CGSize = .zero
+        let screenWidth = UIScreen.main.bounds.width/1.3
+        print(screenWidth)
+        
+        size.width = offset > 0 ? (offset * 1.5 <= (screenWidth - nameOffSet ) ? -offset * 1.5 : ( nameOffSet - screenWidth )) : 0
+        size.height = offset > 0 ? (offset <= 60 ? -offset : -60) : 0
+        return size
+    }
 }
 
 
