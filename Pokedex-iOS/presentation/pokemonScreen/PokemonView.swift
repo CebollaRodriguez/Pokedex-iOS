@@ -43,16 +43,14 @@ struct PokemonView: View {
                 }
                 
                 if isFavoriteClick {
-                    
+                    favoriteStateToast
                 }
             }
             .task{
                 viewModel.getPokemon(id: pokemonId)
             }
             .toolbar {
-                
                 ToolbarItem(placement: .principal) {
-                    
                     toolbarScreen
                 }
                 
@@ -88,9 +86,10 @@ struct PokemonView: View {
     
     var toolbarScreen: some View {
         HStack {
-            Spacer()
+            
             Text(viewModel.name)
                 .font(.largeTitle)
+                .padding(.leading,10)
             Spacer()
             Button {
                 if !self.isFavorite {
@@ -145,17 +144,11 @@ struct PokemonView: View {
                 }
             }
         }
+        .padding(.horizontal, 20)
     }
     
     var pokemonImage: some View {
-        AsyncImage(url: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(viewModel.id).png")
-        ) { image in
-            image
-                .resizable()
-                .frame(width: 200, height: 200)
-        } placeholder: {
-            ProgressView()
-        }
+        PokemonImage(id: String(pokemonId), width: 200, height: 200)
         .task {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
                 viewModel.checkIsFavorite(listFav: pokemons)

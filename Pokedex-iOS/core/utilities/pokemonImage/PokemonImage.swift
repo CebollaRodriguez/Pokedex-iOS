@@ -20,7 +20,7 @@ struct PokemonImage: View {
                 .resizable()
                 .frame(width: self.width, height: self.height)
         } placeholder: {
-            
+            ProgressView()
             
         }
     }

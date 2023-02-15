@@ -14,6 +14,7 @@ struct PokedexView: View {
     // Pokedex Properties
     @Binding var pokedex: Pokedexes
     @Binding var wasChanged: Bool
+    @Binding var searchText: String
     // View propierties
     @State private var isContentVisible: Bool = false
     var body: some View {
@@ -30,12 +31,14 @@ struct PokedexView: View {
             
             if isContentVisible {
                 pokemons
+                    
             } else {
                 pokemons
                     .redacted(reason: .placeholder)
             }
         }
-        .task {
+        .onAppear {
+            isContentVisible = false
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
                 if pokedex.name.count > 3 {
                     viewModel.getPokedex(url: pokedex.url)
@@ -46,13 +49,15 @@ struct PokedexView: View {
     
     var pokemons: some View {
 
-        ScrollView {
+        ScrollView(.vertical, showsIndicators: false) {
             LazyVGrid(columns: [
                 GridItem(.adaptive(minimum: 100)),
                 GridItem(.adaptive(minimum: 100)),
                 GridItem(.adaptive(minimum: 100))
             ]) {
-                ForEach(viewModel.model.pokemons, id: \.id) { pokemon in
+                ForEach(searchText != "" ? viewModel.model.pokemons.filter{ pokemon in
+                    pokemon.name.lowercased().contains(searchText.lowercased() )
+                } : viewModel.model.pokemons, id: \.id) { pokemon in
                     var pokemonUrl: String = pokemon.url
                     var name = pokemon.name
                     
@@ -81,20 +86,25 @@ struct PokedexView: View {
                     }
                     .padding(2)
                 }
+                
+                
+                
             }
             .padding(.horizontal,20)
             
         }
         .onAppear{
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 
-                withAnimation(.easeInOut(duration: 1.5)) {
+                withAnimation(.easeInOut(duration: 2.0)) {
                     self.isContentVisible = true
                 }
             }
         }
     }
+    
+   
 }
 
 

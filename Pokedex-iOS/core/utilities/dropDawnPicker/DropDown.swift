@@ -27,7 +27,12 @@ struct DropDown: View {
                     ForEach(content.filter{
                         $0.name != selection.name
                     }, id: \.name) { pokedex in
-                        RowView(pokedex, size)
+                        VStack(spacing: 0) {
+                            RowView(pokedex, size)
+                            Rectangle()
+                                .foregroundColor(activeTint)
+                                .frame(height: 1)
+                        }
                     }
                 }
                 
@@ -47,7 +52,7 @@ struct DropDown: View {
         }
         .mask(alignment: .top) {
             Rectangle()
-                .frame(height: expandView ? CGFloat(content.count) * 55 : 55)
+                .frame(height: expandView ? (CGFloat(content.count) * 55) + CGFloat(content.count - 1) : 55)
                 // Refresh Mask with the selection when is expanded. Disabled for Non-Dynamic View
                 //.offset(y: expandView ? (CGFloat(content.firstIndex(of: selection) ?? 0) * -55) : 0)
                 
@@ -66,6 +71,7 @@ struct DropDown: View {
                     Rectangle()
                         .fill(activeTint)
                         .transition(.identity)
+                        .cornerRadius(!expandView ? 10 : 0)
                 }
             }
             .contentShape(Rectangle())

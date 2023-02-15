@@ -34,6 +34,7 @@ class PokemonViewModel: ObservableObject {
                 self?.pokemonEvolution = pokemon.pokemonEvolutions
                 self?.color = self?.getColor(. init(rawValue: pokemon.color) ?? .unowned)
                 self?.name = (self?.name.firstUpper())!
+                
                 self?.pokemonUrl = pokemon.evolutionChainUrl
             case .failure(let error):
                 self?.messageError = error.localizedDescription
@@ -45,7 +46,6 @@ class PokemonViewModel: ObservableObject {
         var inFavorite: Bool = false
         self.isFavorite = listFav.contains(where: { pokemonFav in
             if let pokemonName = pokemonFav.name {
-                print("Pokemon in fav: \(pokemonName) debe ser igual a: \(self.name)")
                 inFavorite = pokemonName == self.name
             }
             return inFavorite
