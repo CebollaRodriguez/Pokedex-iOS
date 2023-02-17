@@ -83,6 +83,9 @@ struct HomeView: View {
         .background (Color.primary.opacity (0.05))
         .cornerRadius (8)
         .padding(.horizontal, 20)
+        .blur(radius: expandView ? 15 : 0)
+        .disabled(expandView)
+
         
     }
     

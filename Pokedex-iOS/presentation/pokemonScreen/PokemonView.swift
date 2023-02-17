@@ -29,25 +29,50 @@ struct PokemonView: View {
     @State private var evoNameOpacity = 0.1
     @State private var isFavorite: Bool = false
     @State private var isFavoriteClick: Bool = false
+    @State private var isViewVisible: Bool = false
     // Offsets
     @State private var offset: CGFloat = 0
     @State private var startOffset: CGFloat = 0
     @State private var nameOffSet: CGFloat = 0
+    @State private var nameBarHeight: CGFloat = 0
     
     var body: some View {
         NavigationView {
-            VStack {
-                toolbarScreen
-                ZStack {
+            if isViewVisible {
+                
+                
+                ZStack(alignment: .top) {
+                    toolbarScreen
+                        .zIndex(1)
+                        .overlay (
+                            GeometryReader { reader -> Color in
+                                
+                                let height = reader.frame(in: .global).maxY
+                                
+                                DispatchQueue.main.async {
+                                    nameBarHeight = height - (UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0)
+                                    
+                                }
+                                
+                                return Color.clear
+                            }
+                                
+                        )
                     ScrollView(showsIndicators: false) {
                         VStack {
                             pokemonImage
                             Rectangle()
                                 .foregroundColor(viewModel.color)
                                 .frame(width: 200, height: 400)
+                            Text("\(viewModel.name) Evolves")
+                                .foregroundColor(.secondary)
+                                .font(.title)
+                                .padding(.vertical)
                             pokemonEvolutions
                             Spacer()
                         }
+                        .padding(.top, 10)
+                        .padding(.top, nameBarHeight)
                         
                         // Getting offset
                         .overlay(
@@ -68,6 +93,11 @@ struct PokemonView: View {
                                 .frame(width: 0, height: 0)
                             , alignment: .top
                         )
+                        
+                    }
+                    
+                    if offset >= 70 {
+                        floatFavoriteButton
                     }
                     
                     if isEvoClick {
@@ -81,8 +111,20 @@ struct PokemonView: View {
                         favoriteStateToast
                     }
                 }
-                .task{
+                
+            } else {
+                ScrollView {
+                    contentPlaceHolder
+                }
+                .onAppear{
                     viewModel.getPokemon(id: pokemonId)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                        withAnimation(.easeInOut(duration: 2.0)) {
+                            if viewModel.name != "" {
+                                self.isViewVisible = true
+                            }
+                        }
+                    }
                 }
             }
             
@@ -90,6 +132,94 @@ struct PokemonView: View {
         
         
     }
+    var contentPlaceHolder: some View {
+        VStack {
+            HStack {
+                RectanglePlaceHolder(width: 200, height: 50)
+                    .padding(.leading, 20)
+                Spacer()
+            }
+            .padding(.top,30)
+            
+            RectanglePlaceHolder(width: 300, height: 300)
+                .padding(.top, 10)
+            HStack {
+                RectanglePlaceHolder(width: 150, height: 60)
+                RectanglePlaceHolder(width: 150, height: 60)
+
+            }
+            .padding(.top)
+            HStack {
+                RectanglePlaceHolder(width: 150, height: 60)
+                RectanglePlaceHolder(width: 150, height: 60)
+
+            }
+            .padding(.top)
+            HStack {
+                RectanglePlaceHolder(width: 150, height: 60)
+                RectanglePlaceHolder(width: 150, height: 60)
+
+            }
+            .padding(.top)
+            
+            HStack {
+                RectanglePlaceHolder(width: 150, height: 150)
+                RectanglePlaceHolder(width: 150, height: 150)
+                RectanglePlaceHolder(width: 150, height: 150)
+
+            }
+            .padding(.top, 10)
+        }
+    }
+    var floatFavoriteButton: some View {
+        VStack {
+            Spacer()
+            HStack{
+                Spacer()
+                Circle()
+                    .foregroundColor(.white)
+                    .shadow(radius: 10)
+                    .frame(width: 80, height: 80)
+                    .overlay(alignment: .center) {
+                        favoriteButton
+                    }
+                    .padding(.trailing, 20)
+            }
+            .opacity(offset < 125 ? (offset < 95 ? 0.4 : 0.7) : 1)
+        }
+        
+    }
+    
+    var favoriteButton: some View {
+        Button {
+            
+            // Saving or Deleting the current pokemon into db
+            if !self.isFavorite {
+                let addFavorite = PokemonFavorite(context: self.moc)
+                addFavorite.name = viewModel.name
+                addFavorite.pokemonId = Int32(viewModel.id)
+                addFavorite.uuid = UUID()
+            } else {
+                let favPokemon = pokemons.filter( { fav in
+                    guard let name = fav.name else { return false }
+                    return name == viewModel.name
+                })
+                guard let pokemonFav = favPokemon.first else { return }
+                self.moc.delete(pokemonFav)
+            }
+            self.isFavorite.toggle()
+            try! self.moc.save()
+            self.isFavoriteClick.toggle()
+            
+        } label: {
+            if viewModel.name != "" {
+                Image(systemName: isFavorite ? "star.fill" : "star")
+                    .foregroundColor(self.isFavorite ? viewModel.color : .gray)
+                    .font(.system(size: 25, weight: .semibold))
+                
+            }
+        }
+            }
     
     var favoriteStateToast: some View {
         VStack {
@@ -116,42 +246,20 @@ struct PokemonView: View {
     
     var toolbarScreen: some View {
         VStack {
-            HStack {
-                Spacer()
-                Button {
-                    if !self.isFavorite {
-                        let addFavorite = PokemonFavorite(context: self.moc)
-                        addFavorite.name = viewModel.name
-                        addFavorite.pokemonId = Int32(viewModel.id)
-                        addFavorite.uuid = UUID()
-                    } else {
-                        let favPokemon = pokemons.filter( { fav in
-                            guard let name = fav.name else { return false }
-                            return name == viewModel.name
-                        })
-                        guard let pokemonFav = favPokemon.first else { return }
-                        self.moc.delete(pokemonFav)
-                    }
-                    self.isFavorite.toggle()
-                    try! self.moc.save()
-                    self.isFavoriteClick.toggle()
-                    
-                } label: {
-                    if viewModel.name != "" {
-                        Image(systemName: isFavorite ? "star.fill" : "star")
-                            .foregroundColor(self.isFavorite ? viewModel.color : .gray)
-                            .padding(.trailing, 20)
-                            .font(.system(size: 25, weight: .semibold))
-                        
-                    }
-                }
-            }
             
             HStack {
                 Spacer()
+                favoriteButton
+                .padding(.trailing, 20)
+                .opacity(offset > 35 ? (offset > 50 ? 0 : 0.7) : 1)
+                .disabled(offset > 65)
+            }
+            
+            HStack {
+                
                 Text(viewModel.name)
                     .font(.largeTitle)
-                    .padding(.leading,10)
+                    
                 Spacer()
                 
             }
@@ -169,11 +277,17 @@ struct PokemonView: View {
                 }
                     .frame(width: 0, height: 0)
             )
-            .padding()
+            .padding(20)
             // getting offset and moving the view
             .offset(getOffset())
             
+            
+
+            
         }
+        .padding(.bottom, getOffset().height)
+        .padding(.top, 20)
+        .background(offset > 65 ? viewModel.color?.ignoresSafeArea() : .none)
     }
     
     var pokemonEvolutions: some View {
@@ -219,7 +333,7 @@ struct PokemonView: View {
         HStack {
             
             Rectangle()
-                .background(.gray)
+                .background(.secondary)
                 .frame(width: 200, height: 30)
                 .opacity(0.2)
                 .cornerRadius(20)
@@ -239,8 +353,8 @@ struct PokemonView: View {
         let screenWidth = UIScreen.main.bounds.width/1.3
         print(screenWidth)
         
-        size.width = offset > 0 ? (offset * 1.5 <= (screenWidth - nameOffSet ) ? -offset * 1.5 : ( nameOffSet - screenWidth )) : 0
-        size.height = offset > 0 ? (offset <= 60 ? -offset : -60) : 0
+        size.width = offset > 0 ? (offset * 1.5 <= (screenWidth - nameOffSet ) ? offset * 1.5 : ( screenWidth - nameOffSet)) : 0
+        size.height = offset > 0 ? (offset <= 65 ? -offset : -65) : 0
         return size
     }
 }
