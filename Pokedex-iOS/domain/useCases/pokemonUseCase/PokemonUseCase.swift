@@ -18,9 +18,11 @@ class PokemonUseCase: PokemonUseCaseProtocol {
         pokemonService.getOnePokemon(id: id) { result in
             switch result {
             case .success(let pokemonResponse):
+                guard let pokemonResponse = pokemonResponse else { return }
                 self.pokemonService.getEvolution(url: pokemonResponse.evolution_chain.url) { evoResult in
                     switch evoResult {
                     case .success(let success):
+                        guard let success = success else { return }
                         let evolutions = self.mapEvo(evolutions: success)
                         completion(.success(.init(name: pokemonResponse.name, id: pokemonResponse.id, color: pokemonResponse.color.name, evolutionChainUrl: pokemonResponse.evolution_chain.url, pokemonEvolutions: evolutions)))
                     case .failure(let failure):

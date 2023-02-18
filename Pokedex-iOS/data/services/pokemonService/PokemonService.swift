@@ -14,11 +14,11 @@ class PokemonService: PokemonServiceProtocol {
         self.pokemonAPI = pokemonAPI
     }
     
-    func getOnePokemon(id: Int, completion: @escaping(Result<PokemonResponse, Error>) -> Void) {
+    func getOnePokemon(id: Int, completion: @escaping(Result<PokemonResponse?, Error>) -> Void) {
         pokemonAPI.getOnePokemon(id: id, completion: completion)
     }
     
-    func getEvolution(url: String, completion: @escaping(Result<EvolutionResponse, Error>) -> Void) {
+    func getEvolution(url: String, completion: @escaping(Result<EvolutionResponse?, Error>) -> Void) {
         pokemonAPI.getEvolutionSpecies(url: url, completion: completion)
     }
 }

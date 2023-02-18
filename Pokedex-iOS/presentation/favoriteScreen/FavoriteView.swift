@@ -25,6 +25,7 @@ struct FavoriteView: View {
         VStack {
             VStack {
                 if !isEmpty {
+                    
                     Text ("Your Favorites Pokemons")
                         .font(.title)
                         .foregroundColor(.secondary)

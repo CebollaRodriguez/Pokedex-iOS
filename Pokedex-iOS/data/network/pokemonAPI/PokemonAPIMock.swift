@@ -8,7 +8,7 @@
 import Foundation
 
 class PokemonAPIMock: PokemonApiProtocol {
-    func getEvolutionSpecies(url: String, completion: @escaping (Result<EvolutionResponse, Error>) -> Void) {
+    func getEvolutionSpecies(url: String, completion: @escaping (Result<EvolutionResponse?, Error>) -> Void) {
         
     }
     
@@ -20,7 +20,7 @@ class PokemonAPIMock: PokemonApiProtocol {
         completion(.success(.init(name: "Test", pokemon_entries: [])))
     }
     
-    func getOnePokemon(id: Int, completion: @escaping (Result<PokemonResponse, Error>) -> Void) {
+    func getOnePokemon(id: Int, completion: @escaping (Result<PokemonResponse?, Error>) -> Void) {
         completion(.success(.init(name: "Test", id: 2, color: .init(name: "colorTest"), evolution_chain: .init(url: "UrlTest"))))
     }
     
