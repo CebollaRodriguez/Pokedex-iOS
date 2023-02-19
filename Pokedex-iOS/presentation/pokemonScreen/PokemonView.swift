@@ -50,7 +50,10 @@ struct PokemonView: View {
                                 let height = reader.frame(in: .global).maxY
                                 
                                 DispatchQueue.main.async {
-                                    nameBarHeight = height - (UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0)
+                                    if nameBarHeight == 0 {
+                                        nameBarHeight = height - (UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0)
+                                    }
+                                    
                                     
                                 }
                                 
@@ -351,7 +354,7 @@ struct PokemonView: View {
     func getOffset ()->CGSize{
         var size: CGSize = .zero
         let screenWidth = UIScreen.main.bounds.width/1.3
-        print(screenWidth)
+        
         
         size.width = offset > 0 ? (offset * 1.5 <= (screenWidth - nameOffSet ) ? offset * 1.5 : ( screenWidth - nameOffSet)) : 0
         size.height = offset > 0 ? (offset <= 65 ? -offset : -65) : 0

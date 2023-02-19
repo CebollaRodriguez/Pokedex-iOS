@@ -18,33 +18,66 @@ struct FavoriteView: View {
         ],
         animation: .default)
     private var pokemons: FetchedResults<PokemonFavorite>
-    @State private var isEmpty: Bool = true
+    @State private var isNotEmpty: Bool = true
     
     var body: some View {
         
-        VStack {
+        
+        
+        if isNotEmpty {
             VStack {
-                if !isEmpty {
-                    
-                    Text ("Your Favorites Pokemons")
-                        .font(.title)
-                        .foregroundColor(.secondary)
-                    pokemonGrid
-                } else {
-                    ProgressView()
-                        .onAppear{
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                if !self.pokemons.isEmpty {
-                                    self.isEmpty = false
-                                }
-                            }
+                title
+                          
+                pokemonGrid
+            }
+            
+        } else {
+            ProgressView()
+                .onAppear{
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        if !self.pokemons.isEmpty {
+                            self.isNotEmpty = true
                         }
+                    }
                 }
+        }
+    }
+    
+    
+    
+    
+    
+    var title: some View {
+        VStack {
+            
+            HStack {
+                Text ("My ")
+                    .font(.largeTitle)
+                    .foregroundColor(.primary)
+                +
+                
+                Text("Pokemons")
+                    .font(.largeTitle)
+                    .foregroundColor(.secondary)
+                Spacer()
             }
             
             
+           
+            HStack{
+                Text("Favorites")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                Rectangle()
+                    .foregroundColor(.secondary)
+                    .frame(height: 0.5)
+            }
+            .padding(.top,10)
+            
+            
         }
-        
+        .padding(.horizontal, 20)
+
     }
     
     var pokemonGrid: some View {
@@ -85,11 +118,16 @@ struct FavoriteView: View {
                     
                 }
             }
+            .padding(.top, 10)
+            
             .padding(.horizontal,20)
             
         }
-
+        
+        
     }
+    
+    
 }
 
 struct FavoriteView_Previews: PreviewProvider {

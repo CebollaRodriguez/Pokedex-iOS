@@ -74,6 +74,7 @@ class PokemonViewModel: ObservableObject {
             return .purple
         case .yellow:
             return .yellow
+        
         }
     }
 }

@@ -30,6 +30,7 @@ struct AppTabView: View {
                         Label("Favorite", systemImage: "star")
                     }
             }
+            .background(.primary)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink {

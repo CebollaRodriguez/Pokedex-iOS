@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ExploreView: View {
     @StateObject private var viewModel: ExploreViewModel = .build()
+    @Environment(\.managedObjectContext) private var moc
     @State private var isExploring = false
     @State private var isError: Bool = false
 
@@ -28,6 +29,8 @@ struct ExploreView: View {
                 MapView(userExplore: $viewModel.userExplore,isLocationEnable: $viewModel.isLocationAuthorized)
                 buttonExplore
             }
+            .blur(radius: viewModel.isGoalComplete ? 15 : 0)
+            .disabled(viewModel.isGoalComplete)
             
             if isExploring {
                 distanceFormat
@@ -56,26 +59,24 @@ struct ExploreView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
                 .padding(.top,10)
-            AsyncImage(url: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(pokemonUrl.getPokemonIdByUrl()).png")
-            ) { image in
-                image
-                    .resizable()
-                    .frame(width: 80, height: 80)
-            } placeholder: {
-                ProgressView()
-            }
+            PokemonImage(id: pokemonUrl.getPokemonIdByUrl(), width: 80, height: 80)
             
             Button {
                 viewModel.isGoalComplete = false
             } label: {
                 HStack {
-                    Spacer()
-                    Text("View in Pokedex")
-                        .padding()
-                    Spacer()
+                    
+                    Text("Close")
+                        .padding(.vertical, 10)
+                        .padding(.horizontal, 20)
+                        .foregroundColor(.white)
+                    
                 }
+                .background(.blue)
+                
                 
             }
+            .cornerRadius(10)
             .padding(.top)
         }
         .padding(30)
