@@ -8,12 +8,15 @@
 import Foundation
 import SwiftUI
 
+
 class PokemonViewModel: ObservableObject {
     @Published var name: String = ""
     @Published var id: Int = 0
     @Published var pokemonEvolution: [PokemonEvolutions] = []
+    @Published var pokemonUrl : String = ""
     @Published var color: Color? = nil
     @Published var messageError: String = ""
+    @Published var isFavorite: Bool = false
     
     private let useCase: PokemonUseCaseProtocol
     
@@ -31,10 +34,22 @@ class PokemonViewModel: ObservableObject {
                 self?.pokemonEvolution = pokemon.pokemonEvolutions
                 self?.color = self?.getColor(. init(rawValue: pokemon.color) ?? .unowned)
                 self?.name = (self?.name.firstUpper())!
+                
+                self?.pokemonUrl = pokemon.evolutionChainUrl
             case .failure(let error):
                 self?.messageError = error.localizedDescription
             }
         }
+    }
+    
+    func checkIsFavorite(listFav: FetchedResults<PokemonFavorite>) {
+        var inFavorite: Bool = false
+        self.isFavorite = listFav.contains(where: { pokemonFav in
+            if let pokemonName = pokemonFav.name {
+                inFavorite = pokemonName == self.name
+            }
+            return inFavorite
+        })
     }
     
     private func getColor(_ color: PokemonColor) -> Color? {
@@ -51,6 +66,15 @@ class PokemonViewModel: ObservableObject {
             return .gray
         case .unowned:
             return nil
+        case .pink:
+            return .pink
+        case .red:
+            return .red
+        case .white:
+            return .purple
+        case .yellow:
+            return .yellow
+        
         }
     }
 }

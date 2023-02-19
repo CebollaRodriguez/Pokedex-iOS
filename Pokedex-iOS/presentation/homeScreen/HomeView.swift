@@ -8,94 +8,91 @@
 import SwiftUI
 
 struct HomeView: View {
-    let email: String
+    
     @StateObject private var homeViewModel: HomeViewModel = .build()
+    @Environment(\.managedObjectContext) private var moc
+    @State private var expandView: Bool = false
+    @State private var wasChanged: Bool = false
+    @State private var searchText: String = ""
     
     var body: some View {
-        NavigationView {
-            TabView {
-                homeBody
-                .tabItem {
-                    Label("Home", systemImage: "house.fill")
-                }
-                ExploreView()
-                    .tabItem {
-                       Label("Explore", systemImage: "map.fill")
-                    }
-                FavoriteView()
-                    .tabItem {
-                        Label("Favorite", systemImage: "star")
-                    }
-            }
-            .toolbar {
-                NavigationLink {
-                    ProfileView()
-                } label: {
-                    Image(systemName: "person.fill")
-                        
-                }
-
-            }
-            .navigationBarTitleDisplayMode(.inline)
-        }
-    }
-    
-    var homeBody: some View {
         VStack {
-            Text("Welcome \(email)")
-                .padding(.top, 20)
-            pokedexesList
+            
+            ZStack {
+                
+                PokedexView(
+                    pokedex: $homeViewModel.selection,
+                    wasChanged: $wasChanged,
+                    searchText: $searchText
+                )
+                .padding(.top,65)
+                .blur(radius: expandView ? 15 : 0)
+                .disabled(expandView)
+                VStack {
+                    HStack (spacing: 0) {
+                        searchBar
+                        // animation only if the user starts typing
+                            .animation(.easeInOut, value: searchText != "")
+                        if searchText == "" {
+                            Spacer()
+                            DropDown(
+                                content: $homeViewModel.pokedexes,
+                                selection: $homeViewModel.selection,
+                                expandView: $expandView,
+                                wasChanged: $wasChanged,
+                                activeTint: .primary.opacity(0.1),
+                                inActiveTint: .primary.opacity(0.05)
+                            )
+                            .frame(width: 150)
+                            .padding(.trailing, 20)
+                            
+                            
+                        } else {
+                            Button {
+                                self.searchText = ""
+                            } label: {
+                                Text("Cancel")
+                                    .padding(.trailing, 20)
+                            }
+
+                        }
+                        
+                    }
+                    
+                    Spacer()
+                }
+            }
+            
         }
         .onAppear{
             homeViewModel.getPokedexeslist()
         }
+        
+        
+        
+    }
+    var searchBar: some View {
+        HStack(spacing: 15) {
+            Image(systemName: "magnifyingglass")
+                .font(.system(size: 23, weight: .semibold))
+                .foregroundColor(.gray)
+            TextField("Search", text: $searchText)
+        }
+        .padding(.leading, 20)
+        .frame(height: 35)
+        .background (Color.primary.opacity (0.05))
+        .cornerRadius (8)
+        .padding(.horizontal, 20)
+        .blur(radius: expandView ? 15 : 0)
+        .disabled(expandView)
+
+        
     }
     
-    var pokedexesList: some View {
-        
-        VStack {
-            Text("Choose a pokedex")
-                .foregroundColor(.secondary)
-                .font(.title)
-                .padding(.top, 3)
-            ScrollView {
-                LazyVGrid(columns: [
-                    GridItem(.adaptive(minimum: 100)),
-                    GridItem(.adaptive(minimum: 100)),
-                ]) {
-                    ForEach(homeViewModel.pokedexes, id: \.name) { pokedex in
-                        var pokedexName = pokedex.name
-                        NavigationLink {
-                            PokedexView(pokedexUrl: pokedex.url)
-                        } label: {
-                            HStack{
-                                Spacer()
-                                Text(pokedexName.firstUpper())
-                                
-                                    .foregroundColor(.primary)
-                                Spacer()
-                            }
-                            .frame(height: 80)
-
-                        }
-                        
-                        .buttonStyle(.borderless)
-                        .background()
-                        .padding(3)
-                        .shadow(radius: 5)
-
-                    }
-                }
-
-            }
-            .padding(.bottom)
-        }
-        .padding(.horizontal, 30)
-    }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(email: "gabrielsanchezperaza@gmail.com")
+        HomeView()
     }
 }

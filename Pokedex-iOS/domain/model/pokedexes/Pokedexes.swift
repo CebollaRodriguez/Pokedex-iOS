@@ -9,5 +9,5 @@ import Foundation
 
 struct Pokedexes {
     var name: String
-    let url: String
+    var url: String
 }

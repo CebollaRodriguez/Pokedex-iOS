@@ -66,7 +66,7 @@ class ExploreViewModel: ObservableObject {
     }
     
     func showPokemonFounded() {
-        let randomIndex = pokedexList.indices.randomElement()!
+        let randomIndex: Int = pokedexList.indices.randomElement() ?? 0
         self.pokemonFounded = pokedexList[randomIndex]
     }
     

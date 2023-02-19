@@ -9,7 +9,7 @@ import Foundation
 import GoogleMaps
 
 class Coordinator: NSObject {
-    
+    //Here will be all the logic to google maps Control
     
     
 }

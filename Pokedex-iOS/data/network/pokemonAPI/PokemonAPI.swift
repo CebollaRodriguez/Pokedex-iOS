@@ -6,80 +6,56 @@
 //
 
 import Foundation
+import Alamofire
+
 
 class PokemonAPI: PokemonApiProtocol {
-    func listPokedexes(completion: @escaping(Result<ListPokedexesResponse?, Error>) -> Void) {
-        let url = URL(string: "https://pokeapi.co/api/v2/pokedex")
-        
-        URLSession.shared.dataTask(with: url!) { data, response, error in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
+    private var manager: Alamofire.SessionManager
+    init() {
+        let configuration: URLSessionConfiguration = {
+            let config = URLSessionConfiguration.default
             
-            if let data = data {
-                let pokedexes = try? JSONDecoder().decode(ListPokedexesResponse.self, from: data)
-                completion(.success(pokedexes))
-                
-            }
-        }
-        .resume()
+            return config
+        }()
+        
+        self.manager = Alamofire.SessionManager(configuration: configuration)
     }
     
-    func onePokedex(url:String, completion: @escaping(Result<PokedexResponse?, Error>) -> Void) {
-        let pokedexUrl = URL(string: url)
-        URLSession.shared.dataTask(with: pokedexUrl!) { data, response, error in
-            if let error = error {
-                completion(.failure(error))
+    private func request<T: Decodable>(url: String, completionHandler: @escaping(Swift.Result<T?, Error>) -> Void) {
+        manager.request(url).validate().response { response in
+            if let error = response.error {
+                completionHandler(.failure(error))
+                print(error.localizedDescription)
                 return
             }
-            
-            if let data = data {
-                let pokedex = try? JSONDecoder().decode(PokedexResponse.self, from: data)
-                completion(.success(pokedex))
+            if let data = response.data {
+                let jsonData = try? JSONDecoder().decode(T.self, from: data)
+                completionHandler(.success(jsonData))
             }
         }
-        .resume()
     }
     
-    func getOnePokemon(id: Int, completion: @escaping(Result<PokemonResponse, Error>) -> Void) {
-        let pokemonUrl = URL(string: "https://pokeapi.co/api/v2/pokemon-species/\(id)/")
+    func listPokedexes(completion: @escaping(Swift.Result<ListPokedexesResponse?, Error>) -> Void) {
+        let url = "https://pokeapi.co/api/v2/pokedex"
         
-        URLSession.shared.dataTask(with: pokemonUrl!) { data, response, error in
-            if let error = error {
-                print("Error getting Pokemon by API: \(error.localizedDescription)")
-                completion(.failure(error))
-                return
-            }
-            
-            guard let data = data else {
-                return
-            }
-            
-            if let pokemon = try? JSONDecoder().decode(PokemonResponse.self, from: data) {
-                completion(.success(pokemon))
-            }
-        }
-        .resume()
+        request(url: url, completionHandler: completion)
     }
     
-    func getEvolutionSpecies(url: String, completion: @escaping(Result<EvolutionResponse, Error>) -> Void) {
-        let evoUrl = URL(string: url)
+    func onePokedex(url:String, completion: @escaping(Swift.Result<PokedexResponse?, Error>) -> Void) {
         
-        URLSession.shared.dataTask(with: evoUrl!) { data, response, error in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-            
-            guard let data = data else {
-                return
-            }
-            
-            if let evolutionResponse = try? JSONDecoder().decode(EvolutionResponse.self, from: data) {
-                completion(.success(evolutionResponse))
-            }
-        }
-        .resume()
+        
+        request(url: url, completionHandler: completion)
+    }
+    
+    func getOnePokemon(id: Int, completion: @escaping(Swift.Result<PokemonResponse?, Error>) -> Void) {
+        let pokemonUrl = "https://pokeapi.co/api/v2/pokemon-species/\(id)/"
+        
+        request(url: pokemonUrl, completionHandler: completion)
+    }
+    
+    func getEvolutionSpecies(url: String, completion: @escaping(Swift.Result<EvolutionResponse?, Error>) -> Void) {
+        
+        
+        request(url: url, completionHandler: completion)
     }
 }
