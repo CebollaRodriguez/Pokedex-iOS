@@ -15,6 +15,7 @@ extension String {
         return firstUpper.appending(self)
     }
     func getPokemonIdByUrl() -> String {
+        
         var id = ""
         var cont = 2
         var flag = true

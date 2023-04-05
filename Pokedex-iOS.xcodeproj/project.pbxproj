@@ -79,7 +79,6 @@
 		5F4C492C2968F709007B9265 /* PokemonUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C492B2968F709007B9265 /* PokemonUseCaseMock.swift */; };
 		5F4C492E2968F733007B9265 /* PokemonUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4C492D2968F733007B9265 /* PokemonUseCaseProtocol.swift */; };
 		5F608F4A295E6E7A00648F00 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5F608F49295E6E7A00648F00 /* FirebaseAnalytics */; };
-		5F755181295E6FF4004BE007 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F755180295E6FF4004BE007 /* GoogleService-Info.plist */; };
 		5F755184295E7CB1004BE007 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5F755183295E7CB1004BE007 /* FirebaseAnalyticsSwift */; };
 		5F755186295E7D3D004BE007 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5F755185295E7D3D004BE007 /* FirebaseAuth */; };
 		5F755189295E7DE5004BE007 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F755188295E7DE5004BE007 /* AuthenticationView.swift */; };
@@ -107,6 +106,7 @@
 		5FA4D44829748B31008EC7AF /* ChainEvolutionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA4D44729748B31008EC7AF /* ChainEvolutionResponse.swift */; };
 		5FA4D44A29748FA2008EC7AF /* PokemonEvolutions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA4D44929748FA2008EC7AF /* PokemonEvolutions.swift */; };
 		5FA4D44C2974A90B008EC7AF /* PokemonColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA4D44B2974A90B008EC7AF /* PokemonColor.swift */; };
+		5FA8CD3B29DDDE0A0070F925 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5FA8CD3A29DDDE0A0070F925 /* GoogleService-Info.plist */; };
 		5FAA9394296128E900C58B67 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 5FAA9393296128E900C58B67 /* FacebookLogin */; };
 		5FAA939929612E9500C58B67 /* FacebookAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAA939829612E9500C58B67 /* FacebookAuthentication.swift */; };
 		5FC7EECE29987A7B00BBD904 /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC7EECD29987A7B00BBD904 /* DropDown.swift */; };
@@ -210,7 +210,6 @@
 		5F4C49292968F5C0007B9265 /* PokemonServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonServiceMock.swift; sourceTree = "<group>"; };
 		5F4C492B2968F709007B9265 /* PokemonUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonUseCaseMock.swift; sourceTree = "<group>"; };
 		5F4C492D2968F733007B9265 /* PokemonUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonUseCaseProtocol.swift; sourceTree = "<group>"; };
-		5F755180295E6FF4004BE007 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5F755188295E7DE5004BE007 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		5F75518D295E8093004BE007 /* AuthenticationSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationSheetView.swift; sourceTree = "<group>"; };
 		5F755191295E8C4B004BE007 /* LoginEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEmailView.swift; sourceTree = "<group>"; };
@@ -236,6 +235,7 @@
 		5FA4D44729748B31008EC7AF /* ChainEvolutionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChainEvolutionResponse.swift; sourceTree = "<group>"; };
 		5FA4D44929748FA2008EC7AF /* PokemonEvolutions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonEvolutions.swift; sourceTree = "<group>"; };
 		5FA4D44B2974A90B008EC7AF /* PokemonColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonColor.swift; sourceTree = "<group>"; };
+		5FA8CD3A29DDDE0A0070F925 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5FAA939529612B4400C58B67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5FAA939829612E9500C58B67 /* FacebookAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAuthentication.swift; sourceTree = "<group>"; };
 		5FC7EECD29987A7B00BBD904 /* DropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDown.swift; sourceTree = "<group>"; };
@@ -804,7 +804,7 @@
 		5FE9B9CD2952222E0006C2E2 = {
 			isa = PBXGroup;
 			children = (
-				5F755180295E6FF4004BE007 /* GoogleService-Info.plist */,
+				5FA8CD3A29DDDE0A0070F925 /* GoogleService-Info.plist */,
 				5FE9B9D82952222E0006C2E2 /* Pokedex-iOS */,
 				5FE9B9EF2952222F0006C2E2 /* Pokedex-iOSTests */,
 				5FE9B9F92952222F0006C2E2 /* Pokedex-iOSUITests */,
@@ -1057,9 +1057,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F1D0EB829873E1900EAF050 /* Settings.bundle in Resources */,
+				5FA8CD3B29DDDE0A0070F925 /* GoogleService-Info.plist in Resources */,
 				5FE9B9E72952222F0006C2E2 /* Preview Assets.xcassets in Resources */,
 				5FE9B9E32952222F0006C2E2 /* Assets.xcassets in Resources */,
-				5F755181295E6FF4004BE007 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
