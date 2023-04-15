@@ -89,6 +89,8 @@ struct PokemonView: View {
                                     }
                                     offset = startOffset - minY
                                     
+                                    print("Min: \(minY), star: \(startOffset)")
+                                    print("Offset: \(offset)")
                                 }
                                 
                                 return Color.clear
@@ -290,7 +292,10 @@ struct PokemonView: View {
         }
         .padding(.bottom, getOffset().height)
         .padding(.top, 20)
-        .background(offset > 65 ? viewModel.color?.ignoresSafeArea() : .none)
+        .background(
+            viewModel.color?.ignoresSafeArea()
+                .opacity(offset > 65 ? 1 : (offset > 40 ? 0.7 : (offset > 20 ? 0.4 : 0)))
+        )
     }
     
     var pokemonEvolutions: some View {
@@ -318,8 +323,9 @@ struct PokemonView: View {
                     }
                 }
             }
+            .padding(.horizontal, 20)
         }
-        .padding(.horizontal, 20)
+        
     }
     
     var pokemonImage: some View {
